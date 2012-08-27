@@ -43,7 +43,13 @@ class AtencionController extends GxController {
 			$model->setAttributes($_POST['Atencion']);
 
 			if ($model->save()) {
+				
 				$model_recarga = $this->loadModel($model->recarga->id, 'Recarga');
+				
+				if($model_recarga->compania=='Entel' and $model->estado=='LISTA'){
+					$this->actionAumentarCupo($model_recarga->celular);				
+				}
+				
 				$model_recarga->estado=$model->estado;
 				$model_recarga->save(false);
 				$this->redirect(array('view', 'id' => $model->id));
@@ -53,6 +59,26 @@ class AtencionController extends GxController {
 		$this->render('_atender', array(
 				'model' => $model,
 				));
+	}
+	
+	public function actionAumentarCupo($celular)
+	{
+		$model = new Recarga('search');
+		$model->unsetAttributes();
+		$model_cupo=$model->cargarCupo($celular);
+		if($model_cupo){
+			$model_cupo->cupo=($model_cupo->cupo)-1;
+			$model_cupo->save();
+		}
+		else{
+			$model = new Cupo;
+			$model->unsetAttributes();
+			$model->numero=$celular;
+			$model->cupo=1;
+			$model->estado='DISPONIBLE';
+			$model->save();
+		}
+		
 	}
 
 	public function actionDelete($id) {

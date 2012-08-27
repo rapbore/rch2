@@ -34,11 +34,11 @@ class RecargaController extends GxController {
 			
 			if(!$noprepago){
 				
-				if($model->compania=='Entel'){
+				/* Aumenta el cupo al realizar una recarga, migrado a AtencionController Action update
+				 * if($model->compania=='Entel'){
 					$this->actionAumentarCupo($model->celular);				
-				}
-				
-			
+				}*/
+							
 				$model_cupo=$model->cargarCupo($model->celular);
 			
 				if($model_cupo->cupo > 0 OR !$model_cupo){
@@ -62,26 +62,7 @@ class RecargaController extends GxController {
 		$this->render('_crear', array( 'model' => $model, 'cupo'=>$model_cupo));
 	}
 	
-	public function actionAumentarCupo($celular)
-	{
-		$model = new Recarga('search');
-		$model->unsetAttributes();
-		$model_cupo=$model->cargarCupo($celular);
-		if($model_cupo){
-			$model_cupo->cupo=($model_cupo->cupo)-1;
-			$model_cupo->save();
-		}
-		else{
-			$model = new Cupo;
-			$model->unsetAttributes();
-			$model->numero=$celular;
-			$model->cupo=1;
-			$model->estado='DISPONIBLE';
-			$model->save();
-		}
 		
-	}
-	
 	public function actionUpdate($id) {
 		$model = $this->loadModel($id, 'Recarga');
 
