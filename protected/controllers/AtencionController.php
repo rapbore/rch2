@@ -31,7 +31,6 @@ class AtencionController extends GxController {
 					$this->redirect(array('view', 'id' => $model->id));
 			}
 		}
-
 		$this->render('create', array( 'model' => $model));
 	}
 
@@ -44,6 +43,9 @@ class AtencionController extends GxController {
 			$model->setAttributes($_POST['Atencion']);
 
 			if ($model->save()) {
+				$model_recarga = $this->loadModel($model->recarga->id, 'Recarga');
+				$model_recarga->estado=$model->estado;
+				$model_recarga->save(false);
 				$this->redirect(array('view', 'id' => $model->id));
 			}
 		}
@@ -94,53 +96,25 @@ class AtencionController extends GxController {
 	}
 	
 	public function actionCreaAtencion($id){
-            //Yii::app()->clientScript->scriptMap['jquery.js'] = false;
+
 			$model_recarga = $this->loadModel($id, 'Recarga');
 			
 			$session=Yii::app()->getSession();
 			$id_user=$session['_id'];
 			
-
-			if (isset($_POST['Atencion'])){				
-				$model_atencion = $this->loadModel($model_recarga->atencion->id, 'Recarga');			
-				$model_atencion->setAttributes($_POST['Atencion']);				
-				
-				
-			/******
-			GUADAR ATENCION
-			********/	
+			$model_atencion = $this->loadModel($model_recarga->atencion->id, 'Atencion');
+			$this->performAjaxValidation($model, 'atencion-form');
 
 			
-				$model_atencion->save(true);
-				$model_recarga->estado=$model_atencion->estado;
-				$model_recarga->save(false);
-				//$this->redirect(array('recarga/verPendientesOperador'));
-				$this->redirect(array('verPendientesOperador'));
-			}else{	
-			$model_atencion = new Atencion;
-			
-			
-			/******			
-			TOMAR RECARGA:
-			ASIGNAR ID USUARIO A ATENCION
-			CAMBIAR ESTADO A LA RECARGA			
-			*******/
-			try{
-				$model_atencion->recarga_id=$id;
-				$model_atencion->user_id=$id_user;				
-				if($model_atencion->save(false)){
-					$model_recarga->estado="PROCESANDO";
-					$model_recarga->save(false);
-					$mensaje = $this->renderPartial('//atencion/_atender', array('model' => $model_atencion),true,true);
-					$status = "processing";
-				}            
-				
-			 }catch(Exception $e){
-			$this->redirect(array('recarga/verPendientesOperador'));
-			 }
-			 
-			 }
-		$this->render('_atender',array('model' => $model_atencion));
+			/*VALIDACION SI ESTA ATENDIDA*/
+			if($model_recarga->estaAtendida()){
+				if ($model_recarga->esMia($id_user)){
+					$this->redirect(array('atencion/update', 'id' =>$model_atencion->id));
+				}else{
+					$this->render('admin');
+				}
+			}else
+				$this->render('_atender',array('model' =>$model_atencion));
 			
         }
 	

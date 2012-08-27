@@ -166,14 +166,19 @@ abstract class BaseRecarga extends GxActiveRecord {
 
 	}
 	
+	public function estaAtendida(){	
+	$flag = Atencion::model()->exists('recarga_id =:recarga_id',array(':recarga_id'=>$this->id));
+	return $flag;		
+	}
 	
-	//public function comprobarNoPrepago($celular, $compania){	
+	public function esMia($user_id){	
+	$flag = Atencion::model()->exists('recarga_id =:recarga_id AND user_id = :user_id',array(':recarga_id'=>$this->id,':user_id'=>$user_id));
+	return $flag;		
+	}
+
 	public function comprobarNoPrepago($celular){	
-	
-	//$flag = Noprepago::model()->exists('numero =:numero and compania =:compania',array(':numero'=>$celular, ':compania'=>$compania));
 	$flag = Noprepago::model()->exists('numero =:numero',array(':numero'=>$celular));
-	return $flag;
-		
+	return $flag;		
 	}
 	
 	public function comprobarCupo($celular){	
