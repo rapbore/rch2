@@ -45,10 +45,10 @@ class RecargaController extends GxController {
 					}
 							
 				} else
-					Yii::app()->user->setFlash('error', 'Imposible realizar recarga<strong> Mobil No PrePago.</strong>');
+					Yii::app()->user->setFlash('error', 'El numero $model->celular no puede ser atendido.</strong>');
 			
 			} else
-				Yii::app()->user->setFlash('info', 'Imposible realizar recarga<strong> Mobil sin Cupo.</strong>');
+				Yii::app()->user->setFlash('info', 'El numero '$model->celular' no puede ser atendido..</strong>');
 		}
 
 		$this->render('_crear', array( 'model' => $model, 'cupo'=>$model_cupo));

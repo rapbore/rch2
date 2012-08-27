@@ -9449,3 +9449,20 @@ Stack trace:
 REQUEST_URI=/rch/cupo/update/2.html
 HTTP_REFERER=http://localhost:8080/rch/cupo/admin.html
 ---
+2012/08/26 22:45:11 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'No estas autorizado para realizar esta acción.' in D:\Archivos de Programas\xampp\htdocs\rch2\protected\modules\rights\components\RController.php:62
+Stack trace:
+#0 D:\Archivos de Programas\xampp\htdocs\rch2\protected\modules\rights\components\RightsFilter.php(57): RController->accessDenied()
+#1 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\filters\CFilter.php(39): RightsFilter->preFilter(Object(CFilterChain))
+#2 D:\Archivos de Programas\xampp\htdocs\rch2\protected\modules\rights\components\RController.php(36): CFilter->filter(Object(CFilterChain))
+#3 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(59): RController->filterRights(Object(CFilterChain))
+#4 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#5 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CController.php(292): CFilterChain->run()
+#6 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CWebApplication.php(283): CController->run('elegir')
+#8 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('user/elegir')
+#9 D:\Archivos de Programas\xampp\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 D:\Archivos de Programas\xampp\htdocs\rch2\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/rch2/user/elegir.html
+HTTP_REFERER=http://localhost/rch2/site/login.html
+---

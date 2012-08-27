@@ -134,7 +134,7 @@ abstract class BaseRecarga extends GxActiveRecord {
 			$id_user=$this->cargarUser();
 			
 			$criteria=new CDbCriteria(array(
-				'condition'=>'user_id =:user_id and estado =:estado or estado =:estado2',
+				'condition'=>'user_id =:user_id and (estado =:estado or estado =:estado2)',
 				'order'=>'id DESC',
 				'limit'=>500,
 				'params'=> array(':user_id' => $id_user, ':estado'=>'PENDIENTE', ':estado2'=>'PROCESANDO'),
@@ -146,8 +146,8 @@ abstract class BaseRecarga extends GxActiveRecord {
 			return ($dataProvider);
 
 	}
-	
-	
+	 
+	 
 	public function cargarPendientesOperador(){
 		
 			$id_user=$this->cargarUser();
