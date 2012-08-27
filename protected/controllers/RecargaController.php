@@ -45,10 +45,10 @@ class RecargaController extends GxController {
 					}
 							
 				} else
-					Yii::app()->user->setFlash('error', 'El numero $model->celular no puede ser atendido.</strong>');
+					Yii::app()->user->setFlash('error', 'El celular <strong>'.$model->celular.' </strong>no puede ser recargado.');
 			
 			} else
-				Yii::app()->user->setFlash('info', 'El numero '$model->celular' no puede ser atendido..</strong>');
+				Yii::app()->user->setFlash('info', 'El celular <strong>'.$model->celular.' </strong>no puede ser recargado.');
 		}
 
 		$this->render('_crear', array( 'model' => $model, 'cupo'=>$model_cupo));

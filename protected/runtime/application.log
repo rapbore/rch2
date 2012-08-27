@@ -9466,3 +9466,447 @@ Stack trace:
 REQUEST_URI=/rch2/user/elegir.html
 HTTP_REFERER=http://localhost/rch2/site/login.html
 ---
+2012/08/27 00:03:23 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'No estas autorizado para realizar esta acción.' in D:\Archivos de Programas\xampp\htdocs\rch2\protected\modules\rights\components\RController.php:62
+Stack trace:
+#0 D:\Archivos de Programas\xampp\htdocs\rch2\protected\modules\rights\components\RightsFilter.php(57): RController->accessDenied()
+#1 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\filters\CFilter.php(39): RightsFilter->preFilter(Object(CFilterChain))
+#2 D:\Archivos de Programas\xampp\htdocs\rch2\protected\modules\rights\components\RController.php(36): CFilter->filter(Object(CFilterChain))
+#3 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(59): RController->filterRights(Object(CFilterChain))
+#4 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#5 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CController.php(292): CFilterChain->run()
+#6 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CWebApplication.php(283): CController->run('index')
+#8 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('local/index')
+#9 D:\Archivos de Programas\xampp\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 D:\Archivos de Programas\xampp\htdocs\rch2\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/rch2/local/index.html
+HTTP_REFERER=http://localhost/rch2/local/verLocalCliente/1.html
+---
+2012/08/27 00:07:58 [error] [php] Division by zero (D:\Archivos de Programas\xampp\htdocs\rch2\protected\models\_base\BaseLocal.php:147)
+Stack trace:
+#0 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs()
+#1 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(48): CInlineAction->runWithParamsInternal()
+#2 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CController.php(309): CInlineAction->runWithParams()
+#3 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(134): LocalController->runAction()
+#4 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#5 D:\Archivos de Programas\xampp\htdocs\rch2\protected\modules\rights\components\RController.php(36): RightsFilter->filter()
+#6 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(59): LocalController->filterRights()
+#7 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter()
+#8 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CController.php(292): CFilterChain->run()
+#9 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CController.php(266): LocalController->runActionWithFilters()
+#10 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CWebApplication.php(283): LocalController->run()
+#11 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CWebApplication.php(142): CWebApplication->runController()
+#12 D:\Archivos de Programas\xampp\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#13 D:\Archivos de Programas\xampp\htdocs\rch2\index.php(13): CWebApplication->run()
+REQUEST_URI=/rch2/local/verLocalCliente/1.html
+in D:\Archivos de Programas\xampp\htdocs\rch2\protected\models\_base\BaseLocal.php (147)
+in D:\Archivos de Programas\xampp\htdocs\rch2\protected\controllers\LocalController.php (94)
+in D:\Archivos de Programas\xampp\htdocs\rch2\protected\modules\rights\components\RController.php (36)
+2012/08/27 00:35:05 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'varchar(10), '2012-08-27', 112) ORDER BY id DESC LIMIT 500' at line 1. The SQL statement executed was: SELECT * FROM `recarga` `t` WHERE local_id =:local_id and estado =:estado and fecha =CONVERT(varchar(10), :fecha, 112) ORDER BY id DESC LIMIT 500.
+in D:\Archivos de Programas\xampp\htdocs\rch2\protected\models\_base\BaseLocal.php (149)
+in D:\Archivos de Programas\xampp\htdocs\rch2\protected\controllers\LocalController.php (94)
+in D:\Archivos de Programas\xampp\htdocs\rch2\protected\modules\rights\components\RController.php (36)
+2012/08/27 00:35:05 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand falló al ejecutar la sentencia SQL: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'varchar(10), '2012-08-27', 112) ORDER BY id DESC LIMIT 500' at line 1. The SQL statement executed was: SELECT * FROM `recarga` `t` WHERE local_id =:local_id and estado =:estado and fecha =CONVERT(varchar(10), :fecha, 112) ORDER BY id DESC LIMIT 500' in D:\Archivos de Programas\xampp\htdocs\yii\framework\db\CDbCommand.php:528
+Stack trace:
+#0 D:\Archivos de Programas\xampp\htdocs\yii\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 D:\Archivos de Programas\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1286): CDbCommand->queryAll()
+#2 D:\Archivos de Programas\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1405): CActiveRecord->query(Object(CDbCriteria), true)
+#3 D:\Archivos de Programas\xampp\htdocs\rch2\protected\models\_base\BaseLocal.php(149): CActiveRecord->findAll(Object(CDbCriteria))
+#4 D:\Archivos de Programas\xampp\htdocs\rch2\protected\controllers\LocalController.php(94): BaseLocal->cargarRecargasLocal('1')
+#5 [internal function]: LocalController->actionVerLocalCliente('1')
+#6 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(LocalController), Array)
+#7 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(LocalController), Object(ReflectionMethod), Array)
+#8 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#9 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#10 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#11 D:\Archivos de Programas\xampp\htdocs\rch2\protected\modules\rights\components\RController.php(36): CFilter->filter(Object(CFilterChain))
+#12 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(59): RController->filterRights(Object(CFilterChain))
+#13 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#14 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CController.php(292): CFilterChain->run()
+#15 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CWebApplication.php(283): CController->run('verLocalCliente')
+#17 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('local/verLocalC...')
+#18 D:\Archivos de Programas\xampp\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#19 D:\Archivos de Programas\xampp\htdocs\rch2\index.php(13): CApplication->run()
+#20 {main}
+REQUEST_URI=/rch2/local/verLocalCliente/1.html
+HTTP_REFERER=http://localhost/rch2/local/verLocalesCliente.html
+---
+2012/08/27 00:35:45 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'varchar(10), '2012-08-27', 112) ORDER BY id DESC LIMIT 500' at line 1. The SQL statement executed was: SELECT * FROM `recarga` `t` WHERE local_id =:local_id and estado =:estado and fecha =CONVERT(varchar(10), :fecha, 112) ORDER BY id DESC LIMIT 500.
+in D:\Archivos de Programas\xampp\htdocs\rch2\protected\models\_base\BaseLocal.php (149)
+in D:\Archivos de Programas\xampp\htdocs\rch2\protected\controllers\LocalController.php (94)
+in D:\Archivos de Programas\xampp\htdocs\rch2\protected\modules\rights\components\RController.php (36)
+2012/08/27 00:35:45 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand falló al ejecutar la sentencia SQL: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'varchar(10), '2012-08-27', 112) ORDER BY id DESC LIMIT 500' at line 1. The SQL statement executed was: SELECT * FROM `recarga` `t` WHERE local_id =:local_id and estado =:estado and fecha =CONVERT(varchar(10), :fecha, 112) ORDER BY id DESC LIMIT 500' in D:\Archivos de Programas\xampp\htdocs\yii\framework\db\CDbCommand.php:528
+Stack trace:
+#0 D:\Archivos de Programas\xampp\htdocs\yii\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 D:\Archivos de Programas\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1286): CDbCommand->queryAll()
+#2 D:\Archivos de Programas\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1405): CActiveRecord->query(Object(CDbCriteria), true)
+#3 D:\Archivos de Programas\xampp\htdocs\rch2\protected\models\_base\BaseLocal.php(149): CActiveRecord->findAll(Object(CDbCriteria))
+#4 D:\Archivos de Programas\xampp\htdocs\rch2\protected\controllers\LocalController.php(94): BaseLocal->cargarRecargasLocal('1')
+#5 [internal function]: LocalController->actionVerLocalCliente('1')
+#6 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(LocalController), Array)
+#7 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(LocalController), Object(ReflectionMethod), Array)
+#8 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#9 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#10 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#11 D:\Archivos de Programas\xampp\htdocs\rch2\protected\modules\rights\components\RController.php(36): CFilter->filter(Object(CFilterChain))
+#12 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(59): RController->filterRights(Object(CFilterChain))
+#13 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#14 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CController.php(292): CFilterChain->run()
+#15 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CWebApplication.php(283): CController->run('verLocalCliente')
+#17 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('local/verLocalC...')
+#18 D:\Archivos de Programas\xampp\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#19 D:\Archivos de Programas\xampp\htdocs\rch2\index.php(13): CApplication->run()
+#20 {main}
+REQUEST_URI=/rch2/local/verLocalCliente/1.html
+HTTP_REFERER=http://localhost/rch2/local/verLocalesCliente.html
+---
+2012/08/27 00:36:04 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'varchar(10), '2012-08-27', 112) ORDER BY id DESC LIMIT 500' at line 1. The SQL statement executed was: SELECT * FROM `recarga` `t` WHERE local_id =:local_id and estado =:estado and fecha >=CONVERT(varchar(10), :fecha, 112) ORDER BY id DESC LIMIT 500.
+in D:\Archivos de Programas\xampp\htdocs\rch2\protected\models\_base\BaseLocal.php (149)
+in D:\Archivos de Programas\xampp\htdocs\rch2\protected\controllers\LocalController.php (94)
+in D:\Archivos de Programas\xampp\htdocs\rch2\protected\modules\rights\components\RController.php (36)
+2012/08/27 00:36:04 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand falló al ejecutar la sentencia SQL: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'varchar(10), '2012-08-27', 112) ORDER BY id DESC LIMIT 500' at line 1. The SQL statement executed was: SELECT * FROM `recarga` `t` WHERE local_id =:local_id and estado =:estado and fecha >=CONVERT(varchar(10), :fecha, 112) ORDER BY id DESC LIMIT 500' in D:\Archivos de Programas\xampp\htdocs\yii\framework\db\CDbCommand.php:528
+Stack trace:
+#0 D:\Archivos de Programas\xampp\htdocs\yii\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 D:\Archivos de Programas\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1286): CDbCommand->queryAll()
+#2 D:\Archivos de Programas\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1405): CActiveRecord->query(Object(CDbCriteria), true)
+#3 D:\Archivos de Programas\xampp\htdocs\rch2\protected\models\_base\BaseLocal.php(149): CActiveRecord->findAll(Object(CDbCriteria))
+#4 D:\Archivos de Programas\xampp\htdocs\rch2\protected\controllers\LocalController.php(94): BaseLocal->cargarRecargasLocal('1')
+#5 [internal function]: LocalController->actionVerLocalCliente('1')
+#6 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(LocalController), Array)
+#7 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(LocalController), Object(ReflectionMethod), Array)
+#8 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#9 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#10 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#11 D:\Archivos de Programas\xampp\htdocs\rch2\protected\modules\rights\components\RController.php(36): CFilter->filter(Object(CFilterChain))
+#12 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(59): RController->filterRights(Object(CFilterChain))
+#13 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#14 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CController.php(292): CFilterChain->run()
+#15 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CWebApplication.php(283): CController->run('verLocalCliente')
+#17 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('local/verLocalC...')
+#18 D:\Archivos de Programas\xampp\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#19 D:\Archivos de Programas\xampp\htdocs\rch2\index.php(13): CApplication->run()
+#20 {main}
+REQUEST_URI=/rch2/local/verLocalCliente/1.html
+HTTP_REFERER=http://localhost/rch2/local/verLocalesCliente.html
+---
+2012/08/27 00:37:13 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens. The SQL statement executed was: SELECT * FROM `recarga` `t` WHERE local_id =:local_id and estado =:estado and fecha =CONVERT(varchar(10), GETDATE(), 112) ORDER BY id DESC LIMIT 500.
+in D:\Archivos de Programas\xampp\htdocs\rch2\protected\models\_base\BaseLocal.php (149)
+in D:\Archivos de Programas\xampp\htdocs\rch2\protected\controllers\LocalController.php (94)
+in D:\Archivos de Programas\xampp\htdocs\rch2\protected\modules\rights\components\RController.php (36)
+2012/08/27 00:37:13 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand falló al ejecutar la sentencia SQL: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens. The SQL statement executed was: SELECT * FROM `recarga` `t` WHERE local_id =:local_id and estado =:estado and fecha =CONVERT(varchar(10), GETDATE(), 112) ORDER BY id DESC LIMIT 500' in D:\Archivos de Programas\xampp\htdocs\yii\framework\db\CDbCommand.php:528
+Stack trace:
+#0 D:\Archivos de Programas\xampp\htdocs\yii\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 D:\Archivos de Programas\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1286): CDbCommand->queryAll()
+#2 D:\Archivos de Programas\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1405): CActiveRecord->query(Object(CDbCriteria), true)
+#3 D:\Archivos de Programas\xampp\htdocs\rch2\protected\models\_base\BaseLocal.php(149): CActiveRecord->findAll(Object(CDbCriteria))
+#4 D:\Archivos de Programas\xampp\htdocs\rch2\protected\controllers\LocalController.php(94): BaseLocal->cargarRecargasLocal('1')
+#5 [internal function]: LocalController->actionVerLocalCliente('1')
+#6 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(LocalController), Array)
+#7 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(LocalController), Object(ReflectionMethod), Array)
+#8 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#9 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#10 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#11 D:\Archivos de Programas\xampp\htdocs\rch2\protected\modules\rights\components\RController.php(36): CFilter->filter(Object(CFilterChain))
+#12 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(59): RController->filterRights(Object(CFilterChain))
+#13 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#14 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CController.php(292): CFilterChain->run()
+#15 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CWebApplication.php(283): CController->run('verLocalCliente')
+#17 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('local/verLocalC...')
+#18 D:\Archivos de Programas\xampp\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#19 D:\Archivos de Programas\xampp\htdocs\rch2\index.php(13): CApplication->run()
+#20 {main}
+REQUEST_URI=/rch2/local/verLocalCliente/1.html
+HTTP_REFERER=http://localhost/rch2/local/verLocalesCliente.html
+---
+2012/08/27 00:37:34 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'varchar(10), GETDATE(), 112) ORDER BY id DESC LIMIT 500' at line 1. The SQL statement executed was: SELECT * FROM `recarga` `t` WHERE local_id =:local_id and estado =:estado and fecha =CONVERT(varchar(10), GETDATE(), 112) ORDER BY id DESC LIMIT 500.
+in D:\Archivos de Programas\xampp\htdocs\rch2\protected\models\_base\BaseLocal.php (149)
+in D:\Archivos de Programas\xampp\htdocs\rch2\protected\controllers\LocalController.php (94)
+in D:\Archivos de Programas\xampp\htdocs\rch2\protected\modules\rights\components\RController.php (36)
+2012/08/27 00:37:34 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand falló al ejecutar la sentencia SQL: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'varchar(10), GETDATE(), 112) ORDER BY id DESC LIMIT 500' at line 1. The SQL statement executed was: SELECT * FROM `recarga` `t` WHERE local_id =:local_id and estado =:estado and fecha =CONVERT(varchar(10), GETDATE(), 112) ORDER BY id DESC LIMIT 500' in D:\Archivos de Programas\xampp\htdocs\yii\framework\db\CDbCommand.php:528
+Stack trace:
+#0 D:\Archivos de Programas\xampp\htdocs\yii\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 D:\Archivos de Programas\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1286): CDbCommand->queryAll()
+#2 D:\Archivos de Programas\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1405): CActiveRecord->query(Object(CDbCriteria), true)
+#3 D:\Archivos de Programas\xampp\htdocs\rch2\protected\models\_base\BaseLocal.php(149): CActiveRecord->findAll(Object(CDbCriteria))
+#4 D:\Archivos de Programas\xampp\htdocs\rch2\protected\controllers\LocalController.php(94): BaseLocal->cargarRecargasLocal('1')
+#5 [internal function]: LocalController->actionVerLocalCliente('1')
+#6 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(LocalController), Array)
+#7 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(LocalController), Object(ReflectionMethod), Array)
+#8 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#9 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#10 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#11 D:\Archivos de Programas\xampp\htdocs\rch2\protected\modules\rights\components\RController.php(36): CFilter->filter(Object(CFilterChain))
+#12 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(59): RController->filterRights(Object(CFilterChain))
+#13 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#14 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CController.php(292): CFilterChain->run()
+#15 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CWebApplication.php(283): CController->run('verLocalCliente')
+#17 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('local/verLocalC...')
+#18 D:\Archivos de Programas\xampp\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#19 D:\Archivos de Programas\xampp\htdocs\rch2\index.php(13): CApplication->run()
+#20 {main}
+REQUEST_URI=/rch2/local/verLocalCliente/1.html
+HTTP_REFERER=http://localhost/rch2/local/verLocalesCliente.html
+---
+2012/08/27 00:39:42 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'varchar(10), fecha, 112) =CONVERT(varchar(10), GETDATE(), 112) ORDER BY id DESC ' at line 1. The SQL statement executed was: SELECT * FROM `recarga` `t` WHERE local_id =:local_id and estado =:estado and CONVERT(varchar(10), fecha, 112) =CONVERT(varchar(10), GETDATE(), 112) ORDER BY id DESC LIMIT 500.
+in D:\Archivos de Programas\xampp\htdocs\rch2\protected\models\_base\BaseLocal.php (149)
+in D:\Archivos de Programas\xampp\htdocs\rch2\protected\controllers\LocalController.php (94)
+in D:\Archivos de Programas\xampp\htdocs\rch2\protected\modules\rights\components\RController.php (36)
+2012/08/27 00:39:42 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand falló al ejecutar la sentencia SQL: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'varchar(10), fecha, 112) =CONVERT(varchar(10), GETDATE(), 112) ORDER BY id DESC ' at line 1. The SQL statement executed was: SELECT * FROM `recarga` `t` WHERE local_id =:local_id and estado =:estado and CONVERT(varchar(10), fecha, 112) =CONVERT(varchar(10), GETDATE(), 112) ORDER BY id DESC LIMIT 500' in D:\Archivos de Programas\xampp\htdocs\yii\framework\db\CDbCommand.php:528
+Stack trace:
+#0 D:\Archivos de Programas\xampp\htdocs\yii\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 D:\Archivos de Programas\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1286): CDbCommand->queryAll()
+#2 D:\Archivos de Programas\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1405): CActiveRecord->query(Object(CDbCriteria), true)
+#3 D:\Archivos de Programas\xampp\htdocs\rch2\protected\models\_base\BaseLocal.php(149): CActiveRecord->findAll(Object(CDbCriteria))
+#4 D:\Archivos de Programas\xampp\htdocs\rch2\protected\controllers\LocalController.php(94): BaseLocal->cargarRecargasLocal('1')
+#5 [internal function]: LocalController->actionVerLocalCliente('1')
+#6 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(LocalController), Array)
+#7 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(LocalController), Object(ReflectionMethod), Array)
+#8 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#9 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#10 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#11 D:\Archivos de Programas\xampp\htdocs\rch2\protected\modules\rights\components\RController.php(36): CFilter->filter(Object(CFilterChain))
+#12 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(59): RController->filterRights(Object(CFilterChain))
+#13 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#14 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CController.php(292): CFilterChain->run()
+#15 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CWebApplication.php(283): CController->run('verLocalCliente')
+#17 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('local/verLocalC...')
+#18 D:\Archivos de Programas\xampp\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#19 D:\Archivos de Programas\xampp\htdocs\rch2\index.php(13): CApplication->run()
+#20 {main}
+REQUEST_URI=/rch2/local/verLocalCliente/1.html
+HTTP_REFERER=http://localhost/rch2/local/verLocalesCliente.html
+---
+2012/08/27 00:40:34 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'varchar(10), fecha, 112) =CONVERT(varchar(10), GETDATE(), 112) ORDER BY id DESC ' at line 1. The SQL statement executed was: SELECT * FROM `recarga` `t` WHERE local_id =:local_id and estado =:estado and CONVERT(varchar(10), fecha, 112) =CONVERT(varchar(10), GETDATE(), 112) ORDER BY id DESC LIMIT 500.
+in D:\Archivos de Programas\xampp\htdocs\rch2\protected\models\_base\BaseLocal.php (149)
+in D:\Archivos de Programas\xampp\htdocs\rch2\protected\controllers\LocalController.php (94)
+in D:\Archivos de Programas\xampp\htdocs\rch2\protected\modules\rights\components\RController.php (36)
+2012/08/27 00:40:34 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand falló al ejecutar la sentencia SQL: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'varchar(10), fecha, 112) =CONVERT(varchar(10), GETDATE(), 112) ORDER BY id DESC ' at line 1. The SQL statement executed was: SELECT * FROM `recarga` `t` WHERE local_id =:local_id and estado =:estado and CONVERT(varchar(10), fecha, 112) =CONVERT(varchar(10), GETDATE(), 112) ORDER BY id DESC LIMIT 500' in D:\Archivos de Programas\xampp\htdocs\yii\framework\db\CDbCommand.php:528
+Stack trace:
+#0 D:\Archivos de Programas\xampp\htdocs\yii\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 D:\Archivos de Programas\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1286): CDbCommand->queryAll()
+#2 D:\Archivos de Programas\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1405): CActiveRecord->query(Object(CDbCriteria), true)
+#3 D:\Archivos de Programas\xampp\htdocs\rch2\protected\models\_base\BaseLocal.php(149): CActiveRecord->findAll(Object(CDbCriteria))
+#4 D:\Archivos de Programas\xampp\htdocs\rch2\protected\controllers\LocalController.php(94): BaseLocal->cargarRecargasLocal('1')
+#5 [internal function]: LocalController->actionVerLocalCliente('1')
+#6 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(LocalController), Array)
+#7 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(LocalController), Object(ReflectionMethod), Array)
+#8 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#9 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#10 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#11 D:\Archivos de Programas\xampp\htdocs\rch2\protected\modules\rights\components\RController.php(36): CFilter->filter(Object(CFilterChain))
+#12 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(59): RController->filterRights(Object(CFilterChain))
+#13 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#14 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CController.php(292): CFilterChain->run()
+#15 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CWebApplication.php(283): CController->run('verLocalCliente')
+#17 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('local/verLocalC...')
+#18 D:\Archivos de Programas\xampp\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#19 D:\Archivos de Programas\xampp\htdocs\rch2\index.php(13): CApplication->run()
+#20 {main}
+REQUEST_URI=/rch2/local/verLocalCliente/1.html
+HTTP_REFERER=http://localhost/rch2/local/verLocalesCliente.html
+---
+2012/08/27 00:40:42 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens. The SQL statement executed was: SELECT * FROM `recarga` `t` WHERE local_id =:local_id and estado =:estado and CONVERT(varchar(10), :fecha, 112) =CONVERT(varchar(10), GETDATE(), 112) ORDER BY id DESC LIMIT 500.
+in D:\Archivos de Programas\xampp\htdocs\rch2\protected\models\_base\BaseLocal.php (149)
+in D:\Archivos de Programas\xampp\htdocs\rch2\protected\controllers\LocalController.php (94)
+in D:\Archivos de Programas\xampp\htdocs\rch2\protected\modules\rights\components\RController.php (36)
+2012/08/27 00:40:42 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand falló al ejecutar la sentencia SQL: SQLSTATE[HY093]: Invalid parameter number: number of bound variables does not match number of tokens. The SQL statement executed was: SELECT * FROM `recarga` `t` WHERE local_id =:local_id and estado =:estado and CONVERT(varchar(10), :fecha, 112) =CONVERT(varchar(10), GETDATE(), 112) ORDER BY id DESC LIMIT 500' in D:\Archivos de Programas\xampp\htdocs\yii\framework\db\CDbCommand.php:528
+Stack trace:
+#0 D:\Archivos de Programas\xampp\htdocs\yii\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 D:\Archivos de Programas\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1286): CDbCommand->queryAll()
+#2 D:\Archivos de Programas\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1405): CActiveRecord->query(Object(CDbCriteria), true)
+#3 D:\Archivos de Programas\xampp\htdocs\rch2\protected\models\_base\BaseLocal.php(149): CActiveRecord->findAll(Object(CDbCriteria))
+#4 D:\Archivos de Programas\xampp\htdocs\rch2\protected\controllers\LocalController.php(94): BaseLocal->cargarRecargasLocal('1')
+#5 [internal function]: LocalController->actionVerLocalCliente('1')
+#6 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(LocalController), Array)
+#7 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(LocalController), Object(ReflectionMethod), Array)
+#8 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#9 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#10 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#11 D:\Archivos de Programas\xampp\htdocs\rch2\protected\modules\rights\components\RController.php(36): CFilter->filter(Object(CFilterChain))
+#12 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(59): RController->filterRights(Object(CFilterChain))
+#13 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#14 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CController.php(292): CFilterChain->run()
+#15 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CWebApplication.php(283): CController->run('verLocalCliente')
+#17 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('local/verLocalC...')
+#18 D:\Archivos de Programas\xampp\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#19 D:\Archivos de Programas\xampp\htdocs\rch2\index.php(13): CApplication->run()
+#20 {main}
+REQUEST_URI=/rch2/local/verLocalCliente/1.html
+HTTP_REFERER=http://localhost/rch2/local/verLocalesCliente.html
+---
+2012/08/27 00:44:38 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'varchar(10), '2012-08-27', 112) ORDER BY id DESC LIMIT 500' at line 1. The SQL statement executed was: SELECT * FROM `recarga` `t` WHERE local_id =:local_id and estado =:estado and fecha >=CONVERT(varchar(10), :fecha, 112) ORDER BY id DESC LIMIT 500.
+in D:\Archivos de Programas\xampp\htdocs\rch2\protected\models\_base\BaseLocal.php (149)
+in D:\Archivos de Programas\xampp\htdocs\rch2\protected\controllers\LocalController.php (94)
+in D:\Archivos de Programas\xampp\htdocs\rch2\protected\modules\rights\components\RController.php (36)
+2012/08/27 00:44:38 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand falló al ejecutar la sentencia SQL: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'varchar(10), '2012-08-27', 112) ORDER BY id DESC LIMIT 500' at line 1. The SQL statement executed was: SELECT * FROM `recarga` `t` WHERE local_id =:local_id and estado =:estado and fecha >=CONVERT(varchar(10), :fecha, 112) ORDER BY id DESC LIMIT 500' in D:\Archivos de Programas\xampp\htdocs\yii\framework\db\CDbCommand.php:528
+Stack trace:
+#0 D:\Archivos de Programas\xampp\htdocs\yii\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 D:\Archivos de Programas\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1286): CDbCommand->queryAll()
+#2 D:\Archivos de Programas\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1405): CActiveRecord->query(Object(CDbCriteria), true)
+#3 D:\Archivos de Programas\xampp\htdocs\rch2\protected\models\_base\BaseLocal.php(149): CActiveRecord->findAll(Object(CDbCriteria))
+#4 D:\Archivos de Programas\xampp\htdocs\rch2\protected\controllers\LocalController.php(94): BaseLocal->cargarRecargasLocal('1')
+#5 [internal function]: LocalController->actionVerLocalCliente('1')
+#6 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(LocalController), Array)
+#7 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(LocalController), Object(ReflectionMethod), Array)
+#8 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#9 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#10 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#11 D:\Archivos de Programas\xampp\htdocs\rch2\protected\modules\rights\components\RController.php(36): CFilter->filter(Object(CFilterChain))
+#12 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(59): RController->filterRights(Object(CFilterChain))
+#13 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#14 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CController.php(292): CFilterChain->run()
+#15 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CWebApplication.php(283): CController->run('verLocalCliente')
+#17 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('local/verLocalC...')
+#18 D:\Archivos de Programas\xampp\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#19 D:\Archivos de Programas\xampp\htdocs\rch2\index.php(13): CApplication->run()
+#20 {main}
+REQUEST_URI=/rch2/local/verLocalCliente/1.html
+HTTP_REFERER=http://localhost/rch2/local/verLocalesCliente.html
+---
+2012/08/27 00:44:51 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'varchar(10), '2012-08-27', 112) ORDER BY id DESC LIMIT 500' at line 1. The SQL statement executed was: SELECT * FROM `recarga` `t` WHERE local_id =:local_id and estado =:estado and fecha =CONVERT(varchar(10), :fecha, 112) ORDER BY id DESC LIMIT 500.
+in D:\Archivos de Programas\xampp\htdocs\rch2\protected\models\_base\BaseLocal.php (149)
+in D:\Archivos de Programas\xampp\htdocs\rch2\protected\controllers\LocalController.php (94)
+in D:\Archivos de Programas\xampp\htdocs\rch2\protected\modules\rights\components\RController.php (36)
+2012/08/27 00:44:51 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand falló al ejecutar la sentencia SQL: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'varchar(10), '2012-08-27', 112) ORDER BY id DESC LIMIT 500' at line 1. The SQL statement executed was: SELECT * FROM `recarga` `t` WHERE local_id =:local_id and estado =:estado and fecha =CONVERT(varchar(10), :fecha, 112) ORDER BY id DESC LIMIT 500' in D:\Archivos de Programas\xampp\htdocs\yii\framework\db\CDbCommand.php:528
+Stack trace:
+#0 D:\Archivos de Programas\xampp\htdocs\yii\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 D:\Archivos de Programas\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1286): CDbCommand->queryAll()
+#2 D:\Archivos de Programas\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1405): CActiveRecord->query(Object(CDbCriteria), true)
+#3 D:\Archivos de Programas\xampp\htdocs\rch2\protected\models\_base\BaseLocal.php(149): CActiveRecord->findAll(Object(CDbCriteria))
+#4 D:\Archivos de Programas\xampp\htdocs\rch2\protected\controllers\LocalController.php(94): BaseLocal->cargarRecargasLocal('1')
+#5 [internal function]: LocalController->actionVerLocalCliente('1')
+#6 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(LocalController), Array)
+#7 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(LocalController), Object(ReflectionMethod), Array)
+#8 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#9 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#10 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#11 D:\Archivos de Programas\xampp\htdocs\rch2\protected\modules\rights\components\RController.php(36): CFilter->filter(Object(CFilterChain))
+#12 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(59): RController->filterRights(Object(CFilterChain))
+#13 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#14 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CController.php(292): CFilterChain->run()
+#15 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CWebApplication.php(283): CController->run('verLocalCliente')
+#17 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('local/verLocalC...')
+#18 D:\Archivos de Programas\xampp\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#19 D:\Archivos de Programas\xampp\htdocs\rch2\index.php(13): CApplication->run()
+#20 {main}
+REQUEST_URI=/rch2/local/verLocalCliente/1.html
+HTTP_REFERER=http://localhost/rch2/local/verLocalesCliente.html
+---
+2012/08/27 00:57:18 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '%'2012-08-27'%) ORDER BY id DESC LIMIT 500' at line 1. The SQL statement executed was: SELECT * FROM `recarga` `t` WHERE local_id =:local_id and estado =:estado and fecha LIKE (%:fecha%) ORDER BY id DESC LIMIT 500.
+in D:\Archivos de Programas\xampp\htdocs\rch2\protected\models\_base\BaseLocal.php (149)
+in D:\Archivos de Programas\xampp\htdocs\rch2\protected\controllers\LocalController.php (94)
+in D:\Archivos de Programas\xampp\htdocs\rch2\protected\modules\rights\components\RController.php (36)
+2012/08/27 00:57:18 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand falló al ejecutar la sentencia SQL: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '%'2012-08-27'%) ORDER BY id DESC LIMIT 500' at line 1. The SQL statement executed was: SELECT * FROM `recarga` `t` WHERE local_id =:local_id and estado =:estado and fecha LIKE (%:fecha%) ORDER BY id DESC LIMIT 500' in D:\Archivos de Programas\xampp\htdocs\yii\framework\db\CDbCommand.php:528
+Stack trace:
+#0 D:\Archivos de Programas\xampp\htdocs\yii\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 D:\Archivos de Programas\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1286): CDbCommand->queryAll()
+#2 D:\Archivos de Programas\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1405): CActiveRecord->query(Object(CDbCriteria), true)
+#3 D:\Archivos de Programas\xampp\htdocs\rch2\protected\models\_base\BaseLocal.php(149): CActiveRecord->findAll(Object(CDbCriteria))
+#4 D:\Archivos de Programas\xampp\htdocs\rch2\protected\controllers\LocalController.php(94): BaseLocal->cargarRecargasLocal('1')
+#5 [internal function]: LocalController->actionVerLocalCliente('1')
+#6 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(LocalController), Array)
+#7 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(LocalController), Object(ReflectionMethod), Array)
+#8 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#9 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#10 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#11 D:\Archivos de Programas\xampp\htdocs\rch2\protected\modules\rights\components\RController.php(36): CFilter->filter(Object(CFilterChain))
+#12 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(59): RController->filterRights(Object(CFilterChain))
+#13 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#14 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CController.php(292): CFilterChain->run()
+#15 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CWebApplication.php(283): CController->run('verLocalCliente')
+#17 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('local/verLocalC...')
+#18 D:\Archivos de Programas\xampp\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#19 D:\Archivos de Programas\xampp\htdocs\rch2\index.php(13): CApplication->run()
+#20 {main}
+REQUEST_URI=/rch2/local/verLocalCliente/1.html
+HTTP_REFERER=http://localhost/rch2/local/verLocalesCliente.html
+---
+2012/08/27 00:57:24 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '% '2012-08-27' %) ORDER BY id DESC LIMIT 500' at line 1. The SQL statement executed was: SELECT * FROM `recarga` `t` WHERE local_id =:local_id and estado =:estado and fecha LIKE (% :fecha %) ORDER BY id DESC LIMIT 500.
+in D:\Archivos de Programas\xampp\htdocs\rch2\protected\models\_base\BaseLocal.php (149)
+in D:\Archivos de Programas\xampp\htdocs\rch2\protected\controllers\LocalController.php (94)
+in D:\Archivos de Programas\xampp\htdocs\rch2\protected\modules\rights\components\RController.php (36)
+2012/08/27 00:57:24 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand falló al ejecutar la sentencia SQL: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '% '2012-08-27' %) ORDER BY id DESC LIMIT 500' at line 1. The SQL statement executed was: SELECT * FROM `recarga` `t` WHERE local_id =:local_id and estado =:estado and fecha LIKE (% :fecha %) ORDER BY id DESC LIMIT 500' in D:\Archivos de Programas\xampp\htdocs\yii\framework\db\CDbCommand.php:528
+Stack trace:
+#0 D:\Archivos de Programas\xampp\htdocs\yii\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 D:\Archivos de Programas\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1286): CDbCommand->queryAll()
+#2 D:\Archivos de Programas\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1405): CActiveRecord->query(Object(CDbCriteria), true)
+#3 D:\Archivos de Programas\xampp\htdocs\rch2\protected\models\_base\BaseLocal.php(149): CActiveRecord->findAll(Object(CDbCriteria))
+#4 D:\Archivos de Programas\xampp\htdocs\rch2\protected\controllers\LocalController.php(94): BaseLocal->cargarRecargasLocal('1')
+#5 [internal function]: LocalController->actionVerLocalCliente('1')
+#6 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(LocalController), Array)
+#7 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(LocalController), Object(ReflectionMethod), Array)
+#8 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#9 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#10 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#11 D:\Archivos de Programas\xampp\htdocs\rch2\protected\modules\rights\components\RController.php(36): CFilter->filter(Object(CFilterChain))
+#12 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(59): RController->filterRights(Object(CFilterChain))
+#13 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#14 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CController.php(292): CFilterChain->run()
+#15 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CWebApplication.php(283): CController->run('verLocalCliente')
+#17 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('local/verLocalC...')
+#18 D:\Archivos de Programas\xampp\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#19 D:\Archivos de Programas\xampp\htdocs\rch2\index.php(13): CApplication->run()
+#20 {main}
+REQUEST_URI=/rch2/local/verLocalCliente/1.html
+HTTP_REFERER=http://localhost/rch2/local/verLocalesCliente.html
+---
+2012/08/27 01:01:48 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'exp_d' in 'where clause'. The SQL statement executed was: SELECT * FROM `recarga` `t` WHERE (local_id =:local_id and estado =:estado and fecha LIKE :fecha) AND (exp_d > NOW()) ORDER BY id DESC LIMIT 500.
+in D:\Archivos de Programas\xampp\htdocs\rch2\protected\models\_base\BaseLocal.php (153)
+in D:\Archivos de Programas\xampp\htdocs\rch2\protected\controllers\LocalController.php (94)
+in D:\Archivos de Programas\xampp\htdocs\rch2\protected\modules\rights\components\RController.php (36)
+2012/08/27 01:01:48 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand falló al ejecutar la sentencia SQL: SQLSTATE[42S22]: Column not found: 1054 Unknown column 'exp_d' in 'where clause'. The SQL statement executed was: SELECT * FROM `recarga` `t` WHERE (local_id =:local_id and estado =:estado and fecha LIKE :fecha) AND (exp_d > NOW()) ORDER BY id DESC LIMIT 500' in D:\Archivos de Programas\xampp\htdocs\yii\framework\db\CDbCommand.php:528
+Stack trace:
+#0 D:\Archivos de Programas\xampp\htdocs\yii\framework\db\CDbCommand.php(390): CDbCommand->queryInternal('fetchAll', Array, Array)
+#1 D:\Archivos de Programas\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1286): CDbCommand->queryAll()
+#2 D:\Archivos de Programas\xampp\htdocs\yii\framework\db\ar\CActiveRecord.php(1405): CActiveRecord->query(Object(CDbCriteria), true)
+#3 D:\Archivos de Programas\xampp\htdocs\rch2\protected\models\_base\BaseLocal.php(153): CActiveRecord->findAll(Object(CDbCriteria))
+#4 D:\Archivos de Programas\xampp\htdocs\rch2\protected\controllers\LocalController.php(94): BaseLocal->cargarRecargasLocal('1')
+#5 [internal function]: LocalController->actionVerLocalCliente('1')
+#6 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\actions\CAction.php(107): ReflectionMethod->invokeArgs(Object(LocalController), Array)
+#7 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\actions\CInlineAction.php(48): CAction->runWithParamsInternal(Object(LocalController), Object(ReflectionMethod), Array)
+#8 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CController.php(309): CInlineAction->runWithParams(Array)
+#9 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#10 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\filters\CFilter.php(41): CFilterChain->run()
+#11 D:\Archivos de Programas\xampp\htdocs\rch2\protected\modules\rights\components\RController.php(36): CFilter->filter(Object(CFilterChain))
+#12 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(59): RController->filterRights(Object(CFilterChain))
+#13 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#14 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CController.php(292): CFilterChain->run()
+#15 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CWebApplication.php(283): CController->run('verLocalCliente')
+#17 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('local/verLocalC...')
+#18 D:\Archivos de Programas\xampp\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#19 D:\Archivos de Programas\xampp\htdocs\rch2\index.php(13): CApplication->run()
+#20 {main}
+REQUEST_URI=/rch2/local/verLocalCliente/1.html
+HTTP_REFERER=http://localhost/rch2/local/verLocalesCliente.html
+---
+2012/08/27 01:11:55 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'No estas autorizado para realizar esta acción.' in D:\Archivos de Programas\xampp\htdocs\rch2\protected\modules\rights\components\RController.php:62
+Stack trace:
+#0 D:\Archivos de Programas\xampp\htdocs\rch2\protected\modules\rights\components\RightsFilter.php(57): RController->accessDenied()
+#1 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\filters\CFilter.php(39): RightsFilter->preFilter(Object(CFilterChain))
+#2 D:\Archivos de Programas\xampp\htdocs\rch2\protected\modules\rights\components\RController.php(36): CFilter->filter(Object(CFilterChain))
+#3 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\filters\CInlineFilter.php(59): RController->filterRights(Object(CFilterChain))
+#4 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\filters\CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#5 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CController.php(292): CFilterChain->run()
+#6 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CWebApplication.php(283): CController->run('index')
+#8 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CWebApplication.php(142): CWebApplication->runController('local/index')
+#9 D:\Archivos de Programas\xampp\htdocs\yii\framework\base\CApplication.php(162): CWebApplication->processRequest()
+#10 D:\Archivos de Programas\xampp\htdocs\rch2\index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/rch2/local/index.html
+HTTP_REFERER=http://localhost/rch2/local/verLocalCliente/1.html
+---

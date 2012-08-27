@@ -1,7 +1,7 @@
 <?php
 
 $this->breadcrumbs = array(
-	$model->label(2) => array('index'),
+	$model->label(2) => array('verLocalesCliente'),
 	GxHtml::valueEx($model),
 );
 
@@ -39,6 +39,7 @@ array(
 		'celular',
 		'compania',
 		'monto',
+		'fecha',
 		/*
 		array(
 			'class' => 'bootstrap.widgets.TbButtonColumn',
