@@ -50,7 +50,7 @@ class AtencionController extends GxController {
 			}
 		}
 
-		$this->render('update', array(
+		$this->render('_atender', array(
 				'model' => $model,
 				));
 	}
@@ -97,24 +97,45 @@ class AtencionController extends GxController {
 	
 	public function actionCreaAtencion($id){
 
-			$model_recarga = $this->loadModel($id, 'Recarga');
-			
+			$model_recarga = $this->loadModel($id, 'Recarga');			
 			$session=Yii::app()->getSession();
 			$id_user=$session['_id'];
 			
-			$model_atencion = $this->loadModel($model_recarga->atencion->id, 'Atencion');
-			$this->performAjaxValidation($model, 'atencion-form');
-
-			
-			/*VALIDACION SI ESTA ATENDIDA*/
+			/****
+			VALIDACION SI ESTA ATENDIDA
+			*****/
 			if($model_recarga->estaAtendida()){
-				if ($model_recarga->esMia($id_user)){
+			
+				$model_atencion = $this->loadModel($model_recarga->atencion->id, 'Atencion');			
+				if ($model_recarga->esMia($id_user))
 					$this->redirect(array('atencion/update', 'id' =>$model_atencion->id));
-				}else{
-					$this->render('admin');
-				}
-			}else
-				$this->render('_atender',array('model' =>$model_atencion));
+				else
+					$this->redirect(array('create'));
+					
+			}else{
+			
+			/*****
+			CREACION DE ATENCION
+			******/
+			try{
+				$model_atencion = new Atencion;
+				$model_atencion->user_id=$id_user;
+				$model_atencion->recarga_id=$id;
+				$model_atencion->estado="PROCESANDO";
+				$model_recarga->estado=$model_atencion->estado;
+				
+				$model_atencion->save(false);
+				$model_recarga->save(false);
+				
+				$this->redirect(array('atencion/update', 'id' =>$model_atencion->id));
+				
+			 }catch(Exception $e){
+				$model_atencion = $this->loadModel($model_recarga->atencion->id, 'Atencion');
+				$this->redirect(array('atencion/view', 'id' =>$model_atencion->id));
+			 }
+			
+			}
+				
 			
         }
 	

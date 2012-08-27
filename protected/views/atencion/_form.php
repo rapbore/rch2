@@ -38,11 +38,16 @@
 		<?php echo $form->textField($model, 'tiempoRespuesta'); ?>
 		<?php echo $form->error($model,'tiempoRespuesta'); ?>
 		</div><!-- row -->
-		<div class="row">
-		<?php echo $form->labelEx($model,'estado'); ?>
-		<?php echo $form->textField($model, 'estado', array('maxlength' => 45)); ?>
-		<?php echo $form->error($model,'estado'); ?>
-		</div><!-- row -->
+<?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
+    'type' => 'primary',
+    'toggle' => 'radio', // 'checkbox' or 'radio'
+    'buttons' => array(
+		array('label'=>'LISTA'),
+        array('label'=>'RECHAZO'),
+        array('label'=>'RECHAZO NO PREPAGO'),
+        
+    ),
+)); ?>
 
 		<label><?php echo GxHtml::encode($model->getRelationLabel('noprepagos')); ?></label>
 		<?php echo $form->checkBoxList($model, 'noprepagos', GxHtml::encodeEx(GxHtml::listDataEx(Noprepago::model()->findAllAttributes(null, true)), false, true)); ?>

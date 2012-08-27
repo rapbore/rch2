@@ -6,19 +6,19 @@
 	'enableAjaxValidation' => true,
 ));
 ?>
-<?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
-    'type' => 'primary',
-    'toggle' => 'radio', // 'checkbox' or 'radio'
-    'buttons' => array(
-		array('label'=>'LISTA'),
-        array('label'=>'RECHAZO'),
-        array('label'=>'RECHAZO NO PREPAGO'),
-        
-    ),
-)); ?>
+
+	<?php echo $form->errorSummary($model); ?>
+
+
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'Crear Atencion'); ?>
+		<?php echo $form->radioButtonList($model,'estado',array('LISTA' => 'LISTA', 'RECHAZADA' => 'RECHAZADA', 'RECHAZADA NO PREPAGO' => 'RECHAZADA NO PREPAGO'),array('labelOptions'=>array('style'=>'display:inline'))); ?>
+		<?php echo $form->error($model,'estado'); ?>
+		</div><!-- row -->
 
 <?php
-echo GxHtml::submitButton(Yii::t('app', 'Save'));
+echo GxHtml::submitButton(Yii::t('app', 'Guardar'));
 $this->endWidget();
 ?>
 </div><!-- form -->
