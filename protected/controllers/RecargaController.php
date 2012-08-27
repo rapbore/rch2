@@ -29,13 +29,21 @@ class RecargaController extends GxController {
 			$model->local_id=$session['_local'];
 			
 			/*COMPROBAR RESTRICCIONES*/
+			
 			$noprepago=$model->comprobarNoPrepago($model->celular);
-			$model_cupo=$model->comprobarCupo($model->celular);
 			
+			if(!$noprepago){
+				
+				if($model->compania=='Entel'){
+					$this->actionAumentarCupo($model->celular);				
+				}
+				
 			
-			if($model_cupo->cupo > 0 OR !$model_cupo){
+				$model_cupo=$model->cargarCupo($model->celular);
 			
-				if(!$noprepago){
+				if($model_cupo->cupo > 0 OR !$model_cupo){
+			
+				
 				
 					if ($model->save()) {
 						if (Yii::app()->getRequest()->getIsAjaxRequest())
@@ -54,6 +62,25 @@ class RecargaController extends GxController {
 		$this->render('_crear', array( 'model' => $model, 'cupo'=>$model_cupo));
 	}
 	
+	public function actionAumentarCupo($celular)
+	{
+		$model = new Recarga('search');
+		$model->unsetAttributes();
+		$model_cupo=$model->cargarCupo($celular);
+		if($model_cupo){
+			$model_cupo->cupo=($model_cupo->cupo)-1;
+			$model_cupo->save();
+		}
+		else{
+			$model = new Cupo;
+			$model->unsetAttributes();
+			$model->numero=$celular;
+			$model->cupo=1;
+			$model->estado='DISPONIBLE';
+			$model->save();
+		}
+		
+	}
 	
 	public function actionUpdate($id) {
 		$model = $this->loadModel($id, 'Recarga');

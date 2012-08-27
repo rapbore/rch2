@@ -29,8 +29,10 @@
 		<?php 
 		$session=Yii::app()->getSession();
 		$_tipo=($session['_tipo']);
+		$_local=($session['_local']);
 		?>
 		
+			
 		<?php	
 		if($_tipo== NULL):			
 	
@@ -57,7 +59,6 @@
 		<?php	
 		if($_tipo== "ADMIN"):
 			
-	
 		$this->widget('bootstrap.widgets.TbNavbar', array(
 		    'type'=>'inverse', // null or 'inverse'
 		    'brand'=>'RCH 2.0',
@@ -86,9 +87,8 @@
 		endif; ?>
 		
 		<?php	
-		if($_tipo== "EMPLEADO"):
-			
-	
+		if($_tipo== "EMPLEADO" and $_local):
+				
 		$this->widget('bootstrap.widgets.TbNavbar', array(
 		    'type'=>'inverse', // null or 'inverse'
 		    'brand'=>'RCH 2.0',
@@ -113,9 +113,33 @@
 		endif; ?>
 		
 		<?php	
+		if($_tipo== "EMPLEADO" and !$_local):
+				
+		$this->widget('bootstrap.widgets.TbNavbar', array(
+		    'type'=>'inverse', // null or 'inverse'
+		    'brand'=>'RCH 2.0',
+		    'brandUrl'=>array('/site/index'),
+		    'collapse'=>true, // requires bootstrap-responsive.css
+		    'items'=>array(
+		        array(
+		            'class'=>'bootstrap.widgets.TbMenu',
+		            'items'=>array(
+		                array('label'=>'Home', 'url'=>array('/site/index')),
+		                array('label'=>'Eligir Local', 'url'=>array('/user/elegir')),
+						array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
+						array('label'=>'Logout ('.$session['_username'].')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
+		                
+		            ),
+		        ),
+		  	)
+		)); 
+		
+		endif; ?>
+		
+		
+		<?php	
 		if($_tipo== "OPERADOR"):
 			
-	
 		$this->widget('bootstrap.widgets.TbNavbar', array(
 		    'type'=>'inverse', // null or 'inverse'
 		    'brand'=>'RCH 2.0',
@@ -144,7 +168,6 @@
 		<?php	
 		if($_tipo== "CLIENTE"):
 			
-	
 		$this->widget('bootstrap.widgets.TbNavbar', array(
 		    'type'=>'inverse', // null or 'inverse'
 		    'brand'=>'RCH 2.0',

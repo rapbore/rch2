@@ -134,10 +134,10 @@ abstract class BaseRecarga extends GxActiveRecord {
 			$id_user=$this->cargarUser();
 			
 			$criteria=new CDbCriteria(array(
-				'condition'=>'user_id =:user_id and (estado =:estado or estado =:estado2)',
+				'condition'=>'user_id =:user_id ',
 				'order'=>'id DESC',
 				'limit'=>500,
-				'params'=> array(':user_id' => $id_user, ':estado'=>'PENDIENTE', ':estado2'=>'PROCESANDO'),
+				'params'=> array(':user_id' => $id_user),
 					));
 			$model=Recarga::model()->findAll($criteria);
 			$dataProvider=new CActiveDataProvider('Recarga',array('criteria'=>$criteria,));
@@ -181,7 +181,7 @@ abstract class BaseRecarga extends GxActiveRecord {
 	return $flag;		
 	}
 	
-	public function comprobarCupo($celular){	
+	public function cargarCupo($celular){	
 	
 	//$flag = Noprepago::model()->exists('numero =:numero and compania =:compania',array(':numero'=>$celular, ':compania'=>$compania));
 	$model_cupo = Cupo::model()->findByAttributes(array('numero'=>$celular));

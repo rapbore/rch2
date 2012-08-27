@@ -30,14 +30,15 @@ abstract class BaseCupo extends GxActiveRecord {
 	public static function label($n = 1) {
 		return Yii::t('app', 'Cupo|Cupos', $n);
 	}
-
+	
 	public static function representingColumn() {
 		return 'numero';
 	}
 
 	public function rules() {
 		return array(
-			array('numero, cupo, estado', 'length', 'max'=>45),
+			array('cupo', 'numerical', 'integerOnly'=>true),
+			array('numero, estado', 'length', 'max'=>45),
 			array('fecha', 'safe'),
 			array('numero, cupo, fecha, estado', 'default', 'setOnEmpty' => true, 'value' => null),
 			array('id, numero, cupo, fecha, estado', 'safe', 'on'=>'search'),
