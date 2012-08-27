@@ -16,6 +16,14 @@ $this->menu=array(
 ?>
 <h1>Recargas</h1>
 
+<?php
+if(Yii::app()->user->hasFlash('error')){?>
+
+<div class="flash-success">
+	<?php echo Yii::app()->user->getFlash('error'); ?>
+</div>
+
+<?php }?>
 <?php $this->widget('bootstrap.widgets.TbGridView', array(
 	'id' => 'recargas_pendientes-grid',
 	'dataProvider'=>$dataProvider,
