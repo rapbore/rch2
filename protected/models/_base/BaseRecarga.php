@@ -134,7 +134,7 @@ abstract class BaseRecarga extends GxActiveRecord {
 			$id_user=$this->cargarUser();
 			
 			$criteria=new CDbCriteria(array(
-				'condition'=>'user_id =:user_id ',
+				'condition'=>'user_id =:user_id',
 				'order'=>'id DESC',
 				'limit'=>500,
 				'params'=> array(':user_id' => $id_user),
