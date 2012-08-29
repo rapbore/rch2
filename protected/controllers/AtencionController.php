@@ -50,9 +50,13 @@ class AtencionController extends GxController {
 					$this->actionAumentarCupo($model_recarga->celular);				
 				}
 				
+				if($model->estado=="RECHAZADA NO PREPAGO"){
+					$this->actionCrearNoprepago($model->id, $model_recarga->celular, $model_recarga->compania);
+				}
+				
 				$model_recarga->estado=$model->estado;
 				$model_recarga->save(false);
-				$this->redirect(array('view', 'id' => $model->id));
+				$this->redirect(array('recarga/verPendientesOperador', 'id' => $model->id));
 			}
 		}
 
@@ -79,6 +83,15 @@ class AtencionController extends GxController {
 			$model->save();
 		}
 		
+	}
+	
+	public function actionCrearNoprepago($idAtencion, $celular, $compania){
+		
+		$model = new Noprepago;
+		$model->atencion_id=$idAtencion;
+		$model->numero=$celular;
+		$model->compania=$compania;
+		$model->save();
 	}
 
 	public function actionDelete($id) {
