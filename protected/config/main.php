@@ -71,7 +71,7 @@ return array(
 		),
 		
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost; dbname=rch2_db',
+			'connectionString' => 'mysql:host=localhost;dbname=recargaschile',
 			'emulatePrepare' => true,
 			'username' => 'root',
 			'password' => '',
