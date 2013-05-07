@@ -73,8 +73,8 @@ return array(
 		'db'=>array(
 			'connectionString' => 'mysql:host=localhost;dbname=recargaschile',
 			'emulatePrepare' => true,
-			'username' => 'root',
-			'password' => '',
+			'username' => 'rchuser',
+			'password' => 'secreto',
 			'charset' => 'utf8',
 		),
 		
