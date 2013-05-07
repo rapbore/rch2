@@ -10149,3 +10149,22 @@ Stack trace:
 #3 {main}
 REQUEST_URI=/rch2/logout
 ---
+2013/05/07 17:29:43 [error] [exception.CDbException] exception 'CDbException' with message 'CDbConnection failed to open the DB connection: SQLSTATE[28000] [1045] Access denied for user 'root'@'localhost' (using password: NO)' in D:\Archivos de Programas\xampp\htdocs\yii\framework\db\CDbConnection.php:382
+Stack trace:
+#0 D:\Archivos de Programas\xampp\htdocs\yii\framework\db\CDbConnection.php(331): CDbConnection->open()
+#1 D:\Archivos de Programas\xampp\htdocs\yii\framework\db\CDbConnection.php(309): CDbConnection->setActive(true)
+#2 D:\Archivos de Programas\xampp\htdocs\yii\framework\base\CModule.php(388): CDbConnection->init()
+#3 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CDbHttpSession.php(161): CModule->getComponent('db')
+#4 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CDbHttpSession.php(207): CDbHttpSession->getDbConnection()
+#5 [internal function]: CDbHttpSession->readSession('ft5n8b7lhu8m69h...')
+#6 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CHttpSession.php(115): session_start()
+#7 D:\Archivos de Programas\xampp\htdocs\yii\framework\web\CHttpSession.php(89): CHttpSession->open()
+#8 D:\Archivos de Programas\xampp\htdocs\yii\framework\base\CModule.php(388): CHttpSession->init()
+#9 D:\Archivos de Programas\xampp\htdocs\yii\framework\base\CModule.php(493): CModule->getComponent('session')
+#10 D:\Archivos de Programas\xampp\htdocs\yii\framework\base\CApplication.php(146): CModule->preloadComponents()
+#11 D:\Archivos de Programas\xampp\htdocs\yii\framework\YiiBase.php(127): CApplication->__construct('D:\Archivos de ...')
+#12 D:\Archivos de Programas\xampp\htdocs\yii\framework\YiiBase.php(100): YiiBase::createApplication('CWebApplication', 'D:\Archivos de ...')
+#13 D:\Archivos de Programas\xampp\htdocs\rch2\index.php(13): YiiBase::createWebApplication('D:\Archivos de ...')
+#14 {main}
+REQUEST_URI=/rch2/index.php
+---
