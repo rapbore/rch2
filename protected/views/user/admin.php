@@ -42,11 +42,9 @@ You may optionally enter a comparison operator (&lt;, &lt;=, &gt;, &gt;=, &lt;&g
 	'dataProvider' => $model->search(),
 	'type'=>'striped bordered condensed',
 	'filter' => $model,
-	'template'=>"{items}",
+	'template'=>"{items}\n{pager}",
 	'columns' => array(
-		'id',
 		'username',
-		'password',
 		'estado',
 		'tipo',
 		

@@ -105,6 +105,9 @@ abstract class BaseUser extends GxActiveRecord {
 
 		return new CActiveDataProvider($this, array(
 			'criteria' => $criteria,
+                        'pagination'=>array(
+                            'pageSize'=>20,
+                        ),
 		));
 	}
 	
