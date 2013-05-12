@@ -41,7 +41,7 @@ class AtencionController extends GxController {
 
 		if (isset($_POST['Atencion'])) {
 			$model->setAttributes($_POST['Atencion']);
-
+                        $model->fecha=date("Y-m-d H:i:s", time()); 
 			if ($model->save()) {
 				
 				$model_recarga = $this->loadModel($model->recarga->id, 'Recarga');

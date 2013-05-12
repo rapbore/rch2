@@ -17,6 +17,7 @@ class RecargaController extends GxController {
 
 	public function actionCreate(){
 		$model = new Recarga;
+                $model_cupo=null;
 
 		$this->performAjaxValidation($model, 'recarga-form');
 		
@@ -27,6 +28,7 @@ class RecargaController extends GxController {
 			$session=Yii::app()->getSession();
 			$model->user_id=$session['_id'];
 			$model->local_id=$session['_local'];
+                        
 			
 			/*COMPROBAR RESTRICCIONES*/
 			
@@ -38,7 +40,7 @@ class RecargaController extends GxController {
 				 * if($model->compania=='Entel'){
 					$this->actionAumentarCupo($model->celular);				
 				}*/
-							
+				$model->setAttributes($_POST['Recarga']);			
 				$model_cupo=$model->cargarCupo($model->celular);
 			
 				if($model_cupo->cupo > 0 OR !$model_cupo){

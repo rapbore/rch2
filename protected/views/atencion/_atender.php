@@ -9,14 +9,16 @@
 
 	<?php echo $form->errorSummary($model); ?>
 	
-	<?php/*$this->widget('bootstrap.widgets.TbDetailView', array(
+	<?php
+        /*$this->widget('bootstrap.widgets.TbDetailView', array(
 		'data'=>$model->recarga,
 		'attributes'=>array(
 			array('name'=>'numero', 'label'=>'numero'),
 			array('name'=>'compania', 'label'=>'compania'),
 			array('name'=>'monto', 'label'=>'monto'),
 		),
-	));*/ ?>
+	));*/ 
+        ?>
 
 
 	<div class="row">
