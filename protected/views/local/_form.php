@@ -39,9 +39,6 @@
 		<?php echo $form->error($model,'nombre'); ?>
 		</div><!-- row -->
 
-		<label><?php echo GxHtml::encode($model->getRelationLabel('recargas')); ?></label>
-		<?php echo $form->checkBoxList($model, 'recargas', GxHtml::encodeEx(GxHtml::listDataEx(Recarga::model()->findAllAttributes(null, true)), false, true)); ?>
-
 <?php
 echo GxHtml::submitButton(Yii::t('app', 'Save'));
 $this->endWidget();
