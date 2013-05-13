@@ -1,6 +1,12 @@
 
 
+<?php 
 
+Yii::app()->clientScript->registerScript('refrescar_siempre','
+var refreshId = setInterval(function(){$.fn.yiiGridView.update("recargas_pendientes-grid");}, 5000);  
+
+        ',CClientScript::POS_READY);
+?>
 <?php
 $this->breadcrumbs=array(
 	'Recargas',

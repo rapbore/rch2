@@ -128,7 +128,7 @@ class AtencionController extends GxController {
 		
 		$model = new Atencion('search');
 		$model->unsetAttributes();
-		$dataProvider=$model->cargarListasOperador();
+		$dataProvider=  ReporteGeneral::ListasOperador();
 			
 		$this->render('verAtencionesOperador',array('dataProvider'=>$dataProvider,'model'=>$model));
 		

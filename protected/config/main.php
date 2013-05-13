@@ -27,7 +27,7 @@ return array(
 
 		'gii'=>array(
 			'class'=>'system.gii.GiiModule',
-			'password'=>'dep1.4',
+			'password'=>'secreto',
 			'generatorPaths' =>  array(
 					'ext.giix-core', // giix generators
 				),
