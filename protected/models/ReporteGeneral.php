@@ -9,7 +9,7 @@ class ReporteGeneral extends BaseReporteGeneral
 
                 }
                 
-        public function cargarUser()
+        public static function cargarUser()
 	{
 		$session=Yii::app()->getSession();
 		$id_user=$session['_id'];
@@ -17,9 +17,9 @@ class ReporteGeneral extends BaseReporteGeneral
 		
 	}
 	
-	public function cargarListasOperador(){
+	public static function ListasOperador(){
 		
-			$id_user=$this->cargarUser();
+			$id_user= ReporteGeneral::cargarUser();
 			
 			$criteria=new CDbCriteria(array(
 				'condition'=>'operador_id =:user_id and estado =:estado',
@@ -27,9 +27,7 @@ class ReporteGeneral extends BaseReporteGeneral
 				'limit'=>500,
 				'params'=> array(':user_id' => $id_user, ':estado'=>'LISTA'),
 					));
-			$model=Atencion::model()->findAll($criteria);
-			$dataProvider=new CActiveDataProvider('Atencion',array('criteria'=>$criteria,));
-			$dataProvider->setPagination(false);		
+			$dataProvider=new CActiveDataProvider('ReporteGeneral',array('criteria'=>$criteria,));	
 			
 			return ($dataProvider);
 

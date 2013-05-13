@@ -3,7 +3,7 @@
 <?php 
 
 Yii::app()->clientScript->registerScript('refrescar_siempre','
-var refreshId = setInterval(function(){$.fn.yiiGridView.update("recargas_pendientes-grid");}, 5000);  
+var refreshId = setInterval(function(){$.fn.yiiGridView.update("recargas_pendientes-grid");}, 3000);  
 
         ',CClientScript::POS_READY);
 ?>
