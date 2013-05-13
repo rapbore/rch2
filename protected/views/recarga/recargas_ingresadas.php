@@ -35,6 +35,7 @@ $this->widget('zii.widgets.grid.CGridView', array(
             'name'=>'Comentario Recarga',
             'value'=>'$data->comentario',
         ),
+            
 
 	),	
 )); ?>

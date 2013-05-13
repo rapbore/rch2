@@ -39,7 +39,7 @@ $('.search-form form').submit(function(){
 	'dataProvider' => $model->search(),
 	'type'=>'striped bordered condensed',
 	'filter' => $model,
-	'template'=>"{items}",
+	'template'=>"{items} {pager}",
 	'columns' => array(
 		array(
 				'name'=>'user_id',

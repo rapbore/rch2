@@ -33,6 +33,34 @@ $("#Recarga_compania_0").click(function() {
   $(".compactRadioGroup label:eq(2)").text("");
   $(".compactRadioGroup label:eq(2)").text("1500");
   
+  $("#Recarga_monto_3").show();
+  $(".compactRadioGroup label:eq(3)").show();
+  
+  $("#Recarga_monto_3").val("990");
+  $(".compactRadioGroup label:eq(3)").text("");
+  $(".compactRadioGroup label:eq(3)").text("Bolsa con 15 minutos a movistar y red fija");
+  
+  $("#Recarga_monto_4").show();
+  $(".compactRadioGroup label:eq(4)").show();
+  
+  $("#Recarga_monto_4").val("1690");
+  $(".compactRadioGroup label:eq(4)").text("");
+  $(".compactRadioGroup label:eq(4)").text("Bolsa con 30 minutos a movistar y red fija");
+  
+  $("#Recarga_monto_5").show();
+  $(".compactRadioGroup label:eq(5)").show();
+  
+  $("#Recarga_monto_5").val("2990");
+  $(".compactRadioGroup label:eq(5)").text("");
+  $(".compactRadioGroup label:eq(5)").text("Bolsa con 60 minutos a movistar y red fija");
+  
+   $("#Recarga_monto_6").show();
+  $(".compactRadioGroup label:eq(6)").show();
+  
+  $("#Recarga_monto_6").val("3990");
+  $(".compactRadioGroup label:eq(6)").text("");
+  $(".compactRadioGroup label:eq(6)").text("Bolsa combó 100 minutos + 100 SMS + 100 mms");
+  
   $("#numero_compania").text("MOVISTAR");
        
 });
@@ -48,6 +76,22 @@ $("#Recarga_compania_1").click(function() {
   $("#Recarga_monto_2").val("3000");
   $(".compactRadioGroup label:eq(2)").text("");
   $(".compactRadioGroup label:eq(2)").text("3000");
+  
+  $("#Recarga_monto_3").hide();
+  $(".compactRadioGroup label:eq(3)").hide();
+  $(".compactRadioGroup label:eq(3)").text("3500");
+  
+  $("#Recarga_monto_4").hide();
+  $(".compactRadioGroup label:eq(4)").hide();
+  $(".compactRadioGroup label:eq(4)").text("3500");
+  
+  $("#Recarga_monto_5").hide();
+  $(".compactRadioGroup label:eq(5)").hide();
+  $(".compactRadioGroup label:eq(5)").text("3500");
+  
+  $("#Recarga_monto_6").hide();
+  $(".compactRadioGroup label:eq(6)").hide();
+  $(".compactRadioGroup label:eq(6)").text("3500");
   
   $("#numero_compania").text("ENTEL");
      
@@ -108,7 +152,7 @@ if(Yii::app()->user->hasFlash('info')){?>
 	<div class="row">
 		<?php echo $form->labelEx($model,'monto',array('style'=>'font-size:25px')); ?>
 	<div class="compactRadioGroup">
-		<?php echo $form->radioButtonList($model,'monto',array('500' => '500', '1000' => '1000', '1500' => '1500'),array('labelOptions'=>array('style'=>'display:inline'))); ?>
+		<?php echo $form->radioButtonList($model,'monto',array('500' => '500', '1000' => '1000', '1500' => '1500', '990' => '990. Bolsa con 15 minutos a movistar y red fija', '1690' => '1.690. Bolsa con 30 minutos a movistar y red fija', '2990' => '2.990. Bolsa con 60 minutos a movistar y red fija', '3990' => '3.990. Bolsa combó 100 minutos + 100 SMS + 100 mms'),array('labelOptions'=>array('style'=>'display:inline'))); ?>
 	</div>
 		<?php echo $form->error($model,'monto'); ?>
 	</div>

@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 3.5.5
+-- version 3.3.9
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 07-05-2013 a las 11:29:19
--- Versión del servidor: 5.1.68-cll
--- Versión de PHP: 5.3.17
+-- Tiempo de generación: 13-05-2013 a las 20:55:23
+-- Versión del servidor: 5.5.8
+-- Versión de PHP: 5.3.5
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -17,7 +16,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de datos: `recargas_rch2_db`
+-- Base de datos: `recargaschile`
 --
 
 -- --------------------------------------------------------
@@ -31,30 +30,34 @@ CREATE TABLE IF NOT EXISTS `atencion` (
   `cupo_id` int(11) DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
   `recarga_id` int(11) DEFAULT NULL COMMENT 'UNIQUE',
-  `fecha` datetime DEFAULT NULL,
+  `fecha` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `tiempoRespuesta` datetime DEFAULT NULL,
   `estado` varchar(45) DEFAULT 'LISTA',
   PRIMARY KEY (`id`),
   UNIQUE KEY `recarga_id_UNIQUE` (`recarga_id`),
   KEY `cupo_fk_a` (`cupo_id`),
   KEY `user_fk_k` (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
--- Volcado de datos para la tabla `atencion`
+-- Volcar la base de datos para la tabla `atencion`
 --
 
 INSERT INTO `atencion` (`id`, `cupo_id`, `user_id`, `recarga_id`, `fecha`, `tiempoRespuesta`, `estado`) VALUES
-(1, NULL, 9, 1, NULL, NULL, 'LISTA'),
-(2, NULL, 9, 2, NULL, NULL, 'RECHAZADA');
+(1, NULL, 9, 1, '2013-05-31 13:52:52', NULL, 'LISTA'),
+(2, NULL, 9, 2, '2013-05-31 13:52:55', NULL, 'RECHAZADA'),
+(3, NULL, 9, 3, '2013-05-09 13:52:58', NULL, 'LISTA'),
+(4, NULL, 9, 4, '2013-05-22 13:53:00', NULL, 'RECHAZADA'),
+(5, NULL, 9, 5, '2013-05-11 04:51:35', NULL, 'LISTA'),
+(6, NULL, 9, 8, '2013-05-13 14:51:09', NULL, 'PROCESANDO');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `AuthAssignment`
+-- Estructura de tabla para la tabla `authassignment`
 --
 
-CREATE TABLE IF NOT EXISTS `AuthAssignment` (
+CREATE TABLE IF NOT EXISTS `authassignment` (
   `itemname` varchar(64) NOT NULL,
   `userid` varchar(64) NOT NULL,
   `bizrule` text,
@@ -63,10 +66,10 @@ CREATE TABLE IF NOT EXISTS `AuthAssignment` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `AuthAssignment`
+-- Volcar la base de datos para la tabla `authassignment`
 --
 
-INSERT INTO `AuthAssignment` (`itemname`, `userid`, `bizrule`, `data`) VALUES
+INSERT INTO `authassignment` (`itemname`, `userid`, `bizrule`, `data`) VALUES
 ('admin', '1', NULL, 'N;'),
 ('Empleado', '7', NULL, 'N;'),
 ('Cliente', '8', NULL, 'N;'),
@@ -76,15 +79,18 @@ INSERT INTO `AuthAssignment` (`itemname`, `userid`, `bizrule`, `data`) VALUES
 ('Operador', '12', NULL, 'N;'),
 ('Cliente', '13', NULL, 'N;'),
 ('Empleado', '14', NULL, 'N;'),
-('Operador', '21', NULL, 'N;');
+('Operador', '21', NULL, 'N;'),
+('Operador', '22', NULL, 'N;'),
+('Operador', '23', NULL, 'N;'),
+('Cliente', '24', NULL, 'N;');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `AuthItem`
+-- Estructura de tabla para la tabla `authitem`
 --
 
-CREATE TABLE IF NOT EXISTS `AuthItem` (
+CREATE TABLE IF NOT EXISTS `authitem` (
   `name` varchar(64) NOT NULL,
   `type` int(11) NOT NULL,
   `description` text,
@@ -94,10 +100,10 @@ CREATE TABLE IF NOT EXISTS `AuthItem` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `AuthItem`
+-- Volcar la base de datos para la tabla `authitem`
 --
 
-INSERT INTO `AuthItem` (`name`, `type`, `description`, `bizrule`, `data`) VALUES
+INSERT INTO `authitem` (`name`, `type`, `description`, `bizrule`, `data`) VALUES
 ('admin', 2, NULL, NULL, 'N;'),
 ('Authenticated', 2, NULL, NULL, 'N;'),
 ('Guest', 2, NULL, NULL, 'N;'),
@@ -186,10 +192,10 @@ INSERT INTO `AuthItem` (`name`, `type`, `description`, `bizrule`, `data`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `AuthItemChild`
+-- Estructura de tabla para la tabla `authitemchild`
 --
 
-CREATE TABLE IF NOT EXISTS `AuthItemChild` (
+CREATE TABLE IF NOT EXISTS `authitemchild` (
   `parent` varchar(64) NOT NULL,
   `child` varchar(64) NOT NULL,
   PRIMARY KEY (`parent`,`child`),
@@ -197,10 +203,10 @@ CREATE TABLE IF NOT EXISTS `AuthItemChild` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
--- Volcado de datos para la tabla `AuthItemChild`
+-- Volcar la base de datos para la tabla `authitemchild`
 --
 
-INSERT INTO `AuthItemChild` (`parent`, `child`) VALUES
+INSERT INTO `authitemchild` (`parent`, `child`) VALUES
 ('Authenticated', 'Recarga.*'),
 ('Authenticated', 'User.*'),
 ('Cliente', 'Local.VerLocalCliente'),
@@ -228,7 +234,14 @@ CREATE TABLE IF NOT EXISTS `cupo` (
   `fecha` datetime DEFAULT NULL,
   `estado` varchar(45) DEFAULT 'DISPONIBLE',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Volcar la base de datos para la tabla `cupo`
+--
+
+INSERT INTO `cupo` (`id`, `numero`, `cupo`, `fecha`, `estado`) VALUES
+(1, NULL, 1, NULL, 'DISPONIBLE');
 
 -- --------------------------------------------------------
 
@@ -245,6 +258,11 @@ CREATE TABLE IF NOT EXISTS `estado` (
   PRIMARY KEY (`id`),
   KEY `user_fk_h` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Volcar la base de datos para la tabla `estado`
+--
+
 
 -- --------------------------------------------------------
 
@@ -264,7 +282,7 @@ CREATE TABLE IF NOT EXISTS `local` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
--- Volcado de datos para la tabla `local`
+-- Volcar la base de datos para la tabla `local`
 --
 
 INSERT INTO `local` (`id`, `user_id`, `ciudad`, `direccion`, `telefono`, `nombre`) VALUES
@@ -288,6 +306,11 @@ CREATE TABLE IF NOT EXISTS `noprepago` (
   KEY `atencion_fk_npp` (`atencion_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
+--
+-- Volcar la base de datos para la tabla `noprepago`
+--
+
+
 -- --------------------------------------------------------
 
 --
@@ -307,47 +330,66 @@ CREATE TABLE IF NOT EXISTS `recarga` (
   PRIMARY KEY (`id`),
   KEY `user_fk_r` (`user_id`),
   KEY `local_fk_r` (`local_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
--- Volcado de datos para la tabla `recarga`
+-- Volcar la base de datos para la tabla `recarga`
 --
 
 INSERT INTO `recarga` (`id`, `user_id`, `local_id`, `celular`, `compania`, `monto`, `comentario`, `estado`, `fecha`) VALUES
-(1, 7, 1, '55667788', 'Movistar', '1000', NULL, 'LISTA', '2013-04-10 13:26:16'),
-(2, 1, NULL, '12354654', 'Entel', '2000', NULL, 'RECHAZADA', '2013-05-06 18:54:17');
+(1, 7, 1, '55667788', 'Movistar', '1000', NULL, 'LISTA', '2013-05-31 13:53:52'),
+(2, 1, NULL, '12354654', 'Entel', '2000', NULL, 'RECHAZADA', '2013-05-06 14:54:17'),
+(3, 7, 1, '85566689', 'Movistar', '500', NULL, 'LISTA', '2013-05-10 22:34:27'),
+(4, 7, 1, '85566689', 'Movistar', '500', NULL, 'RECHAZADA', '2013-05-10 22:37:27'),
+(5, 7, 1, '85555555', 'Entel', '1000', NULL, 'LISTA', '2013-05-10 22:39:56'),
+(6, 1, NULL, '23423423', 'Movistar', '500', NULL, 'PENDIENTE', '2013-05-13 14:33:26'),
+(7, 1, NULL, '23423423', 'Movistar', '500', NULL, 'PENDIENTE', '2013-05-13 14:33:33'),
+(8, 1, NULL, '11111111', 'Movistar', '500', NULL, 'PROCESANDO', '2013-05-13 14:33:40'),
+(9, 1, NULL, '33333333', 'Entel', '3000', NULL, 'PENDIENTE', '2013-05-13 14:33:50'),
+(10, 1, NULL, '99999999', 'Movistar', '1500', NULL, 'PENDIENTE', '2013-05-13 14:34:06'),
+(11, 1, NULL, '22222222', 'Movistar', '500', NULL, 'PENDIENTE', '2013-05-13 14:34:19'),
+(12, 1, NULL, '55555555', 'Movistar', '500', NULL, 'PENDIENTE', '2013-05-13 14:34:27');
 
 -- --------------------------------------------------------
 
 --
--- Estructura Stand-in para la vista `reporte_recarga`
+-- Estructura Stand-in para la vista `reporte_general`
 --
-CREATE TABLE IF NOT EXISTS `reporte_recarga` (
-`OT` int(11)
+CREATE TABLE IF NOT EXISTS `reporte_general` (
+`id` int(11)
+,`fecha_ingreso` timestamp
+,`celular` varchar(45)
 ,`compania` varchar(45)
 ,`monto` varchar(45)
-,`celular` varchar(45)
-,`fecha_ingreso` timestamp
-,`fecha_atencion` datetime
-,`tiempo_respuesta` datetime
-,`Empleado` varchar(45)
-,`Cliente` varchar(45)
+,`fecha_atencion` timestamp
+,`nombre_operador` varchar(45)
+,`nombre_cliente` varchar(45)
+,`nombre` varchar(45)
+,`ciudad_local` varchar(45)
 ,`estado` varchar(45)
-,`Operador` varchar(45)
-,`LOCAL` varchar(45)
+,`tiempo_respuesta` time
+,`operador_id` int(11)
+,`atencion_id` int(11)
+,`cliente_id` int(11)
+,`local_id` int(11)
 );
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `Rights`
+-- Estructura de tabla para la tabla `rights`
 --
 
-CREATE TABLE IF NOT EXISTS `Rights` (
+CREATE TABLE IF NOT EXISTS `rights` (
   `itemname` varchar(64) NOT NULL,
   `type` int(11) NOT NULL,
   `weight` int(11) NOT NULL,
   PRIMARY KEY (`itemname`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Volcar la base de datos para la tabla `rights`
+--
+
 
 -- --------------------------------------------------------
 
@@ -367,17 +409,17 @@ CREATE TABLE IF NOT EXISTS `user` (
   `movistar` varchar(45) DEFAULT 'SI',
   PRIMARY KEY (`id`),
   KEY `user_fk_u` (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
 
 --
--- Volcado de datos para la tabla `user`
+-- Volcar la base de datos para la tabla `user`
 --
 
 INSERT INTO `user` (`id`, `user_id`, `username`, `password`, `estado`, `salt`, `tipo`, `entel`, `movistar`) VALUES
-(1, 1, 'admin', '97b20f99965554ee4802ff83bbf6ee24', 'ACTIVO', '28b206548469ce62182048fd9cf91760', NULL, 'SI', 'SI'),
-(7, 8, 'empleado', '9401b8c7297832c567ae922cc596a4dd', 'ACTIVO', '28b206548469ce62182048fd9cf91760', 'EMPLEADO', 'SI', 'SI'),
+(1, 1, 'admin', '97b20f99965554ee4802ff83bbf6ee24', 'ACTIVO', '28b206548469ce62182048fd9cf91760', 'ADMIN', 'SI', 'SI'),
+(7, 8, 'empleado', '39859e63a43e6a26e42f1e77ddff23ef', 'ACTIVO', '28b206548469ce62182048fd9cf91760', 'EMPLEADO', 'SI', 'SI'),
 (8, NULL, 'cliente', '8cf529a608d0fc7edc35fb130ffea391', 'ACTIVO', '28b206548469ce62182048fd9cf91760', 'CLIENTE', 'SI', 'SI'),
-(9, 1, 'operador', '97b20f99965554ee4802ff83bbf6ee24', 'ACTIVO', '28b206548469ce62182048fd9cf91760', 'OPERADOR', 'SI', 'SI'),
+(9, 1, 'operador', '39859e63a43e6a26e42f1e77ddff23ef', 'ACTIVO', '28b206548469ce62182048fd9cf91760', 'OPERADOR', 'SI', 'SI'),
 (10, NULL, 'manuel_schaff', '8cf529a608d0fc7edc35fb130ffea391', 'ACTIVO', '28b206548469ce62182048fd9cf91760', 'CLIENTE', 'SI', 'SI'),
 (11, 10, 'empleado_schaff', '8cf529a608d0fc7edc35fb130ffea391', 'ACTIVO', '28b206548469ce62182048fd9cf91760', 'EMPLEADO', 'SI', 'SI'),
 (12, NULL, 'operador_rch', '8cf529a608d0fc7edc35fb130ffea391', 'ACTIVO', '28b206548469ce62182048fd9cf91760', 'OPERADOR', 'SI', 'SI'),
@@ -388,9 +430,9 @@ INSERT INTO `user` (`id`, `user_id`, `username`, `password`, `estado`, `salt`, `
 (17, 16, 'simon', '3dc60b17f3c16ca2683fc51213357127', 'ACTIVO', '28b206548469ce62182048fd9cf91760', 'CLIENTE', 'SI', 'SI'),
 (18, 8, 'Illapel', '2d5e85005ed4078770d21716050a416c', 'ACTIVO', '28b206548469ce62182048fd9cf91760', 'CLIENTE', 'SI', 'SI'),
 (19, 1, 'Isla', '2d5e85005ed4078770d21716050a416c', 'ACTIVO', '28b206548469ce62182048fd9cf91760', 'CLIENTE', 'SI', 'SI'),
-(20, 16, 'fco', '3dc60b17f3c16ca2683fc51213357127', 'ACTIVO', '28b206548469ce62182048fd9cf91760', 'EMPLEADO', 'SI', 'SI'),
 (21, 1, 'simon', '3dc60b17f3c16ca2683fc51213357127', 'ACTIVO', '28b206548469ce62182048fd9cf91760', 'OPERADOR', 'SI', 'SI'),
-(22, 1, 'operador_prueba', '39859e63a43e6a26e42f1e77ddff23ef', 'ACTIVO', '28b206548469ce62182048fd9cf91760', 'OPERADOR', 'SI', 'SI');
+(22, 1, 'operador_prueba', '39859e63a43e6a26e42f1e77ddff23ef', 'ACTIVO', '28b206548469ce62182048fd9cf91760', 'OPERADOR', 'SI', 'SI'),
+(24, 1, 'schaf_cliente', '39859e63a43e6a26e42f1e77ddff23ef', 'ACTIVO', '28b206548469ce62182048fd9cf91760', 'CLIENTE', 'SI', 'SI');
 
 -- --------------------------------------------------------
 
@@ -407,40 +449,24 @@ CREATE TABLE IF NOT EXISTS `yiisession` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `yiisession`
+-- Volcar la base de datos para la tabla `yiisession`
 --
 
 INSERT INTO `yiisession` (`id`, `expire`, `data`) VALUES
-('21f297919e0b93d1df2c9220236c9396', 1367867059, '_local|N;_id|s:1:"1";_tipo|N;_username|s:5:"admin";a5c3927c6e307a017ed8ee03b97ad079__id|s:1:"1";a5c3927c6e307a017ed8ee03b97ad079__name|s:5:"admin";a5c3927c6e307a017ed8ee03b97ad079__states|a:0:{}a5c3927c6e307a017ed8ee03b97ad079Rights_isSuperuser|b:1;'),
-('7e51faa0404c80670f08635563b192a9', 1367866577, ''),
-('e28dcc930a79cd658ab2e16510fa24f1', 1367866583, '_local|N;_id|s:1:"1";_tipo|N;_username|s:5:"admin";a5c3927c6e307a017ed8ee03b97ad079__id|s:1:"1";a5c3927c6e307a017ed8ee03b97ad079__name|s:5:"admin";a5c3927c6e307a017ed8ee03b97ad079__states|a:0:{}a5c3927c6e307a017ed8ee03b97ad079Rights_isSuperuser|b:1;'),
-('3f41ef4f13036796664cfcdafedb5bc2', 1367867308, ''),
-('8372321f35bcdb040e3f963c7d129e2b', 1367867399, '_local|N;_id|s:1:"9";_tipo|s:8:"OPERADOR";_username|s:8:"operador";a5c3927c6e307a017ed8ee03b97ad079__id|s:1:"9";a5c3927c6e307a017ed8ee03b97ad079__name|s:8:"operador";a5c3927c6e307a017ed8ee03b97ad079__states|a:0:{}'),
-('1fa0053eaefbfaa3f7660c1c5ff5280b', 1367867293, 'a5c3927c6e307a017ed8ee03b97ad079__returnUrl|s:13:"/rch2/recarga";_local|N;_id|s:1:"1";_tipo|N;_username|s:5:"admin";a5c3927c6e307a017ed8ee03b97ad079__id|s:1:"1";a5c3927c6e307a017ed8ee03b97ad079__name|s:5:"admin";a5c3927c6e307a017ed8ee03b97ad079__states|a:0:{}a5c3927c6e307a017ed8ee03b97ad079Rights_isSuperuser|b:1;'),
-('d3ad2a4c0dbbe593769ab7e136c79ae6', 1367867204, ''),
-('13dddb1420ce57fec3765ed448f406a8', 1367867229, 'a5c3927c6e307a017ed8ee03b97ad079__returnUrl|s:13:"/rch2/recarga";'),
-('f4bc77ef69df880a0aeba19759291fd5', 1367867170, 'a5c3927c6e307a017ed8ee03b97ad079__returnUrl|s:10:"/rch2/user";_local|N;_id|s:1:"1";_tipo|N;_username|s:5:"admin";a5c3927c6e307a017ed8ee03b97ad079__id|s:1:"1";a5c3927c6e307a017ed8ee03b97ad079__name|s:5:"admin";a5c3927c6e307a017ed8ee03b97ad079__states|a:0:{}a5c3927c6e307a017ed8ee03b97ad079Rights_isSuperuser|b:1;'),
-('b682e51a3baa34759dc4f4664fff4055', 1367867116, 'a5c3927c6e307a017ed8ee03b97ad079__returnUrl|s:10:"/rch2/user";'),
-('ab3d3c8066df1b7c60d0e9b2b72b1f5b', 1367867107, ''),
-('c18da93502ffa59c7b20e5dbc692005e', 1367867130, ''),
-('dfd45f110996f55063c4da65b1f005f4', 1367867195, ''),
-('1850ed5c0c0069328c8c0851d52348a9', 1367867229, ''),
-('d4f0230bbec023c42241fb8764f817a2', 1367940325, ''),
-('a4d967f3be331b28c5edcc9adf55c92e', 1367939608, ''),
-('e92f1be4b30b40b7276207240b7a30ce', 1367939615, '_local|N;_id|s:1:"1";_tipo|N;_username|s:5:"admin";a5c3927c6e307a017ed8ee03b97ad079__id|s:1:"1";a5c3927c6e307a017ed8ee03b97ad079__name|s:5:"admin";a5c3927c6e307a017ed8ee03b97ad079__states|a:0:{}a5c3927c6e307a017ed8ee03b97ad079Rights_isSuperuser|b:1;'),
-('fb28567a91265a1dd7d0e79b9e474441', 1367940358, '_local|N;_id|s:1:"1";_tipo|N;_username|s:5:"admin";a5c3927c6e307a017ed8ee03b97ad079__id|s:1:"1";a5c3927c6e307a017ed8ee03b97ad079__name|s:5:"admin";a5c3927c6e307a017ed8ee03b97ad079__states|a:0:{}a5c3927c6e307a017ed8ee03b97ad079Rights_isSuperuser|b:1;');
+('24manni4i5b0kdkcrf97ad96g7', 1368240914, '_local|s:1:"1";_id|s:1:"7";_tipo|s:8:"EMPLEADO";_username|s:8:"empleado";da12acc9d269163383dd9c5d61aaa686__id|s:1:"7";da12acc9d269163383dd9c5d61aaa686__name|s:8:"empleado";da12acc9d269163383dd9c5d61aaa686__states|a:0:{}'),
+('nj7jr1uft6t60mh374u0suc417', 1368471981, '_local|N;_id|s:1:"9";_tipo|s:8:"OPERADOR";_username|s:8:"operador";da12acc9d269163383dd9c5d61aaa686__id|s:1:"9";da12acc9d269163383dd9c5d61aaa686__name|s:8:"operador";da12acc9d269163383dd9c5d61aaa686__states|a:0:{}');
 
 -- --------------------------------------------------------
 
 --
--- Estructura para la vista `reporte_recarga`
+-- Estructura para la vista `reporte_general`
 --
-DROP TABLE IF EXISTS `reporte_recarga`;
+DROP TABLE IF EXISTS `reporte_general`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`recargas`@`localhost` SQL SECURITY DEFINER VIEW `reporte_recarga` AS select `r`.`id` AS `OT`,`r`.`compania` AS `compania`,`r`.`monto` AS `monto`,`r`.`celular` AS `celular`,`r`.`fecha` AS `fecha_ingreso`,`a`.`fecha` AS `fecha_atencion`,`a`.`tiempoRespuesta` AS `tiempo_respuesta`,`u`.`username` AS `Empleado`,`usr`.`username` AS `Cliente`,`a`.`estado` AS `estado`,`o`.`username` AS `Operador`,`l`.`nombre` AS `LOCAL` from (((((`recarga` `r` join `user` `u`) join `user` `usr`) join `atencion` `a`) join `user` `o`) join `local` `l`) where ((`u`.`id` = `r`.`user_id`) and (`u`.`user_id` = `usr`.`id`) and (`a`.`recarga_id` = `r`.`id`) and (`o`.`id` = `a`.`user_id`) and (`usr`.`id` = `l`.`user_id`) and (`r`.`local_id` = `l`.`id`)) order by `usr`.`id`;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `reporte_general` AS select `recarga`.`id` AS `id`,`recarga`.`fecha` AS `fecha_ingreso`,`recarga`.`celular` AS `celular`,`recarga`.`compania` AS `compania`,`recarga`.`monto` AS `monto`,`atencion`.`fecha` AS `fecha_atencion`,`usuario_operador`.`username` AS `nombre_operador`,`usuario_cliente`.`username` AS `nombre_cliente`,`local`.`nombre` AS `nombre`,`local`.`ciudad` AS `ciudad_local`,`atencion`.`estado` AS `estado`,timediff(`recarga`.`fecha`,`atencion`.`fecha`) AS `tiempo_respuesta`,`usuario_operador`.`id` AS `operador_id`,`atencion`.`id` AS `atencion_id`,`usuario_cliente`.`id` AS `cliente_id`,`local`.`id` AS `local_id` from ((((`recarga` join `local` on((`recarga`.`local_id` = `local`.`id`))) join `user` `usuario_cliente` on((`local`.`user_id` = `usuario_cliente`.`id`))) join `atencion` on((`recarga`.`id` = `atencion`.`recarga_id`))) join `user` `usuario_operador` on((`usuario_operador`.`id` = `atencion`.`user_id`)));
 
 --
--- Restricciones para tablas volcadas
+-- Filtros para las tablas descargadas (dump)
 --
 
 --
@@ -481,7 +507,3 @@ ALTER TABLE `recarga`
 --
 ALTER TABLE `user`
   ADD CONSTRAINT `user_fk_u` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

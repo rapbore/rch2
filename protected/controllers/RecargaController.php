@@ -34,6 +34,17 @@ class RecargaController extends GxController {
 			
 			$noprepago=$model->comprobarNoPrepago($model->celular);
 			
+                        if($model->monto=='990'){
+                            $model->comentario="Bolsa con 15 minutos a movistar y red fija";
+                        } elseif($model->monto=='1690'){
+                            $model->comentario="Bolsa con 30 minutos a movistar y red fija";
+                        } elseif($model->monto=='2990'){
+                            $model->comentario="Bolsa con 60 minutos a movistar y red fija";
+                        } elseif($model->monto=='3990'){
+                            $model->comentario="Bolsa combó 100 minutos + 100 SMS + 100 mms";
+                        }
+                        
+                        
 			if(!$noprepago){
 				
 				/* Aumenta el cupo al realizar una recarga, migrado a AtencionController Action update

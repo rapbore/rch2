@@ -15,19 +15,19 @@ $this->breadcrumbs=array(
 	'dataProvider'=>$dataProvider,
 	'columns'=>array(
 		array(
-            'name'=>'OT',
-            'value'=>'$data->recarga_id',
-        ),
+                    'name'=>'OT',
+                    'value'=>'$data->id',
+                ),
 		array(
             'name'=>'Monto',
-            'value'=>'$data->recarga->monto',
+            'value'=>'$data->monto',
         ),
 		array(
             'name'=>'Compania',
-            'value'=>'$data->recarga->compania',
+            'value'=>'$data->compania',
         ),
-		'fecha',
-		'tiempoRespuesta',
+		'fecha_ingreso',
+		'tiempo_respuesta',
 		'estado',
 		
 	),	
