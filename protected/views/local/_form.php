@@ -39,6 +39,7 @@
 		<?php echo $form->error($model,'nombre'); ?>
 		</div><!-- row -->
 
+		
 <?php
 echo GxHtml::submitButton(Yii::t('app', 'Save'));
 $this->endWidget();
