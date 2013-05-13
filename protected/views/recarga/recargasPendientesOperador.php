@@ -31,6 +31,7 @@ if(Yii::app()->user->hasFlash('error')){?>
 		'compania',
 		'celular',
 		'monto',
+                'comentario',
 		'estado',
 
 
