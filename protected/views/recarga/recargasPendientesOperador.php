@@ -1,6 +1,12 @@
 
 
+<?php 
 
+Yii::app()->clientScript->registerScript('refrescar_siempre','
+var refreshId = setInterval(function(){$.fn.yiiGridView.update("recargas_pendientes-grid");}, 3000);  
+
+        ',CClientScript::POS_READY);
+?>
 <?php
 $this->breadcrumbs=array(
 	'Recargas',
@@ -31,7 +37,6 @@ if(Yii::app()->user->hasFlash('error')){?>
 		'compania',
 		'celular',
 		'monto',
-                'comentario',
 		'estado',
 
 
@@ -92,6 +97,7 @@ $this->beginWidget('zii.widgets.jui.CJuiDialog', array(
 ));?>
 <div id="dialog_recarga"></div>
  
+<?php $this->endWidget();?>
 =======
 
 
@@ -192,5 +198,4 @@ $this->beginWidget('zii.widgets.jui.CJuiDialog', array(
 ));?>
 <div id="dialog_recarga"></div>
  
->>>>>>> branch 'master' of https://github.com/rapbore/rch2.git
 <?php $this->endWidget();?>
