@@ -43,12 +43,11 @@ class Recarga extends BaseRecarga
 			$criteria=new CDbCriteria(array(
 				'condition'=>'user_id =:user_id',
 				'order'=>'id DESC',
-				'limit'=>500,
+				'limit'=>20,
 				'params'=> array(':user_id' => $id_user),
 					));
-			$model=Recarga::model()->findAll($criteria);
-			$dataProvider=new CActiveDataProvider('Recarga',array('criteria'=>$criteria,'pagination'=>array('pageSize'=>100),));			
-			return ($dataProvider);
+			
+			return new CActiveDataProvider('Recarga',array('criteria'=>$criteria,'pagination'=>array('pageSize'=>10),));			
 
 	}
 	 
@@ -112,6 +111,24 @@ class Recarga extends BaseRecarga
 			'criteria' => $criteria,
                         'pagination'=>array('pageSize'=>100)
 		));
+	}
+        
+        	public function cargarRecargasLocal($id){
+		
+			$criteria=new CDbCriteria(array(
+				'condition'=>'local_id =:local_id and estado =:estado',
+				'order'=>'id DESC',
+				'limit'=>500,
+				'params'=> array(':local_id' => $id , ':estado'=>'LISTA'),
+					));
+			$hoy = new CDbExpression("CURDATE()");
+			$criteria->addCondition('fecha >= '.$hoy);
+                        $criteria->compare('compania', $this->compania, true);
+                        $criteria->compare('celular', $this->celular, true);
+                        $criteria->compare('monto', $this->monto, true);
+		
+			return new CActiveDataProvider('Recarga',array('criteria'=>$criteria,'pagination'=>array('pageSize'=>100)));
+
 	}
 
 }

@@ -17,7 +17,7 @@ $this->breadcrumbs=array(
 	'id' => 'recargas_pendientes-grid',
 	'type'=>'striped bordered condensed',
 	'enableSorting'=>false,
-	'template' => "{items}\n{extendedSummary}",
+	'template' => "{items}",
 	'dataProvider'=>$dataProvider,
 	'columns'=>array(
 		array(
@@ -31,18 +31,12 @@ $this->breadcrumbs=array(
             ),
                     'monto',
                     'estado',
+                array(
+                'name'=>'Comentario Recarga',
+                'value'=>'$data->comentario',
+            ),
 
 	),
-        'extendedSummary' => array(
-            'title' => 'TOTAL RECARGAS',
-            'columns' => array(
-                'monto' => array('label'=>'TOTAL ', 'class'=>'TbSumOperation')
-            )
-        ),
-        'extendedSummaryOptions' => array(
-            'class' => 'well pull-right',
-            #'style' => 'width:300px'
-        ),
 )); 
 
 ?>

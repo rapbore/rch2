@@ -29,8 +29,8 @@ array(
 
 <?php 
 $this->widget('bootstrap.widgets.TbExtendedGridView', array(
-    'id' => 'recarga-grid',
-    'filter'=>new Recarga,
+    'id' => 'recarga_cliente-grid',
+    'enableSorting'=>false,
     'type'=>'striped bordered condensed',
     'dataProvider' => $dataProvider,
     'template' => "{items}\n{extendedSummary}",
@@ -44,12 +44,12 @@ $this->widget('bootstrap.widgets.TbExtendedGridView', array(
     'extendedSummary' => array(
         'title' => 'TOTAL RECARGAS',
         'columns' => array(
-            'monto' => array('label'=>'TOTAL RECARGAS', 'class'=>'TbSumOperation')
+            'monto' => array('label'=>'TOTAL ', 'class'=>'TbSumOperation')
         )
     ),
     'extendedSummaryOptions' => array(
         'class' => 'well pull-right',
-        'style' => 'width:300px'
+        #'style' => 'width:300px'
     ),
 ));
 ?>

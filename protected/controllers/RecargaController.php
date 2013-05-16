@@ -110,6 +110,7 @@ class RecargaController extends GxController {
 	}
 
 	public function actionAdmin() {
+            $this->layout='column1';
 		$model = new Recarga('search');
 		$model->unsetAttributes();
 
@@ -253,7 +254,7 @@ class RecargaController extends GxController {
 		$model->unsetAttributes();
 		$dataProvider=$model->cargarPendientesEmpleado();
 			
-		$this->render('verRecargasEmpleado',array('dataProvider'=>$dataProvider,'model'=>$model));
+		$this->render('verPendientesEmpleado',array('dataProvider'=>$dataProvider,'model'=>$model));
 	}
 
 /********************

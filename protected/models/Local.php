@@ -71,23 +71,4 @@ class Local extends BaseLocal
 	}
 	*/
 	
-	public function cargarRecargasLocal($id){
-		
-			$criteria=new CDbCriteria(array(
-				'condition'=>'local_id =:local_id and estado =:estado',
-				'order'=>'id DESC',
-				'limit'=>500,
-				'params'=> array(':local_id' => $id , ':estado'=>'LISTA'),
-					));
-					
-			$hoy = new CDbExpression("CURDATE()");
-			$criteria->addCondition('fecha >= '.$hoy);
-
-			$model=Recarga::model()->findAll($criteria);
-			$dataProvider=new CActiveDataProvider('Recarga',array('criteria'=>$criteria,));
-			#$dataProvider->setPagination(false);		
-			
-			return ($dataProvider);
-
-	}
 }

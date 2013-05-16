@@ -6,8 +6,7 @@ $this->breadcrumbs = array(
 );
 
 $this->menu = array(
-		array('label'=>Yii::t('app', 'List') . ' ' . $model->label(2), 'url'=>array('index')),
-		array('label'=>Yii::t('app', 'Create') . ' ' . $model->label(), 'url'=>array('create')),
+		#array('label'=>Yii::t('app', 'Crear') . ' ' . $model->label(), 'url'=>array('create')),
 	);
 
 Yii::app()->clientScript->registerScript('search', "
@@ -24,22 +23,22 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1><?php echo Yii::t('app', 'Manage') . ' ' . GxHtml::encode($model->label(2)); ?></h1>
+<h1><?php echo Yii::t('app', 'Administrar') . ' ' . GxHtml::encode($model->label(2)); ?></h1>
 
 
-<?php echo GxHtml::link(Yii::t('app', 'Advanced Search'), '#', array('class' => 'search-button')); ?>
+<?php echo GxHtml::link(Yii::t('app', 'Busqueda Avanzada'), '#', array('class' => 'search-button')); ?>
 <div class="search-form">
 <?php $this->renderPartial('_search', array(
 	'model' => $model,
 )); ?>
 </div><!-- search-form -->
 
-<?php $this->widget('bootstrap.widgets.TbGridView', array(
+<?php $this->widget('bootstrap.widgets.TbExtendedGridView', array(
 	'id' => 'recarga-grid',
 	'dataProvider' => $model->search(),
 	'type'=>'striped bordered condensed',
 	'filter' => $model,
-	'template'=>"{items} {pager}",
+	'template'=>"{extendedSummary}\n{items} {pager}",
 	'columns' => array(
 		array(
 				'name'=>'user_id',
@@ -54,12 +53,19 @@ $('.search-form form').submit(function(){
 		'celular',
 		'compania',
 		'monto',
-		//'comentario',
+		'comentario',
 		'estado',
-		
-		array(
-			'class' => 'bootstrap.widgets.TbButtonColumn',
-			'htmlOptions'=>array('style'=>'width: 50px'),
-		),
-	),
+            ),
+                'extendedSummary' => array(
+                    'title' => 'TOTAL RECARGAS',
+                    'columns' => array(
+                        'monto' => array('label'=>'$', 'class'=>'TbSumOperation')
+                    )
+                ),
+                'extendedSummaryOptions' => array(
+                    'class' => 'well pull-right',
+                    #'style' => 'width:300px'
+                ),
+
+	
 )); ?>

@@ -91,7 +91,9 @@ class LocalController extends GxController {
 	public function actionVerLocalCliente($id) {
 		
 		$model = $this->loadModel($id, 'Local');
-		$dataProvider=$model->cargarRecargasLocal($id);
+                $recargas_local = new Recarga;
+                
+		$dataProvider=$recargas_local->cargarRecargasLocal($id);
 		$this->render('verLocalCliente',array('dataProvider'=>$dataProvider,'model'=>$model));
 	}
 	
