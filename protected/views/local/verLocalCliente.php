@@ -27,25 +27,29 @@ array(
 
 <h2><?php echo GxHtml::encode($model->getRelationLabel('recargas')); ?></h2>
 
-<?php $this->widget('bootstrap.widgets.TbGridView', array(
-	'id' => 'recarga-grid',
-	'dataProvider' => $dataProvider,
-	'type'=>'striped bordered condensed',
-	
-	'template'=>"{items} {summary}",
-	'summaryText'=>'total : {start} to {end} from {count}',
-	'columns' => array(
+<?php 
+$this->widget('bootstrap.widgets.TbExtendedGridView', array(
+    'id' => 'recarga-grid',
+    'filter'=>new Recarga,
+    'type'=>'striped bordered condensed',
+    'dataProvider' => $dataProvider,
+    'template' => "{items}\n{extendedSummary}",
+    'columns' => array(
 		'id',
 		'celular',
 		'compania',
 		'monto',
-		'fecha',
-		/*
-		array(
-			'class' => 'bootstrap.widgets.TbButtonColumn',
-			'htmlOptions'=>array('style'=>'width: 50px'),
-		),
-		*/
-       
+		'fecha',    
 	),
-)); ?>
+    'extendedSummary' => array(
+        'title' => 'TOTAL RECARGAS',
+        'columns' => array(
+            'monto' => array('label'=>'TOTAL RECARGAS', 'class'=>'TbSumOperation')
+        )
+    ),
+    'extendedSummaryOptions' => array(
+        'class' => 'well pull-right',
+        'style' => 'width:300px'
+    ),
+));
+?>

@@ -82,23 +82,7 @@ abstract class BaseRecarga extends GxActiveRecord {
 		);
 	}
 
-	public function search() {
-		$criteria = new CDbCriteria;
-
-		$criteria->compare('id', $this->id);
-		$criteria->compare('user_id', $this->user_id);
-		$criteria->compare('local_id', $this->local_id);
-		$criteria->compare('celular', $this->celular, true);
-		$criteria->compare('compania', $this->compania, true);
-		$criteria->compare('monto', $this->monto, true);
-		$criteria->compare('comentario', $this->comentario, true);
-		$criteria->compare('estado', $this->estado, true);
-		$criteria->compare('fecha', $this->fecha, true);
-
-		return new CActiveDataProvider($this, array(
-			'criteria' => $criteria,
-		));
-	}
+	
 	
 	
 	

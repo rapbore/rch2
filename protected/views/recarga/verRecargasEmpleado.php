@@ -31,7 +31,6 @@ $this->breadcrumbs=array(
             'name'=>'Local',
             'value'=>'$data->local',
         ),
-		'celular',
 		'monto',
 		'estado',
 		array(
