@@ -104,12 +104,6 @@ class AtencionController extends GxController {
 			throw new CHttpException(400, Yii::t('app', 'Your request is invalid.'));
 	}
 
-	public function actionIndex() {
-		$dataProvider = new CActiveDataProvider('Atencion');
-		$this->render('index', array(
-			'dataProvider' => $dataProvider,
-		));
-	}
 
 	public function actionAdmin() {
 		$model = new Atencion('search');

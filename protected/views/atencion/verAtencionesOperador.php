@@ -26,7 +26,7 @@ $this->widget('bootstrap.widgets.TbExtendedGridView', array(
                     'value'=>'$data->compania',
                 ),
 		'fecha_ingreso',
-		'tiempo_respuesta',
+		'comentario',
 		'estado',
 		
 	),

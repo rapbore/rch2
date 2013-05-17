@@ -34,9 +34,9 @@
 		<?php echo $form->error($model,'fecha'); ?>
 		</div><!-- row -->
 		<div class="row">
-		<?php echo $form->labelEx($model,'tiempoRespuesta'); ?>
-		<?php echo $form->textField($model, 'tiempoRespuesta'); ?>
-		<?php echo $form->error($model,'tiempoRespuesta'); ?>
+		<?php echo $form->labelEx($model,'comentario'); ?>
+		<?php echo $form->textField($model, 'comentario'); ?>
+		<?php echo $form->error($model,'comentario'); ?>
 		</div><!-- row -->
 <?php $this->widget('bootstrap.widgets.TbButtonGroup', array(
     'type' => 'primary',

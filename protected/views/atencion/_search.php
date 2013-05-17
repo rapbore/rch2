@@ -31,8 +31,8 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model, 'tiempoRespuesta'); ?>
-		<?php echo $form->textField($model, 'tiempoRespuesta'); ?>
+		<?php echo $form->label($model, 'comentario'); ?>
+		<?php echo $form->textField($model, 'comentario'); ?>
 	</div>
 
 	<div class="row">
