@@ -71,7 +71,7 @@ class UserController extends GxController {
 
 		$this->performAjaxValidation($model, 'user-form');
 
-		if (isset($_POST['User'])) {
+		if (isset($_POST['User'])){
 			$model->setAttributes($_POST['User']);
 			$model->password=$model->hashPassword($model->password,$model->salt);
 
