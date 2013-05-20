@@ -22,6 +22,7 @@
  * @property Atencion[] $atencions
  * @property Estado[] $estados
  * @property Local[] $locals
+ * @property Pedido[] $pedidos
  * @property Recarga[] $recargas
  * @property User $user
  * @property User[] $users
@@ -58,7 +59,8 @@ abstract class BaseUser extends GxActiveRecord {
 		return array(
 			'atencions' => array(self::HAS_MANY, 'Atencion', 'user_id'),
 			'estados' => array(self::HAS_MANY, 'Estado', 'user_id'),
-			'locales' => array(self::HAS_MANY, 'Local', 'user_id'),
+			'locals' => array(self::HAS_MANY, 'Local', 'user_id'),
+			'pedidos' => array(self::HAS_MANY, 'Pedido', 'user_id'),
 			'recargas' => array(self::HAS_MANY, 'Recarga', 'user_id'),
 			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
 			'users' => array(self::HAS_MANY, 'User', 'user_id'),
@@ -84,6 +86,7 @@ abstract class BaseUser extends GxActiveRecord {
 			'atencions' => null,
 			'estados' => null,
 			'locals' => null,
+			'pedidos' => null,
 			'recargas' => null,
 			'user' => null,
 			'users' => null,
@@ -105,25 +108,6 @@ abstract class BaseUser extends GxActiveRecord {
 
 		return new CActiveDataProvider($this, array(
 			'criteria' => $criteria,
-                        'pagination'=>array(
-                            'pageSize'=>20,
-                        ),
 		));
 	}
-	
-	public function hashPassword($password,$salt)
-	{
-		return md5($salt.$password);
-	}
-	
-	public function generateSalt()
-	{
-		return uniqid('',true);
-	}
-	public function validatePassword($password)
-	{
-		return $this->hashPassword($password,$this->salt)===$this->password;
-	}
-	
-
 }
