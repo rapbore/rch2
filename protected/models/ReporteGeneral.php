@@ -8,6 +8,9 @@ class ReporteGeneral extends BaseReporteGeneral
 		return parent::model($className);
 
                 }
+        public function primaryKey(){
+            return 'id';
+        }
                 
         public static function cargarUser()
 	{
@@ -32,4 +35,5 @@ class ReporteGeneral extends BaseReporteGeneral
 			return ($dataProvider);
 
 	}
+        
 }
