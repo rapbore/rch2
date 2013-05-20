@@ -14,7 +14,7 @@
  * @property integer $user_id
  * @property integer $recarga_id
  * @property string $fecha
- * @property string $tiempoRespuesta
+ * @property string $comentario
  * @property string $estado
  *
  * @property Cupo $cupo
@@ -33,7 +33,7 @@ abstract class BaseAtencion extends GxActiveRecord {
 	}
 
 	public static function label($n = 1) {
-		return Yii::t('app', 'Atencion|Atencions', $n);
+		return Yii::t('app', 'Atencion|Atenciones', $n);
 	}
 
 	public static function representingColumn() {
@@ -45,9 +45,9 @@ abstract class BaseAtencion extends GxActiveRecord {
 			array('cupo_id, user_id, recarga_id', 'numerical', 'integerOnly'=>true),
 			array('estado', 'length', 'max'=>45),
 			array('recarga_id', 'unique'),
-			array('fecha, tiempoRespuesta', 'safe'),
-			array('cupo_id, user_id, recarga_id, fecha, tiempoRespuesta, estado', 'default', 'setOnEmpty' => true, 'value' => null),
-			array('id, cupo_id, user_id, recarga_id, fecha, tiempoRespuesta, estado', 'safe', 'on'=>'search'),
+			array('fecha, comentario', 'safe'),
+			array('cupo_id, user_id, recarga_id, fecha, comentario, estado', 'default', 'setOnEmpty' => true, 'value' => null),
+			array('id, cupo_id, user_id, recarga_id, fecha, comentario, estado', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -72,7 +72,7 @@ abstract class BaseAtencion extends GxActiveRecord {
 			'user_id' => null,
 			'recarga_id' => null,
 			'fecha' => Yii::t('app', 'Fecha'),
-			'tiempoRespuesta' => Yii::t('app', 'Tiempo Respuesta'),
+			'comentario' => Yii::t('app', 'Comentario'),
 			'estado' => Yii::t('app', 'Estado'),
 			'cupo' => null,
 			'recarga' => null,
@@ -81,25 +81,4 @@ abstract class BaseAtencion extends GxActiveRecord {
 		);
 	}
 
-	public function search() {
-		$criteria = new CDbCriteria;
-
-		$criteria->compare('id', $this->id);
-		$criteria->compare('cupo_id', $this->cupo_id);
-		$criteria->compare('user_id', $this->user_id);
-		$criteria->compare('recarga_id', $this->recarga_id);
-		$criteria->compare('fecha', $this->fecha, true);
-		$criteria->compare('tiempoRespuesta', $this->tiempoRespuesta, true);
-		$criteria->compare('estado', $this->estado, true);
-
-		return new CActiveDataProvider($this, array(
-			'criteria' => $criteria,
-		));
-	}
-	
-	
-	
-	
-	
-	
 }//finfin

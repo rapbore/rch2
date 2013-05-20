@@ -27,6 +27,8 @@ class Recarga extends BaseRecarga
 				'limit'=>500,
 				'params'=> array(':user_id' => $id_user, ':estado'=>'LISTA'),
 					));
+                        $hoy = new CDbExpression("CURDATE()");
+			$criteria->addCondition('fecha >= '.$hoy);
 			$model=Recarga::model()->findAll($criteria);
 			$dataProvider=new CActiveDataProvider('Recarga',array('criteria'=>$criteria));
 				
@@ -46,6 +48,8 @@ class Recarga extends BaseRecarga
 				'limit'=>20,
 				'params'=> array(':user_id' => $id_user),
 					));
+                        $hoy = new CDbExpression("CURDATE()");
+			$criteria->addCondition('fecha >= '.$hoy);
 			
 			return new CActiveDataProvider('Recarga',array('criteria'=>$criteria,'pagination'=>array('pageSize'=>10),));			
 
@@ -62,6 +66,8 @@ class Recarga extends BaseRecarga
 				'limit'=>500,
 				'params'=> array(':estado'=>'PENDIENTE', ':estado2'=>'PROCESANDO'),
 					));
+                        $hoy = new CDbExpression("CURDATE()");
+			$criteria->addCondition('fecha >= '.$hoy);
 			$model=Recarga::model()->findAll($criteria);
 			$dataProvider=new CActiveDataProvider('Recarga',array('criteria'=>$criteria,'pagination'=>array('pageSize'=>100)));		
 			return ($dataProvider);

@@ -36,7 +36,7 @@ array(
 			'value' => $model->recarga !== null ? GxHtml::link(GxHtml::encode(GxHtml::valueEx($model->recarga)), array('recarga/view', 'id' => GxActiveRecord::extractPkValue($model->recarga, true))) : null,
 			),
 'fecha',
-'tiempoRespuesta',
+'comentario',
 'estado',
 	),
 )); ?>
