@@ -27,4 +27,41 @@ class User extends BaseUser
 			'users' => null,
 		);
 	}
+        
+        
+        	
+	public function hashPassword($password,$salt)
+	{
+		return md5($salt.$password);
+	}
+	
+	public function generateSalt()
+	{
+		return uniqid('',true);
+	}
+	public function validatePassword($password)
+	{
+		return $this->hashPassword($password,$this->salt)===$this->password;
+	}
+        
+        public function search() {
+		$criteria = new CDbCriteria;
+
+		$criteria->compare('id', $this->id);
+		$criteria->compare('user_id', $this->user_id);
+		$criteria->compare('username', $this->username, true);
+		$criteria->compare('password', $this->password, true);
+		$criteria->compare('estado', $this->estado, true);
+		$criteria->compare('salt', $this->salt, true);
+		$criteria->compare('tipo', $this->tipo, true);
+		$criteria->compare('entel', $this->entel, true);
+		$criteria->compare('movistar', $this->movistar, true);
+
+		return new CActiveDataProvider($this, array(
+			'criteria' => $criteria,
+                        'pagination'=>array(
+                            'pageSize'=>20,
+                        ),
+		));
+	}
 }

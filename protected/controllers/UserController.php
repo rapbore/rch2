@@ -2,11 +2,11 @@
 
 class UserController extends GxController {
 
-public function filters() {
-	return array(
-			'rights', 
-			);
-}
+    public function filters() {
+            return array(
+                            'rights', 
+                            );
+    }
 
 
 	public function actionIngresar($id){
@@ -76,6 +76,7 @@ public function filters() {
 			$model->password=$model->hashPassword($model->password,$model->salt);
 
 			if ($model->save()) {
+                            Rights::assign($model->tipo, $model->id);
 				if (Yii::app()->getRequest()->getIsAjaxRequest())
 					Yii::app()->end();
 				else

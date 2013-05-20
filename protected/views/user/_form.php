@@ -54,7 +54,6 @@
 		<?php echo $form->error($model,'movistar'); ?>
 		</div><!-- row -->
 
-		
 <?php
 echo GxHtml::submitButton(Yii::t('app', 'CREAR'));
 $this->endWidget();
