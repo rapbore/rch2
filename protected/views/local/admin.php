@@ -40,16 +40,16 @@ $('.search-form form').submit(function(){
 	'filter' => $model,
 	'template'=>"{items}",
 	'columns' => array(
-		'id',
 		array(
 				'name'=>'user_id',
 				'value'=>'GxHtml::valueEx($data->user)',
 				'filter'=>GxHtml::listDataEx(User::model()->findAllAttributes(null, true)),
 				),
+                'nombre',
 		'ciudad',
 		'direccion',
 		'telefono',
-		'nombre',
+		
 		array(
 			'class' => 'bootstrap.widgets.TbButtonColumn',
 			'htmlOptions'=>array('style'=>'width: 50px'),
