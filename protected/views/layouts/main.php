@@ -102,7 +102,7 @@
 		            'items'=>array(
 		                array('label'=>'Home', 'url'=>array('/site/index')),
 						array('label'=>'Recargar', 'url'=>array('/recarga/create')),
-						array('label'=>'Recargas Pendientes', 'url'=>array('/recarga/verPendientesEmpleado')),
+						array('label'=>'Mis Recargas', 'url'=>array('/recarga/verPendientesEmpleado')),
 						array('label'=>'Recargas Listas', 'url'=>array('/recarga/verListasEmpleado')),
 						array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
 						array('label'=>'Logout ('.$session['_username'].')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
