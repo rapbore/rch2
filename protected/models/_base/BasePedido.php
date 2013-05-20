@@ -16,8 +16,8 @@
  * @property integer $total
  * @property string $estado
  *
- * @property User $user
  * @property Producto $producto
+ * @property User $user
  */
 abstract class BasePedido extends GxActiveRecord {
 
@@ -48,8 +48,8 @@ abstract class BasePedido extends GxActiveRecord {
 
 	public function relations() {
 		return array(
-			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
 			'producto' => array(self::BELONGS_TO, 'Producto', 'producto_id'),
+			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
 		);
 	}
 
@@ -66,8 +66,8 @@ abstract class BasePedido extends GxActiveRecord {
 			'cantidad' => Yii::t('app', 'Cantidad'),
 			'total' => Yii::t('app', 'Total'),
 			'estado' => Yii::t('app', 'Estado'),
-			'user' => null,
 			'producto' => null,
+			'user' => null,
 		);
 	}
 

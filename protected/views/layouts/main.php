@@ -75,6 +75,8 @@
 						array('label'=>'Cupo', 'url'=>array('/cupo/admin')),
 						array('label'=>'No Prepagos', 'url'=>array('/noprepago/admin')),
 						array('label'=>'Atenciones', 'url'=>array('/atencion/admin')),
+                                                array('label'=>'Productos', 'url'=>array('/producto/verTodos')),
+                                                array('label'=>'Pedidos', 'url'=>array('/pedido/verTodos')),
 						array('label'=>'Estado', 'url'=>array('/estado/admin')),
 						array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
 						array('label'=>'Logout ['.$session['_username'].']', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
