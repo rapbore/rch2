@@ -71,7 +71,7 @@
 		                array('label'=>'Roles', 'url'=>array('/rights')),
 						array('label'=>'Usuarios', 'url'=>array('/user/admin')),
 						array('label'=>'Locales', 'url'=>array('/local/admin')),
-						array('label'=>'Recargas', 'url'=>array('/recarga/admin')),
+						array('label'=>'Recargas', 'url'=>array('/reportegeneral/admin')),
 						array('label'=>'Cupo', 'url'=>array('/cupo/admin')),
 						array('label'=>'No Prepagos', 'url'=>array('/noprepago/admin')),
 						array('label'=>'Atenciones', 'url'=>array('/atencion/admin')),
