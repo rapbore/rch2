@@ -24,7 +24,10 @@ $this->breadcrumbs=array(
                 'name'=>'OTE',
                 'value'=>'$data->id',
             ),
-                    'compania',
+                    
+            'fecha',
+            'celular',
+            'compania',
                 array(
                 'name'=>'Local',
                 'value'=>'$data->local',
@@ -41,7 +44,6 @@ $this->breadcrumbs=array(
         ),
         'extendedSummaryOptions' => array(
             'class' => 'well pull-right',
-            #'style' => 'width:300px'
         ),
 )); 
 

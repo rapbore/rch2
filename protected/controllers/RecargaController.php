@@ -232,7 +232,7 @@ class RecargaController extends GxController {
 	
 	public function actionVerListasEmpleado()
 	{
-		
+		$this->layout='column1';
 		$model = new Recarga('search');
 		$model->unsetAttributes();
 		$dataProvider=$model->cargarListasEmpleado();
@@ -253,6 +253,7 @@ class RecargaController extends GxController {
 		$model = new Recarga('search');
 		$model->unsetAttributes();
 		$dataProvider=$model->cargarPendientesEmpleado();
+                $this->layout='column1';
 			
 		$this->render('verPendientesEmpleado',array('dataProvider'=>$dataProvider,'model'=>$model));
 	}
@@ -268,6 +269,7 @@ class RecargaController extends GxController {
 		$model = new Recarga('search');
 		$model->unsetAttributes();
 		$dataProvider=$model->cargarPendientesOperador();
+                $this->layout='column1';
 			
 		$this->render('recargasPendientesOperador',array('dataProvider'=>$dataProvider,'model'=>$model));
 	}

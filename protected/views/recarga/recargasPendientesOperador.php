@@ -27,13 +27,11 @@ if(Yii::app()->user->hasFlash('error')){?>
 	'id' => 'recargas_pendientes-grid',
 	'dataProvider'=>$dataProvider,
 	'type'=>'striped bordered condensed',
-	//'filter' => $model,
+	'enableSorting'=>false,
 	'template'=>"{items}",
 	'columns' => array(
-		array(
-            'name'=>'OT',
-            'value'=>'$data->id',
-        ),
+            'id',
+            'fecha',
 		'compania',
 		'monto',
 		'estado',

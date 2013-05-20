@@ -16,16 +16,19 @@ $this->widget('bootstrap.widgets.TbExtendedGridView', array(
     'dataProvider' => $dataProvider,
     'template' => "{items}\n{extendedSummary}",
     'columns'=>array(
-		array(
-                    'name'=>'OT',
-                    'value'=>'$data->id',
+                'id',
+                array(
+                    'name'=>'Fecha',
+                    'value'=>'$data->fecha_ingreso',
                 ),
+                'celular',
 		'monto',
+        'tiempo_respuesta',
 		array(
                     'name'=>'Compania',
                     'value'=>'$data->compania',
                 ),
-		'fecha_ingreso',
+		
 		'comentario',
 		'estado',
 		
@@ -38,7 +41,7 @@ $this->widget('bootstrap.widgets.TbExtendedGridView', array(
     ),
     'extendedSummaryOptions' => array(
         'class' => 'well pull-right',
-        #'style' => 'width:300px'
+        'style' => 'width:150px'
     ),
 ));
 ?>

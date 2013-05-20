@@ -67,7 +67,7 @@ abstract class BaseAtencion extends GxActiveRecord {
 
 	public function attributeLabels() {
 		return array(
-			'id' => Yii::t('app', 'ID'),
+			'id' => Yii::t('app', 'OT'),
 			'cupo_id' => null,
 			'user_id' => null,
 			'recarga_id' => null,

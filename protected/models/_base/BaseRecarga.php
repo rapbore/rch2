@@ -67,7 +67,7 @@ abstract class BaseRecarga extends GxActiveRecord {
 
 	public function attributeLabels() {
 		return array(
-			'id' => Yii::t('app', 'ID'),
+			'id' => Yii::t('app', 'OT'),
 			'user_id' => null,
 			'local_id' => null,
 			'celular' => Yii::t('app', 'Celular'),

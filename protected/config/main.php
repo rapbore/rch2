@@ -3,6 +3,10 @@ return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'RCH 2.0',
 	'language'=>'es',
+        'sourceLanguage'=>'en',
+        'charset'=>'utf-8',
+        'timeZone' => 'America/Santiago',
+    
 	'preload'=>array(
 		'log',
 		'bootstrap',
@@ -49,6 +53,9 @@ return array(
 		'bootstrap'=>array(
 				'class'=>'ext.bootstrap.components.Bootstrap', 
 			),
+                'format'=>array(
+                        'class'=>'application.components.Formatter',
+                    ),
 	
 		'user'=>array(
 			'class'=>'RWebUser', 

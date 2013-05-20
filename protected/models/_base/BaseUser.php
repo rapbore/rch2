@@ -59,7 +59,7 @@ abstract class BaseUser extends GxActiveRecord {
 		return array(
 			'atencions' => array(self::HAS_MANY, 'Atencion', 'user_id'),
 			'estados' => array(self::HAS_MANY, 'Estado', 'user_id'),
-			'locals' => array(self::HAS_MANY, 'Local', 'user_id'),
+			'locales' => array(self::HAS_MANY, 'Local', 'user_id'),
 			'pedidos' => array(self::HAS_MANY, 'Pedido', 'user_id'),
 			'recargas' => array(self::HAS_MANY, 'Recarga', 'user_id'),
 			'user' => array(self::BELONGS_TO, 'User', 'user_id'),

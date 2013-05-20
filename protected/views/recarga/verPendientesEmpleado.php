@@ -21,9 +21,11 @@ $this->breadcrumbs=array(
 	'dataProvider'=>$dataProvider,
 	'columns'=>array(
 		array(
-                'name'=>'OTE',
+                'name'=>'OT',
                 'value'=>'$data->id',
             ),
+            'fecha',
+            'celular',
                     'compania',
                 array(
                 'name'=>'Local',
@@ -31,6 +33,7 @@ $this->breadcrumbs=array(
             ),
                     'monto',
                     'estado',
+                    
                 array(
                 'name'=>'Comentario Recarga',
                 'value'=>'$data->comentario',

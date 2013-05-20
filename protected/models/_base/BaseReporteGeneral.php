@@ -69,7 +69,7 @@ abstract class BaseReporteGeneral extends GxActiveRecord {
 
 	public function attributeLabels() {
 		return array(
-			'id' => Yii::t('app', 'ID'),
+			'id' => Yii::t('app', 'OT'),
 			'fecha_ingreso' => Yii::t('app', 'Fecha Ingreso'),
 			'celular' => Yii::t('app', 'Celular'),
 			'compania' => Yii::t('app', 'Compania'),

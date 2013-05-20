@@ -8,7 +8,7 @@ class AtencionController extends GxController {
 				);
 	}
 
-
+        public $layout="column1";
 
 	public function actionView($id) {
 		$this->render('view', array(
@@ -36,6 +36,7 @@ class AtencionController extends GxController {
 
 	public function actionUpdate($id) {
 		$model = $this->loadModel($id, 'Atencion');
+                $model->estado="LISTA";
 
 		$this->performAjaxValidation($model, 'atencion-form');
 
@@ -121,7 +122,6 @@ class AtencionController extends GxController {
 	{
 		
 		$model = new Atencion('search');
-		$model->unsetAttributes();
 		$dataProvider=  ReporteGeneral::ListasOperador();
 			
 		$this->render('verAtencionesOperador',array('dataProvider'=>$dataProvider,'model'=>$model));

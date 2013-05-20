@@ -2,7 +2,7 @@
     'heading'=>'BIENVENIDO',
 )); ?>
  
-    <p>P&Aacute;GINA OFICIAL DE RECARGASCHILE - PORTAL DE RECARGAS</p>
+    <p>P&Aacute;GINA OFICIAL DE RECARGASCHILE</p>
     <p><?php $this->widget('bootstrap.widgets.TbButton', array(
         'type'=>'primary',
         'size'=>'large',
