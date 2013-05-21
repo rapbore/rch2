@@ -31,7 +31,7 @@ class ReporteGeneral extends BaseReporteGeneral
 				'params'=> array(':user_id' => $id_user, ':estado'=>'LISTA'),
 					));
                         $hoy = new CDbExpression("CURDATE()");
-			$criteria->addCondition('fecha >= '.$hoy);
+			$criteria->addCondition('fecha_ingreso >= '.$hoy);
 			$dataProvider=new CActiveDataProvider('ReporteGeneral',array('criteria'=>$criteria,'pagination'=>false));	
 			
 			return ($dataProvider);
