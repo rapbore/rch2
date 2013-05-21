@@ -90,7 +90,6 @@ class Recarga extends BaseRecarga
 	}
 	
 	public function cargarCupo($celular){	
-	
 	//$flag = Noprepago::model()->exists('numero =:numero and compania =:compania',array(':numero'=>$celular, ':compania'=>$compania));
 	$model_cupo = Cupo::model()->findByAttributes(array('numero'=>$celular));
         if(!$model_cupo)

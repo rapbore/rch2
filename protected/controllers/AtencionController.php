@@ -46,9 +46,8 @@ class AtencionController extends GxController {
 			if ($model->save()) {
 				
 				$model_recarga = $this->loadModel($model->recarga->id, 'Recarga');
-				
 				if($model_recarga->compania=='Entel' and $model->estado=='LISTA'){
-					$this->actionAumentarCupo($model_recarga->celular);				
+					$this->AumentarCupo($model_recarga->celular);				
 				}
 				
 				if($model->estado=="RECHAZADA NO PREPAGO"){
@@ -66,14 +65,16 @@ class AtencionController extends GxController {
 				));
 	}
 	
-	public function actionAumentarCupo($celular)
+	public function AumentarCupo($celular)
 	{
 		$model = new Recarga('search');
 		$model->unsetAttributes();
 		$model_cupo=$model->cargarCupo($celular);
+                
 		if($model_cupo){
 			$model_cupo->cupo=($model_cupo->cupo)-1;
-			$model_cupo->save();
+                        $model_cupo->numero=$celular;
+			$model_cupo->save(false);
 		}
 		else{
 			$model = new Cupo;
