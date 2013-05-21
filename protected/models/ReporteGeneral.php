@@ -30,7 +30,7 @@ class ReporteGeneral extends BaseReporteGeneral
 				'limit'=>500,
 				'params'=> array(':user_id' => $id_user, ':estado'=>'LISTA'),
 					));
-			$dataProvider=new CActiveDataProvider('ReporteGeneral',array('criteria'=>$criteria,));	
+			$dataProvider=new CActiveDataProvider('ReporteGeneral',array('criteria'=>$criteria,'pagination'=>false));	
 			
 			return ($dataProvider);
 

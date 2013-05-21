@@ -30,7 +30,7 @@ class Recarga extends BaseRecarga
                         $hoy = new CDbExpression("CURDATE()");
 			$criteria->addCondition('fecha >= '.$hoy);
 			$model=Recarga::model()->findAll($criteria);
-			$dataProvider=new CActiveDataProvider('Recarga',array('criteria'=>$criteria));
+			$dataProvider=new CActiveDataProvider('Recarga',array('criteria'=>$criteria,'pagination'=>false));
 				
 			
 			return ($dataProvider);
@@ -133,7 +133,7 @@ class Recarga extends BaseRecarga
                         $criteria->compare('celular', $this->celular, true);
                         $criteria->compare('monto', $this->monto, true);
 		
-			return new CActiveDataProvider('Recarga',array('criteria'=>$criteria,'pagination'=>array('pageSize'=>100)));
+			return new CActiveDataProvider('Recarga',array('criteria'=>$criteria,'pagination'=>false));
 
 	}
 
