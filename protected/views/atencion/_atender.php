@@ -3,6 +3,7 @@
         $this->widget('bootstrap.widgets.TbDetailView', array(
 		'data'=>$model->recarga,
 		'attributes'=>array(
+                        array('name'=>'id', 'label'=>'OT'),
 			array('name'=>'celular', 'label'=>'celular'),
 			array('name'=>'compania', 'label'=>'compania'),
 			array('name'=>'monto', 'label'=>'monto'),

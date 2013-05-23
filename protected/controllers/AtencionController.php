@@ -46,16 +46,21 @@ class AtencionController extends GxController {
 			if ($model->save()) {
 				
 				$model_recarga = $this->loadModel($model->recarga->id, 'Recarga');
-				if($model_recarga->compania=='Entel' and $model->estado=='LISTA'){
-					$this->AumentarCupo($model_recarga->celular);				
-				}
-				
-				if($model->estado=="RECHAZADA NO PREPAGO"){
+                                $model_recarga->estado=$model->estado;
+				$model_recarga->save();
+                                
+                                if($model->estado=="RECHAZADA NO PREPAGO"){
 					$this->actionCrearNoprepago($model->id, $model_recarga->celular, $model_recarga->compania);
-				}
+                                }else{
+                                  if($model_recarga->compania=='Entel' && $model->estado=='LISTA'){
+					$this->AumentarCupo($model_recarga->celular);				
+                                    }  
+                                    
+                                }
 				
-				$model_recarga->estado=$model->estado;
-				$model_recarga->save(false);
+                                
+                                
+                                
 				$this->redirect(array('recarga/verPendientesOperador', 'id' => $model->id));
 			}
 		}
@@ -66,23 +71,19 @@ class AtencionController extends GxController {
 	}
 	
 	public function AumentarCupo($celular)
-	{
-		$model = new Recarga('search');
-		$model->unsetAttributes();
-		$model_cupo=$model->cargarCupo($celular);
-                
-		if($model_cupo){
+	{       
+                $model_cupo = null;
+                $model_cupo = new Cupo;
+		$model_cupo=Cupo::model()->findByAttributes(array('numero'=>$celular));            
+		if($model_cupo && !empty($model_cupo)){
 			$model_cupo->cupo=($model_cupo->cupo)-1;
-                        $model_cupo->numero=$celular;
 			$model_cupo->save(false);
 		}
-		else{
-			$model = new Cupo;
-			$model->unsetAttributes();
-			$model->numero=$celular;
-			$model->cupo=1;
-			$model->estado='DISPONIBLE';
-			$model->save();
+		else{			
+			$model_cupo->numero=$celular;
+			$model_cupo->cupo=1;
+			$model_cupo->estado='DISPONIBLE';
+			$model_cupo->save(false);
 		}
 		
 	}
@@ -142,7 +143,7 @@ class AtencionController extends GxController {
 			
 				$model_atencion = $this->loadModel($model_recarga->atencion->id, 'Atencion');			
 				if ($model_recarga->esMia($id_user)){
-					$this->redirect(array('atencion/update', 'id' =>$model_atencion->id));
+					$this->redirect(array('atencion/update', 'id' =>$model_recarga->atencion->id));
 				}else{
 					$this->redirect(array('recarga/verPendientesEmpleado'));
 					
@@ -158,16 +159,15 @@ class AtencionController extends GxController {
 				$model_atencion->user_id=$id_user;
 				$model_atencion->recarga_id=$id;
 				$model_atencion->estado="PROCESANDO";
-				$model_recarga->estado=$model_atencion->estado;
-				
-				$model_atencion->save(false);
+                                $model_atencion->save(false);
+                                
+				$model_recarga->estado="PROCESANDO";			
 				$model_recarga->save(false);
 				
 				$this->redirect(array('atencion/update', 'id' =>$model_atencion->id));
 				
 			 }catch(Exception $e){
-				$model_atencion = $this->loadModel($model_recarga->atencion->id, 'Atencion');
-				$this->redirect(array('atencion/view', 'id' =>$model_atencion->id));
+				$this->redirect(array('recarga/verPendientesOperador'));
 			 }
 			
 			}

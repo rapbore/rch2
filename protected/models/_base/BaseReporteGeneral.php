@@ -91,6 +91,7 @@ abstract class BaseReporteGeneral extends GxActiveRecord {
 
 	public function search() {
 		$criteria = new CDbCriteria;
+                $criteria->order="id DESC";
 
 		$criteria->compare('id', $this->id);
 		$criteria->compare('fecha_ingreso', $this->fecha_ingreso, true);
