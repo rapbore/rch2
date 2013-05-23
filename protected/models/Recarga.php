@@ -45,7 +45,6 @@ class Recarga extends BaseRecarga
 			$criteria=new CDbCriteria(array(
 				'condition'=>'user_id =:user_id',
 				'order'=>'id DESC',
-				'limit'=>20,
 				'params'=> array(':user_id' => $id_user),
 					));
                         $hoy = new CDbExpression("CURDATE()");

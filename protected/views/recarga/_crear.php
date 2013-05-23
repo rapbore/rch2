@@ -1,4 +1,4 @@
-<script type="text/javaScript">
+<script>
 function confirmarDatos(){
 
  $("#numero_celular").text($("#Recarga_celular").val());
@@ -21,45 +21,38 @@ $("#Recarga_monto_0").attr("checked",true);
 
 $("#Recarga_compania_0").click(function() {
 
-  $("#Recarga_monto_0").val("500");
+  $("#Recarga_monto_0").val("1000");
   $(".compactRadioGroup label:eq(0)").text("");
-  $(".compactRadioGroup label:eq(0)").text("500");  
+  $(".compactRadioGroup label:eq(0)").text("1000");  
   
-  $("#Recarga_monto_1").val("1000");
+  $("#Recarga_monto_1").val("2000");
   $(".compactRadioGroup label:eq(1)").text("");
-  $(".compactRadioGroup label:eq(1)").text("1000");
+  $(".compactRadioGroup label:eq(1)").text("2000");
   
-  $("#Recarga_monto_2").val("1500");
+  $("#Recarga_monto_2").val("990");
   $(".compactRadioGroup label:eq(2)").text("");
-  $(".compactRadioGroup label:eq(2)").text("1500");
+  $(".compactRadioGroup label:eq(2)").text("990. Bolsa con 15 minutos a movistar y red fija");
   
   $("#Recarga_monto_3").show();
   $(".compactRadioGroup label:eq(3)").show();
   
-  $("#Recarga_monto_3").val("990");
+  $("#Recarga_monto_3").val("1690");
   $(".compactRadioGroup label:eq(3)").text("");
-  $(".compactRadioGroup label:eq(3)").text("990. Bolsa con 15 minutos a movistar y red fija");
+  $(".compactRadioGroup label:eq(3)").text("1.690. Bolsa con 30 minutos a movistar y red fija");
   
   $("#Recarga_monto_4").show();
   $(".compactRadioGroup label:eq(4)").show();
   
-  $("#Recarga_monto_4").val("1690");
+  $("#Recarga_monto_4").val("2990");
   $(".compactRadioGroup label:eq(4)").text("");
-  $(".compactRadioGroup label:eq(4)").text("1.690. Bolsa con 30 minutos a movistar y red fija");
+  $(".compactRadioGroup label:eq(4)").text("2.990. Bolsa con 60 minutos a movistar y red fija");
   
-  $("#Recarga_monto_5").show();
+   $("#Recarga_monto_5").show();
   $(".compactRadioGroup label:eq(5)").show();
   
-  $("#Recarga_monto_5").val("2990");
+  $("#Recarga_monto_5").val("3990");
   $(".compactRadioGroup label:eq(5)").text("");
-  $(".compactRadioGroup label:eq(5)").text("2.990. Bolsa con 60 minutos a movistar y red fija");
-  
-   $("#Recarga_monto_6").show();
-  $(".compactRadioGroup label:eq(6)").show();
-  
-  $("#Recarga_monto_6").val("3990");
-  $(".compactRadioGroup label:eq(6)").text("");
-  $(".compactRadioGroup label:eq(6)").text("3.990. Bolsa combó 100 minutos + 100 SMS + 100 mms");
+  $(".compactRadioGroup label:eq(5)").text("3.990. Bolsa combó 100 minutos + 100 SMS + 100 mms");
   
   $("#numero_compania").text("MOVISTAR");
        
@@ -96,6 +89,8 @@ $("#Recarga_compania_1").click(function() {
   $("#numero_compania").text("ENTEL");
      
 });
+
+/*
 $("#Recarga_compania_2").click(function() {
 
   $("#Recarga_monto_0").val("2000");
@@ -129,6 +124,8 @@ $("#Recarga_compania_2").click(function() {
   $("#numero_compania").text("CLARO");
        
 });
+
+*/
 $('#recarga-form').submit(function(){
 if($("#Recarga_celular").val().length!=8){
   alert("EL CELULAR DEBE SER DE 8 DIGITOS");
@@ -176,7 +173,7 @@ if(Yii::app()->user->hasFlash('info')){?>
 
 	<div class="row">
 	<div class="hola">
-		<?php echo $form->radioButtonList($model,'compania',array('Movistar' => 'Movistar', 'Entel' => 'Entel', 'Claro' => 'Claro'),array('labelOptions'=>array('style'=>'display:inline'))); ?>
+		<?php echo $form->radioButtonList($model,'compania',array('Movistar' => 'Movistar', 'Entel' => 'Entel', /*'Claro' => 'Claro' */),array('labelOptions'=>array('style'=>'display:inline'))); ?>
 	</div>
 		<?php echo $form->error($model,'compania'); ?>
 	</div>
@@ -184,7 +181,7 @@ if(Yii::app()->user->hasFlash('info')){?>
 	<div class="row">
 		<?php echo $form->labelEx($model,'monto',array('style'=>'font-size:25px')); ?>
 	<div class="compactRadioGroup">
-		<?php echo $form->radioButtonList($model,'monto',array('500' => '500', '1000' => '1000', '1500' => '1500', '990' => '990. Bolsa con 15 minutos a movistar y red fija', '1690' => '1.690. Bolsa con 30 minutos a movistar y red fija', '2990' => '2.990. Bolsa con 60 minutos a movistar y red fija', '3990' => '3.990. Bolsa combó 100 minutos + 100 SMS + 100 mms'),array('labelOptions'=>array('style'=>'display:inline'))); ?>
+		<?php echo $form->radioButtonList($model,'monto',array('1000' => '1000', '200' => '2000', '990' => '990. Bolsa con 15 minutos a movistar y red fija', '1690' => '1.690. Bolsa con 30 minutos a movistar y red fija', '2990' => '2.990. Bolsa con 60 minutos a movistar y red fija', '3990' => '3.990. Bolsa combó 100 minutos + 100 SMS + 100 mms'),array('labelOptions'=>array('style'=>'display:inline'))); ?>
 	</div>
 		<?php echo $form->error($model,'monto'); ?>
 	</div>

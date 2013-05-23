@@ -9,14 +9,14 @@ Yii::import('zii.widgets.grid.CGridView');
 	class EExcelView extends CGridView
 	{
 		// PHP Excel Path
-		public static $phpExcelPathAlias = 'ext.phpexcel.Classes.PHPExcel';
+		public static $phpExcelPathAlias = 'ext.PHPExcel.Classes.PHPExcel';
 	
 		//the PHPExcel object
 		public static $objPHPExcel = null;
 		public static $activeSheet = null;
 	
 		//Document properties
-		public $creator = 'Nikola Kostadinov';
+		public $creator = 'Recargaschile';
 		public $title = null;
 		public $subject = 'Subject';
 		public $description = '';
