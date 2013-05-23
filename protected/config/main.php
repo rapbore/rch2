@@ -76,7 +76,7 @@ return array(
 		'authManager'=>array(
 			'class'=>'RDbAuthManager',		
 		),
-		
+//		SERVIDOR LOCAL
 		'db'=>array(
 			'connectionString' => 'mysql:host=localhost;dbname=recargaschile',
 			'emulatePrepare' => true,
@@ -84,7 +84,14 @@ return array(
 			'password' => 'secreto',
 			'charset' => 'utf8',
 		),
-		
+//		SERVIDOR RECARGAS CHILE
+//		'db'=>array(
+//                    'connectionString' => 'mysql:host=localhost; dbname=recargas_rch2_db',
+//                    'emulatePrepare' => true,
+//                    'username' => 'recargas_rch',
+//                    'password' => 'rabo_recargaschile2012',
+//                    'charset' => 'utf8',
+//                    ),
 		'errorHandler'=>array(
 			// use 'site/error' action to display errors
             'errorAction'=>'site/error',
