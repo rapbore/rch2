@@ -76,6 +76,7 @@ abstract class BaseReporteGeneral extends GxActiveRecord {
 			'monto' => Yii::t('app', 'Monto'),
 			'fecha_atencion' => Yii::t('app', 'Fecha Atencion'),
 			'nombre_operador' => Yii::t('app', 'Operador'),
+                        'nombre_empleado' => Yii::t('app', 'Empleado'),
 			'nombre_cliente' => Yii::t('app', 'Cliente'),
 			'nombre' => Yii::t('app', 'Local'),
 			'ciudad_local' => Yii::t('app', 'Ciudad Local'),

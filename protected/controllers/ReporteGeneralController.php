@@ -49,7 +49,7 @@ class ReporteGeneralController extends GxController {
                else
                  $model = ReporteGeneral::model()->findAll();
              
-             $this->toExcel($model, array('id', 'fecha_ingreso', 'celular', 'compania', 'monto', 'fecha_atencion', 'tiempo_respuesta', 'nombre_empleado','nombre_operador', 'nombre_cliente', 'nombre', 'ciudad_local', 'estado', 'tiempo_respuesta', 'operador_id', 'atencion_id', 'cliente_id', 'local_id', 'comentario'), date('Y-m-d-H-i-s'), array(), 'Excel5');
+             $this->toExcel($model, array('id', 'fecha_ingreso', 'celular', 'compania', 'monto', 'fecha_atencion', 'tiempo_respuesta', 'nombre_empleado','nombre_operador', 'nombre_cliente', 'nombre', 'estado'), 'Reporte '.date('Y-m-d-H-i-s'), array(), 'Excel5');
 	}
         
         public function actionGeneratePdf() 
