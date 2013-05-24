@@ -23,7 +23,6 @@ class ReporteGeneral extends BaseReporteGeneral
 	public static function ListasOperador(){
 		
 			$id_user= ReporteGeneral::cargarUser();
-			
 			$criteria=new CDbCriteria(array(
 				'condition'=>'operador_id =:user_id and estado =:estado',
 				'order'=>'id DESC',
@@ -36,6 +35,6 @@ class ReporteGeneral extends BaseReporteGeneral
 			
 			return ($dataProvider);
 
-	}
+        }
         
 }

@@ -15,8 +15,21 @@ class RecargaController extends GxController {
 		));
 	}
 
+        public function validaSistema(){
+	$status_model=Estado::model()->ultimo()->find();
+	
+	if($status_model->estado=='CERRADO')
+	return true;
+	else
+	return false;
+	}
+        
+        
 	public function actionCreate(){
-		$model = new Recarga;
+		
+            if($this->validaSistema())
+                throw new CHttpException(' /  FUERA DE HORARIO - Horario de Lunes a Domingo de 09.00 hrs a 22.00 hrs.');
+                $model = new Recarga;
                 $model_cupo=null;
 
 		$this->performAjaxValidation($model, 'recarga-form');

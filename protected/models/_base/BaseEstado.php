@@ -14,6 +14,7 @@
  * @property string $fechaInicio
  * @property string $fechaTermino
  * @property string $estado
+ * @property string $mensaje
  *
  * @property User $user
  */
@@ -39,9 +40,10 @@ abstract class BaseEstado extends GxActiveRecord {
 		return array(
 			array('user_id', 'numerical', 'integerOnly'=>true),
 			array('estado', 'length', 'max'=>45),
+			array('mensaje', 'length', 'max'=>200),
 			array('fechaInicio, fechaTermino', 'safe'),
-			array('user_id, fechaInicio, fechaTermino, estado', 'default', 'setOnEmpty' => true, 'value' => null),
-			array('id, user_id, fechaInicio, fechaTermino, estado', 'safe', 'on'=>'search'),
+			array('user_id, fechaInicio, fechaTermino, estado, mensaje', 'default', 'setOnEmpty' => true, 'value' => null),
+			array('id, user_id, fechaInicio, fechaTermino, estado, mensaje', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -63,6 +65,7 @@ abstract class BaseEstado extends GxActiveRecord {
 			'fechaInicio' => Yii::t('app', 'Fecha Inicio'),
 			'fechaTermino' => Yii::t('app', 'Fecha Termino'),
 			'estado' => Yii::t('app', 'Estado'),
+			'mensaje' => Yii::t('app', 'Mensaje'),
 			'user' => null,
 		);
 	}
@@ -75,6 +78,7 @@ abstract class BaseEstado extends GxActiveRecord {
 		$criteria->compare('fechaInicio', $this->fechaInicio, true);
 		$criteria->compare('fechaTermino', $this->fechaTermino, true);
 		$criteria->compare('estado', $this->estado, true);
+		$criteria->compare('mensaje', $this->mensaje, true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria' => $criteria,
