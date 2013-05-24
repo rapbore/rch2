@@ -76,6 +76,7 @@ abstract class BaseReporteGeneral extends GxActiveRecord {
 			'monto' => Yii::t('app', 'Monto'),
 			'fecha_atencion' => Yii::t('app', 'Fecha Atencion'),
 			'nombre_operador' => Yii::t('app', 'Operador'),
+                        'nombre_empleado' => Yii::t('app', 'Empleado'),
 			'nombre_cliente' => Yii::t('app', 'Cliente'),
 			'nombre' => Yii::t('app', 'Local'),
 			'ciudad_local' => Yii::t('app', 'Ciudad Local'),
@@ -91,6 +92,7 @@ abstract class BaseReporteGeneral extends GxActiveRecord {
 
 	public function search() {
 		$criteria = new CDbCriteria;
+                $criteria->order="id DESC";
 
 		$criteria->compare('id', $this->id);
 		$criteria->compare('fecha_ingreso', $this->fecha_ingreso, true);
@@ -112,7 +114,7 @@ abstract class BaseReporteGeneral extends GxActiveRecord {
 
 		return new CActiveDataProvider($this, array(
 			'criteria' => $criteria,
-                    'pagination'=>array('pageSize'=>100),
+                    'pagination'=>array('pageSize'=>300),
 		));
 	}
 }

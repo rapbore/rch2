@@ -181,7 +181,7 @@ if(Yii::app()->user->hasFlash('info')){?>
 	<div class="row">
 		<?php echo $form->labelEx($model,'monto',array('style'=>'font-size:25px')); ?>
 	<div class="compactRadioGroup">
-		<?php echo $form->radioButtonList($model,'monto',array('1000' => '1000', '200' => '2000', '990' => '990. Bolsa con 15 minutos a movistar y red fija', '1690' => '1.690. Bolsa con 30 minutos a movistar y red fija', '2990' => '2.990. Bolsa con 60 minutos a movistar y red fija', '3990' => '3.990. Bolsa combó 100 minutos + 100 SMS + 100 mms'),array('labelOptions'=>array('style'=>'display:inline'))); ?>
+		<?php echo $form->radioButtonList($model,'monto',array('1000' => '1000', '2000' => '2000', '990' => '990. Bolsa con 15 minutos a movistar y red fija', '1690' => '1.690. Bolsa con 30 minutos a movistar y red fija', '2990' => '2.990. Bolsa con 60 minutos a movistar y red fija', '3990' => '3.990. Bolsa combó 100 minutos + 100 SMS + 100 mms'),array('labelOptions'=>array('style'=>'display:inline'))); ?>
 	</div>
 		<?php echo $form->error($model,'monto'); ?>
 	</div>

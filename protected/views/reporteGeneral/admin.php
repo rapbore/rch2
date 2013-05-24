@@ -47,12 +47,12 @@ $this->widget('bootstrap.widgets.TbMenu', array(
 )); ?>
 </div><!-- search-form -->
 
-<?php $this->widget('bootstrap.widgets.TbGridView', array(
+<?php $this->widget('bootstrap.widgets.TbExtendedGridView', array(
 	'id' => 'reporte-general-grid',
 	'dataProvider' => $model->search(),
 	'filter' => $model,
         'type'=>'striped bordered condensed',
-        'template'=>"{summary}{items}{pager}",   
+        'template'=>"{extendedSummary}{items}{pager}",   
 	'columns' => array(
 		'id',
 		'fecha_ingreso',
@@ -62,9 +62,18 @@ $this->widget('bootstrap.widgets.TbMenu', array(
                 'estado',
 		'fecha_atencion',
                 'tiempo_respuesta',
+                'nombre_empleado',
 		'nombre_operador',
 		'nombre_cliente',
-                'nombre',		
-		'comentario',                
+                'nombre',		             
 	),
+    'extendedSummary' => array(
+            'title' => 'TOTAL RECARGAS',
+            'columns' => array(
+                'monto' => array('label'=>'TOTAL ', 'class'=>'TbSumOperation')
+            )
+        ),
+        'extendedSummaryOptions' => array(
+            'class' => 'well pull-right',
+        ),
 )); ?>

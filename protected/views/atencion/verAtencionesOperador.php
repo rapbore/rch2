@@ -12,25 +12,27 @@ $this->breadcrumbs=array(
 $this->widget('bootstrap.widgets.TbExtendedGridView', array(
     'id' => 'atenciones_listas-grid',
     'enableSorting'=>false,
+    'filter' => $dataProvider,
     'type'=>'striped bordered condensed',
-    'dataProvider' => $dataProvider,
+    'dataProvider' => $dataProvider->ListasOperador(),
     'template' => "{items}\n{extendedSummary}",
     'columns'=>array(
                 'id',
                 array(
-                    'name'=>'Fecha',
-                    'value'=>'$data->fecha_ingreso',
+                    'name'=>'fecha_atencion',
+                    'header'=>'Fecha',
+                    'value'=>'$data->fecha_atencion',
                 ),
                 'celular',
 		'monto',
-        'tiempo_respuesta',
+                'tiempo_respuesta',
 		array(
-                    'name'=>'Compania',
+                    'name'=>'compania',
                     'value'=>'$data->compania',
                 ),
 		
 		'comentario',
-		'estado',
+		//'estado',
 		
 	),
     'extendedSummary' => array(

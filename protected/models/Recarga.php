@@ -58,29 +58,30 @@ class Recarga extends BaseRecarga
 	public function cargarPendientesOperador(){
 		
 			$id_user=$this->cargarUser();
+                        
 			
 			$criteria=new CDbCriteria(array(
-				'condition'=>'estado =:estado or estado =:estado2',
-				'order'=>'id DESC',
+				'condition'=>'t.estado =:estado or (t.estado =:estado2 AND atencion.user_id = :user)',
+				'order'=>'t.id DESC',
 				'limit'=>500,
-				'params'=> array(':estado'=>'PENDIENTE', ':estado2'=>'PROCESANDO'),
+                                'with'=>array('atencion'),
+				'params'=> array(':estado'=>'PENDIENTE', ':estado2'=>'PROCESANDO', ':user'=>$id_user),
 					));
+                        
                         $hoy = new CDbExpression("CURDATE()");
-			$criteria->addCondition('fecha >= '.$hoy);
+			$criteria->addCondition('t.fecha >= '.$hoy);
 			$model=Recarga::model()->findAll($criteria);
 			$dataProvider=new CActiveDataProvider('Recarga',array('criteria'=>$criteria,'pagination'=>array('pageSize'=>100)));		
 			return ($dataProvider);
 
 	}
 	
-	public function estaAtendida(){	
-	$flag = Atencion::model()->exists('recarga_id =:recarga_id',array(':recarga_id'=>$this->id));
-	return $flag;		
+	public function estaAtendida(){		
+            return Atencion::model()->exists('recarga_id =:recarga_id',array(':recarga_id'=>$this->id));        
 	}
 	
 	public function esMia($user_id){	
-	$flag = Atencion::model()->exists('recarga_id =:recarga_id AND user_id = :user_id',array(':recarga_id'=>$this->id,':user_id'=>$user_id));
-	return $flag;		
+            return Atencion::model()->exists('recarga_id =:recarga_id AND user_id = :user_id',array(':recarga_id'=>$this->id,':user_id'=>$user_id));		
 	}
 
 	public function comprobarNoPrepago($celular){	
@@ -91,7 +92,7 @@ class Recarga extends BaseRecarga
 	public function cargarCupo($celular){	
 	//$flag = Noprepago::model()->exists('numero =:numero and compania =:compania',array(':numero'=>$celular, ':compania'=>$compania));
 	$model_cupo = Cupo::model()->findByAttributes(array('numero'=>$celular));
-        if(!$model_cupo)
+        if(!$model_cupo && empty($model_cupo))
             return new Cupo;
 	//$model_cupo = Cupo::model()->findByAttributes( array('numero'=>$numero), 'numero=:numero', array(':numero'=>$celular));
 	return $model_cupo;
