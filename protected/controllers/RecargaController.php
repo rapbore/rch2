@@ -18,14 +18,17 @@ class RecargaController extends GxController {
 	public function actionCreate(){
 		$model = new Recarga;
                 $model_cupo=null;
-
+                $session=Yii::app()->getSession();
+                if($session['_id']==NULL && $session['_local']==NULL){
+                    $this->redirect(array('user/elegir'));
+                }
 		$this->performAjaxValidation($model, 'recarga-form');
 		
 		
 		if (isset($_POST['Recarga'])) {
 			
 			$model->setAttributes($_POST['Recarga']);			
-			$session=Yii::app()->getSession();
+			
 			$model->user_id=$session['_id'];
 			$model->local_id=$session['_local'];
                         

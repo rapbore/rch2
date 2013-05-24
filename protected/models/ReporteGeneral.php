@@ -20,10 +20,9 @@ class ReporteGeneral extends BaseReporteGeneral
 		
 	}
 	
-	public static function ListasOperador(){
+	public  function ListasOperador(){
 		
-			$id_user= ReporteGeneral::cargarUser();
-			
+			$id_user= ReporteGeneral::cargarUser();			
 			$criteria=new CDbCriteria(array(
 				'condition'=>'operador_id =:user_id and estado =:estado',
 				'order'=>'id DESC',
@@ -31,7 +30,10 @@ class ReporteGeneral extends BaseReporteGeneral
 				'params'=> array(':user_id' => $id_user, ':estado'=>'LISTA'),
 					));
                         $hoy = new CDbExpression("CURDATE()");
-			$criteria->addCondition('fecha_ingreso >= '.$hoy);
+                        $criteria->addCondition('fecha_ingreso >= '.$hoy);
+                        
+                        $criteria->compare('compania',$this->compania, true);
+			
 			$dataProvider=new CActiveDataProvider('ReporteGeneral',array('criteria'=>$criteria,'pagination'=>false));	
 			
 			return ($dataProvider);

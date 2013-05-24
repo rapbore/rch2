@@ -113,7 +113,7 @@ abstract class BaseReporteGeneral extends GxActiveRecord {
 
 		return new CActiveDataProvider($this, array(
 			'criteria' => $criteria,
-                    'pagination'=>array('pageSize'=>100),
+                    'pagination'=>array('pageSize'=>300),
 		));
 	}
 }

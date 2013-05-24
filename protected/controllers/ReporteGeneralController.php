@@ -13,6 +13,7 @@ class ReporteGeneralController extends GxController {
 	public function actionAdmin() {
                 $session = new CHttpSession;
                 $session->open();
+                
 		$model = new ReporteGeneral('search');
 		$model->unsetAttributes();
 
@@ -48,7 +49,7 @@ class ReporteGeneralController extends GxController {
                else
                  $model = ReporteGeneral::model()->findAll();
              
-             $this->toExcel($model, array('id', 'fecha_ingreso', 'celular', 'compania', 'monto', 'fecha_atencion', 'nombre_operador', 'nombre_cliente', 'nombre', 'ciudad_local', 'estado', 'tiempo_respuesta', 'operador_id', 'atencion_id', 'cliente_id', 'local_id', 'comentario'), date('Y-m-d-H-i-s'), array(), 'Excel5');
+             $this->toExcel($model, array('id', 'fecha_ingreso', 'celular', 'compania', 'monto', 'fecha_atencion', 'tiempo_respuesta', 'nombre_empleado','nombre_operador', 'nombre_cliente', 'nombre', 'ciudad_local', 'estado', 'tiempo_respuesta', 'operador_id', 'atencion_id', 'cliente_id', 'local_id', 'comentario'), date('Y-m-d-H-i-s'), array(), 'Excel5');
 	}
         
         public function actionGeneratePdf() 
@@ -63,6 +64,6 @@ class ReporteGeneralController extends GxController {
                else
                  $model = ReporteGeneral::model()->findAll();
              
-             $this->toExcel($model, array('id', 'fecha_ingreso', 'celular', 'compania', 'monto', 'fecha_atencion', 'nombre_operador', 'nombre_cliente', 'nombre', 'ciudad_local', 'estado', 'tiempo_respuesta', 'operador_id', 'atencion_id', 'cliente_id', 'local_id', 'comentario'), date('Y-m-d-H-i-s'), array(), 'PDF');
+             $this->toExcel($model, array('id', 'fecha_ingreso', 'celular', 'compania', 'monto', 'fecha_atencion', 'nombre_operador', 'nombre_cliente', 'nombre', 'ciudad_local', 'estado', 'tiempo_respuesta', 'nombre_operador', 'nombre_cliente', 'nombre_empleado', '', ''), date('Y-m-d-H-i-s'), array(), 'PDF');
 	}
 }

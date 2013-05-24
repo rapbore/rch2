@@ -79,7 +79,9 @@ class AtencionController extends GxController {
 			$model_cupo->cupo=($model_cupo->cupo)-1;
 			$model_cupo->save(false);
 		}
-		else{			
+		else{	
+                        $model_cupo = null;
+                        $model_cupo = new Cupo;
 			$model_cupo->numero=$celular;
 			$model_cupo->cupo=1;
 			$model_cupo->estado='DISPONIBLE';
@@ -122,19 +124,24 @@ class AtencionController extends GxController {
 
 	public function actionVerListasOperador()
 	{
-		
-		$model = new Atencion('search');
-		$dataProvider=  ReporteGeneral::ListasOperador();
-			
-		$this->render('verAtencionesOperador',array('dataProvider'=>$dataProvider,'model'=>$model));
+		$model_reporte= new ReporteGeneral("search");
+                $model_reporte->unsetAttributes();
+                if (isset($_GET['ReporteGeneral']))
+			$model_reporte->setAttributes($_GET['ReporteGeneral']);
+                
+		$this->render('verAtencionesOperador',array('dataProvider'=>$model_reporte));
 		
 	}
 	
 	public function actionCreaAtencion($id){
-
-			$model_recarga = $this->loadModel($id, 'Recarga');			
+                
+                        $model_recarga = null;
+                        $model_atencion = null;
+			$model_recarga = $this->loadModel($id, 'Recarga');
+                        
 			$session=Yii::app()->getSession();
 			$id_user=$session['_id'];
+                        
 			
 			/****
 			VALIDACION SI ESTA ATENDIDA
@@ -155,16 +162,21 @@ class AtencionController extends GxController {
 			CREACION DE ATENCION
 			******/
 			try{
+                                $model_atencion = null;
 				$model_atencion = new Atencion;
 				$model_atencion->user_id=$id_user;
 				$model_atencion->recarga_id=$id;
 				$model_atencion->estado="PROCESANDO";
-                                $model_atencion->save(false);
                                 
-				$model_recarga->estado="PROCESANDO";			
-				$model_recarga->save(false);
-				
-				$this->redirect(array('atencion/update', 'id' =>$model_atencion->id));
+				if($model_atencion->save()){
+                                    $model_recarga = null;
+                                    $model_recarga = $this->loadModel($id, 'Recarga');
+                                    $model_recarga->estado="PROCESANDO";
+                                    $model_recarga->update(array('estado'));
+                                    $this->redirect(array('atencion/update', 'id' =>$model_atencion->id));
+                                }else{
+                                    $this->redirect(array('recarga/verPendientesOperador'));
+                                }
 				
 			 }catch(Exception $e){
 				$this->redirect(array('recarga/verPendientesOperador'));
