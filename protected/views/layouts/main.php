@@ -104,7 +104,7 @@
 						array('label'=>'Recargar', 'url'=>array('/recarga/create')),
 						array('label'=>'En Proceso', 'url'=>array('/recarga/verPendientesEmpleado')),
 						array('label'=>'Recargas Listas', 'url'=>array('/recarga/verListasEmpleado')),
-						array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
+                                                array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
 						array('label'=>'Logout ('.$session['_username'].')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
 		                
 		            ),
@@ -184,6 +184,7 @@
 						//array('label'=>'Contact', 'url'=>array('/site/contact')),
 						array('label'=>'Locales', 'url'=>array('/local/verLocalesCliente')),
 						//array('label'=>'Atenciones', 'url'=>array('/atencion/admin')),
+                                                //array('label'=>'Historico Recargas', 'url'=>array('/recarga/verHistorico', 'id'=>$_local)),
 						array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
 						array('label'=>'Logout ('.$session['_username'].')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
 					),
