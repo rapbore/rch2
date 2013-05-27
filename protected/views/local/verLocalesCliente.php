@@ -21,12 +21,20 @@ $this->breadcrumbs=array(
 		array(
 			'class' => 'bootstrap.widgets.TbButtonColumn',
 			'htmlOptions'=>array('style'=>'width: 50px'),
-			'template'=>'{view}',
+			'template'=>'{view} {verHistorico}',
 			'buttons'=>array(
 				'view' => array(
 					'label'=>'Ver local',
 					'url'=>'Yii::app()->createUrl("local/verLocalCliente", array("id"=>$data->id))',
 					'icon'=>'icon-zoom-in',
+					'options' => array(
+						
+					),
+				),
+                                'verHistorico' => array(
+					'label'=>'Ver Historico Recargas',
+					'url'=>'Yii::app()->createUrl("recarga/verHistorico", array("id"=>$data->id))',
+					'icon'=>'list-alt',
 					'options' => array(
 						
 					),
