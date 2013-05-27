@@ -6,8 +6,7 @@ $this->breadcrumbs = array(
 );
 
 $this->menu = array(
-		array('label'=>Yii::t('app', 'List') . ' ' . $model->label(2), 'url'=>array('index')),
-		array('label'=>Yii::t('app', 'Create') . ' ' . $model->label(), 'url'=>array('crear')),
+		array('label'=>Yii::t('app', 'Cambiar Estado'), 'url'=>array('crear')),
 	);
 
 Yii::app()->clientScript->registerScript('search', "
@@ -22,6 +21,11 @@ $('.search-form form').submit(function(){
 	return false;
 });
 ");
+?>
+<?php
+    foreach(Yii::app()->user->getFlashes() as $key => $message) {
+        echo '<div class="flash-' . $key . '"><b>' . $message . "</b></div>\n";
+    }
 ?>
 
 <h1><?php echo Yii::t('app', 'Manage') . ' ' . GxHtml::encode($model->label(2)); ?></h1>

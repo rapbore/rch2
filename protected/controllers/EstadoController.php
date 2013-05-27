@@ -100,6 +100,10 @@ class EstadoController extends GxController {
 	}
 
 	public function actionAdmin() {
+            
+                $status_model=Estado::model()->ultimo()->find();
+		Yii::app()->user->setFlash('notice', "SISTEMA :  ".$status_model->estado." ");
+                
 		$model = new Estado('search');
 		$model->unsetAttributes();
 
