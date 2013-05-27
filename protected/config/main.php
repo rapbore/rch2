@@ -48,7 +48,7 @@ return array(
 			'autoCreateSessionTable'=> false,
 			'connectionID' => 'db',
 			'sessionTableName' => 'yiisession',
-			'timeout' => 800,
+			'timeout' => 7200,
 			),
 		'bootstrap'=>array(
 				'class'=>'ext.bootstrap.components.Bootstrap', 
@@ -98,7 +98,7 @@ return array(
         ),
 		
 		'request' => array(
-        'class' => 'application.components.HttpRequest',
+                        'class' => 'application.components.HttpRequest',
 			'enableCsrfValidation' => true,
 			'enableCookieValidation'=>true,
 			'noCsrfValidationRoutes'=>array('user/ingresar','atencion/creaatencion'),

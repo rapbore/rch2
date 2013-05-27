@@ -70,8 +70,19 @@ $this->widget('bootstrap.widgets.TbMenu', array(
     'extendedSummary' => array(
             'title' => 'TOTAL RECARGAS',
             'columns' => array(
-                'monto' => array('label'=>'TOTAL ', 'class'=>'TbSumOperation')
-            )
+                'compania' => array(
+                    'label'=>'Compañia',
+                    'types' => array(
+                            'Entel'=>array('label'=>'Entel'),
+                            'Movistar'=>array('label'=>'Movistar'),
+                    ),
+                    'class'=>'TbCountOfTypeOperation'
+	        ),
+                'monto' => array(
+                    'label'=>'Total ',
+                    'class'=>'TbSumOperation',
+                    ),                
+            ),
         ),
         'extendedSummaryOptions' => array(
             'class' => 'well pull-right',
