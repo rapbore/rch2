@@ -45,16 +45,16 @@
 		<?php echo $form->label($model, 'nombre_cliente'); ?>
 		<?php echo $form->textField($model, 'nombre_cliente', array('maxlength' => 45)); ?>
 	</div>
+	<div class="row">
+		<?php echo $form->label($model, 'nombre_empleado'); ?>
+		<?php echo $form->textField($model, 'nombre_empleado', array('maxlength' => 45)); ?>
+	</div>
                 
 	<div class="row">
 		<?php echo $form->label($model, 'nombre'); ?>
 		<?php echo $form->textField($model, 'nombre', array('maxlength' => 45)); ?>
 	</div>
                 
-	<div class="row">
-		<?php echo $form->label($model, 'ciudad_local'); ?>
-		<?php echo $form->textField($model, 'ciudad_local', array('maxlength' => 45)); ?>
-	</div>
                 
 	<div class="row">
 		<?php echo $form->label($model, 'estado'); ?>
@@ -66,30 +66,7 @@
 		<?php echo $form->textField($model, 'tiempo_respuesta'); ?>
 	</div>
                 
-	<div class="row">
-		<?php echo $form->label($model, 'operador_id'); ?>
-		<?php echo $form->textField($model, 'operador_id'); ?>
-	</div>
                 
-	<div class="row">
-		<?php echo $form->label($model, 'atencion_id'); ?>
-		<?php echo $form->textField($model, 'atencion_id'); ?>
-	</div>
-                
-	<div class="row">
-		<?php echo $form->label($model, 'cliente_id'); ?>
-		<?php echo $form->textField($model, 'cliente_id'); ?>
-	</div>
-                
-	<div class="row">
-		<?php echo $form->label($model, 'local_id'); ?>
-		<?php echo $form->textField($model, 'local_id'); ?>
-	</div>
-                
-	<div class="row">
-		<?php echo $form->label($model, 'comentario'); ?>
-		<?php echo $form->textField($model, 'comentario', array('maxlength' => 200)); ?>
-	</div>
                 
 	<div class="row buttons">
 		<?php $this->widget('bootstrap.widgets.TbButton', array('buttonType'=>'submit', 'label'=>Yii::t('app', 'Search'), 'icon'=>'search'));?>
@@ -110,4 +87,5 @@
        });
      });
 </script>
+
 
