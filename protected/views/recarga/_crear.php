@@ -47,12 +47,33 @@ $("#Recarga_compania_0").click(function() {
   $(".compactRadioGroup label:eq(4)").text("");
   $(".compactRadioGroup label:eq(4)").text("2.990. Bolsa con 60 minutos a movistar y red fija");
   
-   $("#Recarga_monto_5").show();
+  $("#Recarga_monto_5").show();
   $(".compactRadioGroup label:eq(5)").show();
   
   $("#Recarga_monto_5").val("3990");
   $(".compactRadioGroup label:eq(5)").text("");
   $(".compactRadioGroup label:eq(5)").text("3.990. Bolsa combó 100 minutos + 100 SMS + 100 mms");
+  
+  $("#Recarga_monto_6").show();
+  $(".compactRadioGroup label:eq(6)").show();
+  
+  $("#Recarga_monto_6").val("1990");
+  $(".compactRadioGroup label:eq(6)").text("");
+  $(".compactRadioGroup label:eq(6)").text("1.990. Bolsa con 20 minutos TODO destino");
+  
+  $("#Recarga_monto_7").show();
+  $(".compactRadioGroup label:eq(7)").show();
+  
+  $("#Recarga_monto_7").val("3790");
+  $(".compactRadioGroup label:eq(7)").text("");
+  $(".compactRadioGroup label:eq(7)").text("3.790. Bolsa con 40 minutos TODO destino");
+  
+  $("#Recarga_monto_8").show();
+  $(".compactRadioGroup label:eq(8)").show();
+  
+  $("#Recarga_monto_8").val("5.290");
+  $(".compactRadioGroup label:eq(8)").text("");
+  $(".compactRadioGroup label:eq(8)").text("5.290. Bolsa con 60 minutos TODO destino");
   
   $("#numero_compania").text("MOVISTAR");
        
@@ -85,6 +106,14 @@ $("#Recarga_compania_1").click(function() {
   $("#Recarga_monto_6").hide();
   $(".compactRadioGroup label:eq(6)").hide();
   $(".compactRadioGroup label:eq(6)").text("3500");
+  
+  $("#Recarga_monto_7").hide();
+  $(".compactRadioGroup label:eq(7)").hide();
+  $(".compactRadioGroup label:eq(7)").text("3500");
+  
+  $("#Recarga_monto_8").hide();
+  $(".compactRadioGroup label:eq(8)").hide();
+  $(".compactRadioGroup label:eq(8)").text("3500");
   
   $("#numero_compania").text("ENTEL");
      
@@ -181,7 +210,7 @@ if(Yii::app()->user->hasFlash('info')){?>
 	<div class="row">
 		<?php echo $form->labelEx($model,'monto',array('style'=>'font-size:25px')); ?>
 	<div class="compactRadioGroup">
-		<?php echo $form->radioButtonList($model,'monto',array('1000' => '1000', '2000' => '2000', '990' => '990. Bolsa con 15 minutos a movistar y red fija', '1690' => '1.690. Bolsa con 30 minutos a movistar y red fija', '2990' => '2.990. Bolsa con 60 minutos a movistar y red fija', '3990' => '3.990. Bolsa combó 100 minutos + 100 SMS + 100 mms'),array('labelOptions'=>array('style'=>'display:inline'))); ?>
+		<?php echo $form->radioButtonList($model,'monto',array('1000' => '1000', '2000' => '2000', '990' => '990. Bolsa con 15 minutos a movistar y red fija', '1690' => '1.690. Bolsa con 30 minutos a movistar y red fija', '2990' => '2.990. Bolsa con 60 minutos a movistar y red fija', '3990' => '3.990. Bolsa combó 100 minutos + 100 SMS + 100 mms', '1990' => '1.990. Bolsa con 20 minutos TODO destino', '3790' => '3.790. Bolsa con 40 minutos TODO destino', '5290' => '5.290. Bolsa con 60 minutos TODO destino'),array('labelOptions'=>array('style'=>'display:inline'))); ?>
 	</div>
 		<?php echo $form->error($model,'monto'); ?>
 	</div>

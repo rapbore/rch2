@@ -5,8 +5,11 @@ $this->breadcrumbs = array(
 	GxHtml::valueEx($model),
 );
 
-?>
 
+$this->menu = array(
+		array('label'=>Yii::t('app', 'Ver Historicos Local'), 'url'=>array('recarga/verHistorico', 'id'=>$model->id)),
+	);
+?>
 <h1><?php echo Yii::t('app', 'View') . ' ' . GxHtml::encode($model->label()) . ' ' . GxHtml::encode(GxHtml::valueEx($model)); ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(

@@ -51,14 +51,21 @@ class RecargaController extends GxController {
 			$noprepago=$model->comprobarNoPrepago($model->celular);
 			
                         if($model->monto=='990'){
-                            $model->comentario="Bolsa con 15 minutos a movistar y red fija";
+                            $model->comentario="990. Bolsa con 15 minutos a movistar y red fija";
                         } elseif($model->monto=='1690'){
-                            $model->comentario="Bolsa con 30 minutos a movistar y red fija";
+                            $model->comentario="1690. Bolsa con 30 minutos a movistar y red fija";
                         } elseif($model->monto=='2990'){
-                            $model->comentario="Bolsa con 60 minutos a movistar y red fija";
+                            $model->comentario="2990. Bolsa con 60 minutos a movistar y red fija";
                         } elseif($model->monto=='3990'){
-                            $model->comentario="Bolsa combó 100 minutos + 100 SMS + 100 mms";
+                            $model->comentario="3990. Bolsa combó 100 minutos + 100 SMS + 100 mms";
+                        } elseif($model->monto=='1990'){
+                            $model->comentario="1990. Bolsa con 20 minutos TODO destino";
+                        } elseif($model->monto=='3790'){
+                            $model->comentario="3790. Bolsa con 40 minutos TODO destino";
+                        } elseif($model->monto=='5290'){
+                            $model->comentario="5290. Bolsa con 60 minutos TODO destino";
                         }
+                        
                         
                         
 			if(!$noprepago){
@@ -88,6 +95,18 @@ class RecargaController extends GxController {
 
 		$this->render('_crear', array( 'model' => $model, 'cupo'=>$model_cupo));
 	}
+        
+        public function actionVerHistorico($id){
+                //$this->layout='column2';
+               	$model = $this->loadModel($id, 'Local');
+                $model=$model->recargas(array('scopes'=>array('historicas')));
+	
+		$this->render('verHistoricas', array(
+			'model' => $model,
+                        'id_local' => $id,
+		));
+	
+        }
 	
 		
 	public function actionUpdate($id) {
@@ -126,7 +145,7 @@ class RecargaController extends GxController {
 	}
 
 	public function actionAdmin() {
-            $this->layout='column1';
+                $this->layout='column1';
 		$model = new Recarga('search');
 		$model->unsetAttributes();
 
