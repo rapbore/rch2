@@ -32,7 +32,8 @@ class RecargaController extends GxController {
                 $model = new Recarga;
                 $model_cupo=null;
                 $session=Yii::app()->getSession();
-                if($session['_id']==NULL && $session['_local']==NULL){
+                
+                if($session['_local']==NULL){
                     $this->redirect(array('user/elegir'));
                 }
 		$this->performAjaxValidation($model, 'recarga-form');
