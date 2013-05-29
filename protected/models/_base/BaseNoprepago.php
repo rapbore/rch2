@@ -71,9 +71,15 @@ abstract class BaseNoprepago extends GxActiveRecord {
 		$criteria->compare('atencion_id', $this->atencion_id);
 		$criteria->compare('numero', $this->numero, true);
 		$criteria->compare('compania', $this->compania, true);
-
+                $criteria->order="id desc";
 		return new CActiveDataProvider($this, array(
 			'criteria' => $criteria,
+                        'pagination' => array('pageSize' => 10),
 		));
 	}
+        
+       
+        
+        
+        
 }
