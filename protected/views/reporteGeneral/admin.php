@@ -55,7 +55,7 @@ $this->widget('bootstrap.widgets.TbMenu', array(
         'template'=>"{extendedSummary}{items}{pager}",   
 	'columns' => array(
 		'id',
-		'fecha_ingreso',
+		#'fecha_ingreso',
 		'celular',
 		'compania',
 		'monto',
