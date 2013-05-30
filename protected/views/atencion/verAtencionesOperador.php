@@ -15,7 +15,7 @@ $this->widget('bootstrap.widgets.TbExtendedGridView', array(
     'filter' => $dataProvider,
     'type'=>'striped bordered condensed',
     'dataProvider' => $dataProvider->ListasOperador(),
-    'template' => "{items}\n{extendedSummary}",
+    'template' => "{extendedSummary}{items}",
     'columns'=>array(
                 'id',
                 array(
@@ -38,12 +38,20 @@ $this->widget('bootstrap.widgets.TbExtendedGridView', array(
     'extendedSummary' => array(
         'title' => 'TOTAL',
         'columns' => array(
+            'compania' => array(
+                    'label'=>'Compañia',
+                    'types' => array(
+                            'Entel'=>array('label'=>'Entel'),
+                            'Movistar'=>array('label'=>'Movistar'),
+                    ),
+                    'class'=>'TbCountOfTypeOperation'
+	        ),
             'monto' => array('label'=>'TOTAL ', 'class'=>'TbSumOperation')
         )
     ),
     'extendedSummaryOptions' => array(
         'class' => 'well pull-right',
-        'style' => 'width:150px'
+        //'style' => 'width:150px'
     ),
 ));
 ?>

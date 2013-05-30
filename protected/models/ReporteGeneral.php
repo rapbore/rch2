@@ -27,14 +27,20 @@ class ReporteGeneral extends BaseReporteGeneral
 				'condition'=>'operador_id =:user_id and estado =:estado',
 				'order'=>'id DESC',
 				'limit'=>500,
-				'params'=> array(':user_id' => $id_user, ':estado'=>'LISTA'),
+				'params'=> array(
+                                        ':user_id' => $id_user,
+                                        ':estado'=>'LISTA'),
 					));
-                        $hoy = new CDbExpression("CURDATE()");
-                        $criteria->addCondition('fecha_ingreso >= '.$hoy);
-                        
+//                        $hoy = new CDbExpression("CURDATE()");
+//                        $criteria->addCondition('fecha_ingreso >= '.$hoy);
+                        $criteria->compare('fecha_atencion',$this->fecha_atencion, true);
+                        $criteria->compare('id',$this->id, true);
                         $criteria->compare('compania',$this->compania, true);
+                        $criteria->compare('celular',$this->celular, true);
+                        $criteria->compare('monto',$this->monto, true);
+                        $criteria->compare('tiempo_respuesta',$this->tiempo_respuesta, true);
 			
-			$dataProvider=new CActiveDataProvider('ReporteGeneral',array('criteria'=>$criteria,'pagination'=>false));	
+			$dataProvider=new CActiveDataProvider('ReporteGeneral',array('criteria'=>$criteria,'pagination'=>array('pageSize'=>300)));	
 			
 			return ($dataProvider);
 
