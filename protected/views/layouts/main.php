@@ -87,6 +87,7 @@
 						array('label'=>'Atenciones', 'url'=>array('/atencion/admin')),
                                                 array('label'=>'Productos', 'url'=>array('/producto/verTodos')),
                                                 array('label'=>'Pedidos', 'url'=>array('/pedido/verTodos')),
+                                                array('label'=>'Publicidades', 'url'=>array('/publicidad/verTodos')),
 						array('label'=>'Estado', 'url'=>array('/estado/admin')),
 						array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
 						array('label'=>'Logout ['.$session['_username'].']', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)

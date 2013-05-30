@@ -23,6 +23,7 @@
  * @property Estado[] $estados
  * @property Local[] $locals
  * @property Pedido[] $pedidos
+ * @property Publicidad[] $publicidads
  * @property Recarga[] $recargas
  * @property User $user
  * @property User[] $users
@@ -59,8 +60,9 @@ abstract class BaseUser extends GxActiveRecord {
 		return array(
 			'atencions' => array(self::HAS_MANY, 'Atencion', 'user_id'),
 			'estados' => array(self::HAS_MANY, 'Estado', 'user_id'),
-			'locales' => array(self::HAS_MANY, 'Local', 'user_id'),
+			'locals' => array(self::HAS_MANY, 'Local', 'user_id'),
 			'pedidos' => array(self::HAS_MANY, 'Pedido', 'user_id'),
+			'publicidads' => array(self::HAS_MANY, 'Publicidad', 'user_id'),
 			'recargas' => array(self::HAS_MANY, 'Recarga', 'user_id'),
 			'user' => array(self::BELONGS_TO, 'User', 'user_id'),
 			'users' => array(self::HAS_MANY, 'User', 'user_id'),
@@ -87,6 +89,7 @@ abstract class BaseUser extends GxActiveRecord {
 			'estados' => null,
 			'locals' => null,
 			'pedidos' => null,
+			'publicidads' => null,
 			'recargas' => null,
 			'user' => null,
 			'users' => null,
