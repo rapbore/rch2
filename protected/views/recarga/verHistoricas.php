@@ -19,6 +19,12 @@ $('.search-form form').submit(function(){
 });
 ");
 ?>
+<pre>
+  <?php
+  $publicidad = Publicidad::model()->random()->find();
+  echo $publicidad->mensaje;
+  ?>
+</pre>
 
 <h1><?php echo Yii::t('app', 'Historial de Recargas'); ?></h1>
 

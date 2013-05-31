@@ -29,72 +29,73 @@ class RecargaController extends GxController {
 		
             if($this->validaSistema())
                 throw new CHttpException(' /  FUERA DE HORARIO - Horario de Lunes a Domingo de 09.00 hrs a 22.00 hrs.');
-                $model = new Recarga;
-                $model_cupo=null;
-                $session=Yii::app()->getSession();
                 
-                if($session['_local']==NULL){
-                    $this->redirect(array('user/elegir'));
-                }
-		$this->performAjaxValidation($model, 'recarga-form');
-		
-		
-		if (isset($_POST['Recarga'])) {
-			
-			$model->setAttributes($_POST['Recarga']);			
-			
-			$model->user_id=$session['_id'];
-			$model->local_id=$session['_local'];
-                        
-			
-			/*COMPROBAR RESTRICCIONES*/
-			
-			$noprepago=$model->comprobarNoPrepago($model->celular);
-			
-                        if($model->monto=='990'){
-                            $model->comentario="990. Bolsa con 15 minutos a movistar y red fija";
-                        } elseif($model->monto=='1690'){
-                            $model->comentario="1690. Bolsa con 30 minutos a movistar y red fija";
-                        } elseif($model->monto=='2990'){
-                            $model->comentario="2990. Bolsa con 60 minutos a movistar y red fija";
-                        } elseif($model->monto=='3990'){
-                            $model->comentario="3990. Bolsa combó 100 minutos + 100 SMS + 100 mms";
-                        } elseif($model->monto=='1990'){
-                            $model->comentario="1990. Bolsa con 20 minutos TODO destino";
-                        } elseif($model->monto=='3790'){
-                            $model->comentario="3790. Bolsa con 40 minutos TODO destino";
-                        } elseif($model->monto=='5290'){
-                            $model->comentario="5290. Bolsa con 60 minutos TODO destino";
-                        }
-                        
-                        
-                        
-			if(!$noprepago){
-				
-				/* Aumenta el cupo al realizar una recarga, migrado a AtencionController Action update
-				 * if($model->compania=='Entel'){
-					$this->actionAumentarCupo($model->celular);				
-				}*/
-				$model->setAttributes($_POST['Recarga']);			
-				$model_cupo=$model->cargarCupo($model->celular);
-			
-				if($model_cupo->cupo > 0 OR !$model_cupo){
-							
-					if ($model->save()) {
-						if (Yii::app()->getRequest()->getIsAjaxRequest())
-							Yii::app()->end();
-						else
-							$this->redirect(array('verPendientesEmpleado', 'id' => $model->id));
-					}
-							
-				} else
-					Yii::app()->user->setFlash('error', 'El celular <strong>'.$model->celular.' </strong>no puede ser recargado.');
-			
-			} else
-				Yii::app()->user->setFlash('info', 'El celular <strong>'.$model->celular.' </strong>no puede ser recargado.');
-		}
+            $model = new Recarga;
+            $model_cupo=null;
+            $session=Yii::app()->getSession();
 
-		$this->render('_crear', array( 'model' => $model, 'cupo'=>$model_cupo));
+            if($session['_local']==NULL){
+                $this->redirect(array('user/elegir'));
+            }
+            $this->performAjaxValidation($model, 'recarga-form');
+
+
+            if (isset($_POST['Recarga'])) {
+
+                    $model->setAttributes($_POST['Recarga']);			
+
+                    $model->user_id=$session['_id'];
+                    $model->local_id=$session['_local'];
+
+
+                    /*COMPROBAR RESTRICCIONES*/
+
+                    $noprepago=$model->comprobarNoPrepago($model->celular);
+
+                    if($model->monto=='990'){
+                        $model->comentario="990. Bolsa con 15 minutos a movistar y red fija";
+                    } elseif($model->monto=='1690'){
+                        $model->comentario="1690. Bolsa con 30 minutos a movistar y red fija";
+                    } elseif($model->monto=='2990'){
+                        $model->comentario="2990. Bolsa con 60 minutos a movistar y red fija";
+                    } elseif($model->monto=='3990'){
+                        $model->comentario="3990. Bolsa combó 100 minutos + 100 SMS + 100 mms";
+                    } elseif($model->monto=='1990'){
+                        $model->comentario="1990. Bolsa con 20 minutos TODO destino";
+                    } elseif($model->monto=='3790'){
+                        $model->comentario="3790. Bolsa con 40 minutos TODO destino";
+                    } elseif($model->monto=='5290'){
+                        $model->comentario="5290. Bolsa con 60 minutos TODO destino";
+                    }
+
+
+
+                    if(!$noprepago){
+
+                            /* Aumenta el cupo al realizar una recarga, migrado a AtencionController Action update
+                             * if($model->compania=='Entel'){
+                                    $this->actionAumentarCupo($model->celular);				
+                            }*/
+                            $model->setAttributes($_POST['Recarga']);			
+                            $model_cupo=$model->cargarCupo($model->celular);
+
+                            if($model_cupo->cupo > 0 OR !$model_cupo){
+
+                                    if ($model->save()) {
+                                            if (Yii::app()->getRequest()->getIsAjaxRequest())
+                                                    Yii::app()->end();
+                                            else
+                                                    $this->redirect(array('verPendientesEmpleado', 'id' => $model->id));
+                                    }
+
+                            } else
+                                    Yii::app()->user->setFlash('error', 'El celular <strong>'.$model->celular.' </strong>no puede ser recargado.');
+
+                    } else
+                            Yii::app()->user->setFlash('info', 'El celular <strong>'.$model->celular.' </strong>no puede ser recargado.');
+            }
+
+            $this->render('_crear', array( 'model' => $model, 'cupo'=>$model_cupo));
 	}
         
         public function actionVerHistorico($id){
