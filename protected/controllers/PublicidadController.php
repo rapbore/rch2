@@ -47,7 +47,9 @@ class PublicidadController extends GxController {
         
         public function actionCrear() {
 		$model = new Publicidad;
-
+                $session=Yii::app()->getSession();
+                $id_user=$session['_id'];
+                $model->user_id=$id_user;
 		$this->performAjaxValidation($model, 'publicidad-form');
 
 		if (isset($_POST['Publicidad'])) {
