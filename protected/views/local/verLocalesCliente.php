@@ -5,6 +5,13 @@ $this->breadcrumbs=array(
 );
 
 ?>
+<pre>
+  <?php
+  $publicidad = Publicidad::model()->random()->find();
+  echo $publicidad->mensaje;
+  ?>
+</pre>
+
 <h1>Locales</h1>
 
 <?php $this->widget('bootstrap.widgets.TbGridView', array(

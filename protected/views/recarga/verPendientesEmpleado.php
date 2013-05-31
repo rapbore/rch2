@@ -11,6 +11,13 @@ $this->breadcrumbs=array(
 );
 
 ?>
+<pre>
+  <?php
+  $publicidad = Publicidad::model()->random()->find();
+  echo $publicidad->mensaje;
+  ?>
+</pre>
+
 <h1>Recargas</h1>
 
 <?php $this->widget('bootstrap.widgets.TbExtendedGridView', array(

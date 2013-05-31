@@ -288,6 +288,8 @@ class RecargaController extends GxController {
 	{
 		$model = new Recarga('search');
 		$model->unsetAttributes();
+                
+                
 		$dataProvider=$model->cargarPendientesEmpleado();
                 $this->layout='column1';
 			
