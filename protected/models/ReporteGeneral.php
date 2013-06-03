@@ -40,7 +40,7 @@ class ReporteGeneral extends BaseReporteGeneral
                         $criteria->compare('monto',$this->monto, true);
                         $criteria->compare('tiempo_respuesta',$this->tiempo_respuesta, true);
 			
-			$dataProvider=new CActiveDataProvider('ReporteGeneral',array('criteria'=>$criteria,'pagination'=>array('pageSize'=>300)));	
+			$dataProvider=new CActiveDataProvider('ReporteGeneral',array('criteria'=>$criteria,'pagination'=>array('pageSize'=>100)));	
 			
 			return ($dataProvider);
 

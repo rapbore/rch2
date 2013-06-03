@@ -15,7 +15,7 @@ $this->widget('bootstrap.widgets.TbExtendedGridView', array(
     'filter' => $dataProvider,
     'type'=>'striped bordered condensed',
     'dataProvider' => $dataProvider->ListasOperador(),
-    'template' => "{extendedSummary}{items}",
+    'template' => "{extendedSummary}{items}{pager}",
     'columns'=>array(
                 'id',
                 array(
