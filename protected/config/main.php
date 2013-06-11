@@ -48,7 +48,7 @@ return array(
 			'autoCreateSessionTable'=> false,
 			'connectionID' => 'db',
 			'sessionTableName' => 'yiisession',
-			'timeout' => 7200,
+			'timeout' => 32400,
 			),
 		'bootstrap'=>array(
 				'class'=>'ext.bootstrap.components.Bootstrap', 

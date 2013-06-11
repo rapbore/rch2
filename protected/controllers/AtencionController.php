@@ -36,6 +36,7 @@ class AtencionController extends GxController {
 
 	public function actionUpdate($id) {
 		$model = $this->loadModel($id, 'Atencion');
+                $model->comentario="";
                 $model->estado="LISTA";
 
 		$this->performAjaxValidation($model, 'atencion-form');
@@ -134,13 +135,15 @@ class AtencionController extends GxController {
 	}
 	
 	public function actionCreaAtencion($id){
-                
+          
                         $model_recarga = null;
                         $model_atencion = null;
 			$model_recarga = $this->loadModel($id, 'Recarga');
                         
 			$session=Yii::app()->getSession();
 			$id_user=$session['_id'];
+                        if($id_user==NULL)
+                                $id_user=Yii::app()->user->getId();
                         
 			
 			/****
@@ -158,6 +161,8 @@ class AtencionController extends GxController {
 					
 			}else{
 			
+                        if($id_user==NULL)
+                                $this->redirect(array('site/login'));
 			/*****
 			CREACION DE ATENCION
 			******/
@@ -167,6 +172,7 @@ class AtencionController extends GxController {
 				$model_atencion->user_id=$id_user;
 				$model_atencion->recarga_id=$id;
 				$model_atencion->estado="PROCESANDO";
+                                $model_atencion->comentario="Operador: ".Yii::app()->user->getId();
                                 
 				if($model_atencion->save()){
                                     $model_recarga = null;
