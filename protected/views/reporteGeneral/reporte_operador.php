@@ -34,7 +34,7 @@ $this->widget('bootstrap.widgets.TbMenu', array(
 	'items'=>array(
 		array('label'=>Yii::t('app', 'List'), 'icon'=>'icon-th-list', 'url'=>Yii::app()->controller->createUrl('admin'),'active'=>true, 'linkOptions'=>array()),
 		array('label'=>Yii::t('app', 'Busqueda'), 'icon'=>'icon-search', 'url'=>'#', 'linkOptions'=>array('class'=>'search-button')),
-		array('label'=>Yii::t('app', 'Exportar a Excel'), 'icon'=>'icon-download', 'url'=>Yii::app()->controller->createUrl('GenerateExcel'), 'linkOptions'=>array('target'=>'_blank'), 'visible'=>true),
+		//array('label'=>Yii::t('app', 'Exportar a Excel'), 'icon'=>'icon-download', 'url'=>Yii::app()->controller->createUrl('GenerateExcel'), 'linkOptions'=>array('target'=>'_blank'), 'visible'=>true),
 	),
 ));
 ?>
@@ -44,11 +44,24 @@ $this->widget('bootstrap.widgets.TbMenu', array(
 	'model' => $model,
 )); ?>
 </div><!-- search-form -->
+<?php
+    $this->widget('bootstrap.widgets.TbDatePicker', array(
+        'model' => new ReporteGeneral,
+        'attribute' => 'fecha_atencion',
+        'options'=>array(
+            'showAnim'=>'fold',
+            'dateFormat'=>'yy-mm-dd',
+
+        ),
+    ));
+?>
 
 <?php $this->widget('bootstrap.widgets.TbGroupGridView', array(
 	'id' => 'reporte-general-grid',
 	'dataProvider' => $model->reporteResumen(),
 	'filter' => $model,
+        'afterAjaxUpdate' => 'reinstallDatePicker',
+        'filterSelector'=>'{filter},#ReporteGeneral_fecha_atencion',
         'type'=>'bordered condensed',
         'template'=>"{items}{pager}",   
 	'columns' => array(
@@ -79,3 +92,10 @@ $this->widget('bootstrap.widgets.TbMenu', array(
 //            'class' => 'well pull-right',
 //        ),
 )); ?>
+<?php
+Yii::app()->clientScript->registerScript('re-install-date-picker', "
+    function reinstallDatePicker(id, data) {
+        $('#ReporteGeneral_fecha_atencion').datepicker({ dateFormat: 'yy-mm-dd' });
+    }
+");
+?>

@@ -52,13 +52,15 @@ class ReporteGeneral extends BaseReporteGeneral
             $criteria=new CDbCriteria(array(
                                 'select'=>'t.compania,sum(t.monto) AS total,t.nombre_operador,t.operador_id',
                                 'condition'=>'t.estado=:estado',
-                                //'condition'=>'t.estado=:estado AND fecha_ingreso=:fecha',
                                 'group'=>'t.compania,t.operador_id',
-                                'order'=>'t.operador_id',
+                                'order'=>'t.operador_id, t.compania',
 				'params'=> array(
                                         //':fecha' => $fecha,
                                         ':estado'=>'LISTA'),
 					));
+            $criteria->compare('compania',$this->compania, true);
+            $criteria->compare('nombre_operador',$this->nombre_operador, true);
+            $criteria->compare('fecha_atencion',$this->fecha_atencion, true);
             $dataProvider=new CActiveDataProvider('ReporteGeneral',array('criteria'=>$criteria,'pagination'=>array('pageSize'=>500)));	
 			
 			return ($dataProvider);
