@@ -41,7 +41,7 @@ $('.search-form form').submit(function(){
 	'dataProvider' => new CArrayDataProvider($model, array('pagination'=>array('pageSize'=>50))),
 	'type'=>'striped bordered condensed',
 	//'filter' => $model,
-	'template'=>"{extendedSummary}\n{items} {pager}",
+	'template'=>"{extendedSummary}\n{items}{pager}",
 	'columns' => array(
 		array(
 				'name'=>'user_id',
@@ -54,6 +54,7 @@ $('.search-form form').submit(function(){
 				'filter'=>GxHtml::listDataEx(Local::model()->findAllAttributes(null, true)),
 				),
 		'celular',
+                'fecha',
 		'compania',
 		'monto',
 		'comentario',

@@ -80,13 +80,13 @@ class RecargaController extends GxController {
                             $model_cupo=$model->cargarCupo($model->celular);
 
                             if($model_cupo->cupo > 0 OR !$model_cupo){
-
-                                    if ($model->save()) {
+                                $model->estado="PENDIENTE";
+                                if ($model->save()) {
                                             if (Yii::app()->getRequest()->getIsAjaxRequest())
                                                     Yii::app()->end();
                                             else
                                                     $this->redirect(array('verPendientesEmpleado', 'id' => $model->id));
-                                    }
+                                }
 
                             } else
                                     Yii::app()->user->setFlash('error', 'El celular <strong>'.$model->celular.' </strong>no puede ser recargado.');
