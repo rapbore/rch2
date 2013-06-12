@@ -25,9 +25,9 @@ $("#Recarga_compania_0").click(function() {
   $(".compactRadioGroup label:eq(0)").text("");
   $(".compactRadioGroup label:eq(0)").text("1000");  
   
-  $("#Recarga_monto_1").val("2000");
+  $("#Recarga_monto_1").val("1950");
   $(".compactRadioGroup label:eq(1)").text("");
-  $(".compactRadioGroup label:eq(1)").text("2000");
+  $(".compactRadioGroup label:eq(1)").text("1950");
   
   $("#Recarga_monto_2").val("990");
   $(".compactRadioGroup label:eq(2)").text("");
@@ -210,7 +210,7 @@ if(Yii::app()->user->hasFlash('info')){?>
 	<div class="row">
 		<?php echo $form->labelEx($model,'monto',array('style'=>'font-size:25px')); ?>
 	<div class="compactRadioGroup">
-		<?php echo $form->radioButtonList($model,'monto',array('1000' => '1000', '2000' => '2000', '990' => '990. Bolsa con 15 minutos a movistar y red fija', '1690' => '1.690. Bolsa con 30 minutos a movistar y red fija', '2990' => '2.990. Bolsa con 60 minutos a movistar y red fija', '3990' => '3.990. Bolsa combó 100 minutos + 100 SMS + 100 mms', '1990' => '1.990. Bolsa con 20 minutos TODO destino', '3790' => '3.790. Bolsa con 40 minutos TODO destino', '5290' => '5.290. Bolsa con 60 minutos TODO destino'),array('labelOptions'=>array('style'=>'display:inline'))); ?>
+		<?php echo $form->radioButtonList($model,'monto',array('1000' => '1000', '1950' => '1950', '990' => '990. Bolsa con 15 minutos a movistar y red fija', '1690' => '1.690. Bolsa con 30 minutos a movistar y red fija', '2990' => '2.990. Bolsa con 60 minutos a movistar y red fija', '3990' => '3.990. Bolsa combó 100 minutos + 100 SMS + 100 mms', '1990' => '1.990. Bolsa con 20 minutos TODO destino', '3790' => '3.790. Bolsa con 40 minutos TODO destino', '5290' => '5.290. Bolsa con 60 minutos TODO destino'),array('labelOptions'=>array('style'=>'display:inline'))); ?>
 	</div>
 		<?php echo $form->error($model,'monto'); ?>
 	</div>
