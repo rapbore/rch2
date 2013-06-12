@@ -4,6 +4,7 @@ Yii::import('application.models._base.BaseReporteGeneral');
 
 class ReporteGeneral extends BaseReporteGeneral
 {
+    public $total;
 	public static function model($className=__CLASS__) {
 		return parent::model($className);
 
@@ -44,6 +45,23 @@ class ReporteGeneral extends BaseReporteGeneral
 			
 			return ($dataProvider);
 
+        }
+        
+        public function reporteResumen(){
+            
+            $criteria=new CDbCriteria(array(
+                                'select'=>'t.compania,sum(t.monto) AS total,t.nombre_operador,t.operador_id',
+                                'condition'=>'t.estado=:estado',
+                                //'condition'=>'t.estado=:estado AND fecha_ingreso=:fecha',
+                                'group'=>'t.compania,t.operador_id',
+                                'order'=>'t.operador_id',
+				'params'=> array(
+                                        //':fecha' => $fecha,
+                                        ':estado'=>'LISTA'),
+					));
+            $dataProvider=new CActiveDataProvider('ReporteGeneral',array('criteria'=>$criteria,'pagination'=>array('pageSize'=>500)));	
+			
+			return ($dataProvider);
         }
         
 }
