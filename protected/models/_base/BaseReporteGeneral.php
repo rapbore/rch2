@@ -53,7 +53,7 @@ abstract class BaseReporteGeneral extends GxActiveRecord {
 			array('comentario', 'length', 'max'=>200),
 			array('fecha_ingreso, fecha_atencion, tiempo_respuesta', 'safe'),
 			array('id, fecha_ingreso, celular, compania, monto, fecha_atencion, nombre_operador, nombre_cliente, nombre, ciudad_local, estado, tiempo_respuesta, operador_id, atencion_id, cliente_id, local_id, comentario', 'default', 'setOnEmpty' => true, 'value' => null),
-			array('id, fecha_ingreso, celular, compania, monto, fecha_atencion, nombre_operador, nombre_cliente, nombre, ciudad_local, estado, tiempo_respuesta, operador_id, atencion_id, cliente_id, local_id, comentario', 'safe', 'on'=>'search'),
+			array('id, fecha_ingreso, celular, compania, monto, fecha_atencion, nombre_operador, nombre_cliente, nombre, ciudad_local, estado, tiempo_respuesta, operador_id, atencion_id, cliente_id, local_id, comentario, nombre_empleado', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -90,31 +90,5 @@ abstract class BaseReporteGeneral extends GxActiveRecord {
 		);
 	}
 
-	public function search() {
-		$criteria = new CDbCriteria;
-                $criteria->order="id DESC";
-
-		$criteria->compare('id', $this->id);
-		$criteria->compare('fecha_ingreso', $this->fecha_ingreso, true);
-		$criteria->compare('celular', $this->celular, true);
-		$criteria->compare('compania', $this->compania, true);
-		$criteria->compare('monto', $this->monto, true);
-		$criteria->compare('fecha_atencion', $this->fecha_atencion, true);
-		$criteria->compare('nombre_operador', $this->nombre_operador, true);
-		$criteria->compare('nombre_cliente', $this->nombre_cliente, true);
-		$criteria->compare('nombre', $this->nombre, true);
-		$criteria->compare('ciudad_local', $this->ciudad_local, true);
-		$criteria->compare('estado', $this->estado, true);
-		$criteria->compare('tiempo_respuesta', $this->tiempo_respuesta, true);
-		$criteria->compare('operador_id', $this->operador_id);
-		$criteria->compare('atencion_id', $this->atencion_id);
-		$criteria->compare('cliente_id', $this->cliente_id);
-		$criteria->compare('local_id', $this->local_id);
-		$criteria->compare('comentario', $this->comentario, true);
-
-		return new CActiveDataProvider($this, array(
-			'criteria' => $criteria,
-                    'pagination'=>array('pageSize'=>300),
-		));
-	}
+	
 }
