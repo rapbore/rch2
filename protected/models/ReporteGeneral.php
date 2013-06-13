@@ -73,7 +73,7 @@ class ReporteGeneral extends BaseReporteGeneral
                                 'select'=>'t.compania, sum(t.monto) AS total, Count(t.compania) AS cantidad, t.nombre_cliente, t.nombre_empleado',
                                 'condition'=>'t.estado=:estado',
                                 'group'=>'t.compania, t.empleado_id,t.cliente_id',
-                                'order'=>'t.nombre_cliente, t.compania',
+                                'order'=>'t.nombre_cliente, t.nombre_empleado, t.compania',
 				'params'=> array(
                                         //':order' => $order,
                                         ':estado'=>'LISTA'),
