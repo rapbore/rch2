@@ -40,22 +40,11 @@ $this->widget('bootstrap.widgets.TbMenu', array(
 ?>
 
 <div class="search-form">
-<?php $this->renderPartial('_search', array(
+<?php $this->renderPartial('_reporteoperador', array(
 	'model' => $model,
 )); ?>
 </div><!-- search-form -->
-<?php
-    $this->widget('bootstrap.widgets.TbDatePicker', array(
-        'model' => new ReporteGeneral,
-        'attribute' => 'fecha_atencion',
-        'options'=>array(
-            'showAnim'=>'fold',
-            'dateFormat'=>'yy-mm-dd',
-
-        ),
-    ));
-?>
-
+ 
 <?php $this->widget('bootstrap.widgets.TbGroupGridView', array(
 	'id' => 'reporte-general-grid',
 	'dataProvider' => $model->reporteResumen(),
@@ -68,6 +57,7 @@ $this->widget('bootstrap.widgets.TbMenu', array(
                 
                 'nombre_operador',
                 'compania',
+                'cantidad',
 		'total',
 	),
     'mergeColumns' => array('nombre_operador'),
