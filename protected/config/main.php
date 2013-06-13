@@ -78,7 +78,7 @@ return array(
 		),
 //		SERVIDOR LOCAL
 		'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=recargaschile',
+			'connectionString' => 'mysql:host=192.168.0.118;dbname=recargaschile',
 			'emulatePrepare' => true,
 			'username' => 'rchuser',
 			'password' => 'secreto',

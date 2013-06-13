@@ -49,11 +49,11 @@ abstract class BaseReporteGeneral extends GxActiveRecord {
 	public function rules() {
 		return array(
 			array('id, operador_id, atencion_id, cliente_id, local_id', 'numerical', 'integerOnly'=>true),
-			array('celular, compania, monto, nombre_operador, nombre_cliente, nombre, ciudad_local, estado', 'length', 'max'=>45),
+			array('celular, compania, monto, nombre_operador, nombre_cliente, nombre_empleado, ciudad_local, estado', 'length', 'max'=>45),
 			array('comentario', 'length', 'max'=>200),
 			array('fecha_ingreso, fecha_atencion, tiempo_respuesta', 'safe'),
-			array('id, fecha_ingreso, celular, compania, monto, fecha_atencion, nombre_operador, nombre_cliente, nombre, ciudad_local, estado, tiempo_respuesta, operador_id, atencion_id, cliente_id, local_id, comentario', 'default', 'setOnEmpty' => true, 'value' => null),
-			array('id, fecha_ingreso, celular, compania, monto, fecha_atencion, nombre_operador, nombre_cliente, nombre, ciudad_local, estado, tiempo_respuesta, operador_id, atencion_id, cliente_id, local_id, comentario', 'safe', 'on'=>'search'),
+			array('id, fecha_ingreso, celular, compania, monto, fecha_atencion, nombre_operador, nombre_cliente, nombre_empleado, ciudad_local, estado, tiempo_respuesta, operador_id, atencion_id, cliente_id, local_id, comentario', 'default', 'setOnEmpty' => true, 'value' => null),
+			array('id, fecha_ingreso, celular, compania, monto, fecha_atencion, nombre_operador, nombre_cliente, nombre_empleado, ciudad_local, estado, tiempo_respuesta, operador_id, atencion_id, cliente_id, local_id, comentario', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -102,7 +102,7 @@ abstract class BaseReporteGeneral extends GxActiveRecord {
 		$criteria->compare('fecha_atencion', $this->fecha_atencion, true);
 		$criteria->compare('nombre_operador', $this->nombre_operador, true);
 		$criteria->compare('nombre_cliente', $this->nombre_cliente, true);
-		$criteria->compare('nombre', $this->nombre, true);
+		$criteria->compare('nombre_empleado', $this->nombre_empleado, true);
 		$criteria->compare('ciudad_local', $this->ciudad_local, true);
 		$criteria->compare('estado', $this->estado, true);
 		$criteria->compare('tiempo_respuesta', $this->tiempo_respuesta, true);

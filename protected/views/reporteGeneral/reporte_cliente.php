@@ -23,7 +23,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1><?php echo 'Reporte Operador'; ?></h1>
+<h1><?php echo 'Reporte Cliente' ;?></h1>
 
 <p>
 <?php echo Yii::t('app', 'Busqueda Avanzada'); ?></p>
@@ -40,25 +40,26 @@ $this->widget('bootstrap.widgets.TbMenu', array(
 ?>
 
 <div class="search-form">
-<?php $this->renderPartial('_reporteoperador', array(
+<?php $this->renderPartial('_reportecliente', array(
 	'model' => $model,
 )); ?>
 </div><!-- search-form -->
  
 <?php $this->widget('bootstrap.widgets.TbGroupGridView', array(
 	'id' => 'reporte-general-grid',
-	'dataProvider' => $model->reporteResumen(),
+	'dataProvider' => $model->reporteCliente(),
 	'filter' => $model,
         'type'=>'bordered condensed',
         'template'=>"{items}{pager}",   
 	'columns' => array(
                 
-                'nombre_operador',
+                'nombre_cliente',
+                'nombre_empleado',
                 'compania',
                 'cantidad',
 		'total',
 	),
-    'mergeColumns' => array('nombre_operador'),
+    'mergeColumns' => array('nombre_cliente', 'nombre_empleado'),
 //    'extendedSummary' => array(
 //            'title' => 'TOTAL RECARGAS',
 //            'columns' => array(
