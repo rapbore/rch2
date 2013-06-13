@@ -23,7 +23,7 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1><?php echo GxHtml::encode($model->label(1)); ?></h1>
+<h1><?php echo 'Reporte Recarga'; ?></h1>
 
 <p>
 <?php echo Yii::t('app', 'Busqueda Avanzada'); ?></p>
@@ -32,7 +32,7 @@ $('.search-form form').submit(function(){
 $this->widget('bootstrap.widgets.TbMenu', array(
 	'type'=>'pills',
 	'items'=>array(
-		array('label'=>Yii::t('app', 'List'), 'icon'=>'icon-th-list', 'url'=>Yii::app()->controller->createUrl('admin'),'active'=>true, 'linkOptions'=>array()),
+		//array('label'=>Yii::t('app', 'List'), 'icon'=>'icon-th-list', 'url'=>Yii::app()->controller->createUrl('admin'),'active'=>true, 'linkOptions'=>array()),
 		array('label'=>Yii::t('app', 'Busqueda'), 'icon'=>'icon-search', 'url'=>'#', 'linkOptions'=>array('class'=>'search-button')),
 		array('label'=>Yii::t('app', 'Exportar a Excel'), 'icon'=>'icon-download', 'url'=>Yii::app()->controller->createUrl('GenerateExcel'), 'linkOptions'=>array('target'=>'_blank'), 'visible'=>true),
 	),
