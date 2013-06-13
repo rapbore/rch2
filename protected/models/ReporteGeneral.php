@@ -66,6 +66,34 @@ class ReporteGeneral extends BaseReporteGeneral
 			
 			return ($dataProvider);
         }
+        public function search() {
+		$criteria = new CDbCriteria;
+                $criteria->order="id DESC";
+
+		$criteria->compare('id', $this->id);
+		$criteria->compare('fecha_ingreso', $this->fecha_ingreso, true);
+		$criteria->compare('celular', $this->celular, true);
+		$criteria->compare('compania', $this->compania, true);
+		$criteria->compare('monto', $this->monto, true);
+		$criteria->compare('fecha_atencion', $this->fecha_atencion, true);
+		$criteria->compare('nombre_operador', $this->nombre_operador, true);
+                $criteria->compare('nombre_empleado', $this->nombre_empleado, true);
+		$criteria->compare('nombre_cliente', $this->nombre_cliente, true);
+		$criteria->compare('nombre', $this->nombre, true);
+		$criteria->compare('ciudad_local', $this->ciudad_local, true);
+		$criteria->compare('estado', $this->estado, true);
+		$criteria->compare('tiempo_respuesta', $this->tiempo_respuesta, true);
+		$criteria->compare('operador_id', $this->operador_id);
+		$criteria->compare('atencion_id', $this->atencion_id);
+		$criteria->compare('cliente_id', $this->cliente_id);
+		$criteria->compare('local_id', $this->local_id);
+		$criteria->compare('comentario', $this->comentario, true);
+
+		return new CActiveDataProvider($this, array(
+			'criteria' => $criteria,
+                    'pagination'=>array('pageSize'=>300),
+		));
+	}
         
         public function reporteCliente(){
             

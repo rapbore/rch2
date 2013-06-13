@@ -80,10 +80,3 @@ $this->widget('bootstrap.widgets.TbMenu', array(
 //            'class' => 'well pull-right',
 //        ),
 )); ?>
-<?php
-Yii::app()->clientScript->registerScript('re-install-date-picker', "
-    function reinstallDatePicker(id, data) {
-        $('#ReporteGeneral_fecha_atencion').datepicker({ dateFormat: 'yy-mm-dd' });
-    }
-");
-?>
