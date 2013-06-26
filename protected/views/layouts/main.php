@@ -85,6 +85,7 @@
                                                 array('label' => 'Reportes', 'url' => '#', 'items' => array(
                                                     array('label' => 'Recarga', 'url' => array('/reporteGeneral/admin')),
                                                     array('label' => 'Cliente', 'url' => array('/reporteGeneral/reporteCliente')),
+                                                    array('label' => 'Cliente Simple', 'url' => array('/reporteGeneral/reporteClienteSimple')),
                                                     array('label' => 'Operador', 'url' => array('/reporteGeneral/reporteOperador')),
                                                 )),
 						array('label'=>'Cupo', 'url'=>array('/cupo/admin')),

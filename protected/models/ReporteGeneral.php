@@ -115,4 +115,24 @@ class ReporteGeneral extends BaseReporteGeneral
 			return ($dataProvider);
         }
         
+        public function reporteClienteSimple(){
+            
+            $criteria=new CDbCriteria(array(
+                                'select'=>'t.compania, sum(t.monto) AS total, t.nombre_cliente, t.nombre_empleado',
+                                'condition'=>'t.estado=:estado',
+                                'group'=>'t.empleado_id,t.cliente_id',
+                                'order'=>'t.nombre_cliente, t.nombre_empleado, t.compania',
+				'params'=> array(
+                                        //':order' => $order,
+                                        ':estado'=>'LISTA'),
+					));
+            $criteria->compare('compania',$this->compania, true);
+            $criteria->compare('nombre_cliente',$this->nombre_cliente, true);
+            $criteria->compare('nombre_empleado',$this->nombre_empleado, true);
+            $criteria->compare('fecha_atencion',$this->fecha_atencion, true);
+            $dataProvider=new CActiveDataProvider('ReporteGeneral',array('criteria'=>$criteria,'pagination'=>array('pageSize'=>500)));	
+			
+			return ($dataProvider);
+        }
+        
 }

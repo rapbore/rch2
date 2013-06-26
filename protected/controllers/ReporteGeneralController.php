@@ -63,6 +63,23 @@ class ReporteGeneralController extends GxController {
 			'model' => $model,
 		));
 	}
+        public function actionReporteClienteSimple() {
+                $session = new CHttpSession;
+                $session->open();
+                
+		$model = new ReporteGeneral('search');
+		$model->unsetAttributes();
+
+		if (isset($_GET['ReporteGeneral'])){
+			$model->setAttributes($_GET['ReporteGeneral']);
+                }
+
+                $session['ReporteGeneral_model_search'] = $model;
+                
+		$this->render('reporte_cliente_simple', array(
+			'model' => $model,
+		));
+	}
         
         public function behaviors()
         {
