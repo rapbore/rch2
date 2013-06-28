@@ -152,10 +152,10 @@ class AtencionController extends GxController {
 			if($model_recarga->estaAtendida()){
 			
 				$model_atencion = $this->loadModel($model_recarga->atencion->id, 'Atencion');			
-				if ($model_recarga->esMia($id_user)){
+				if($model_recarga->esMia($id_user)){
 					$this->redirect(array('atencion/update', 'id' =>$model_recarga->atencion->id));
 				}else{
-					$this->redirect(array('recarga/verPendientesEmpleado'));
+					$this->redirect(array('recarga/verPendientesOperador'));
 					
 					}
 					
