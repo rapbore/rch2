@@ -79,5 +79,11 @@ class CupoController extends GxController {
 			'model' => $model,
 		));
 	}
+        
+        public function actionEliminarTodos(){
+            $model = new Cupo;
+            Cupo::model()->deleteAll();
+            $this->redirect(array('admin'));
+        }
 
 }
