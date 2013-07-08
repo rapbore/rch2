@@ -71,7 +71,7 @@ $("#Recarga_compania_0").click(function() {
   $("#Recarga_monto_8").show();
   $(".compactRadioGroup label:eq(8)").show();
   
-  $("#Recarga_monto_8").val("5.290");
+  $("#Recarga_monto_8").val("5290");
   $(".compactRadioGroup label:eq(8)").text("");
   $(".compactRadioGroup label:eq(8)").text("5.290. Bolsa con 60 minutos TODO destino");
   
