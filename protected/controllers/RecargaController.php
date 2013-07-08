@@ -24,6 +24,21 @@ class RecargaController extends GxController {
 	return false;
 	}
         
+        public function validaCompania($compania=NULL){
+            $model_usuario = $this->loadModel(Yii::app()->user->getId(), 'User');
+
+            if($compania=="Entel"){
+                if($model_usuario->entel=="NO"){
+                   return false;
+                }
+            }else{
+               if($model_usuario->movistar=="NO"){
+                   return false;
+                } 
+            }
+            return true;
+	}
+        
         
 	public function actionCreate(){
 		
@@ -38,8 +53,7 @@ class RecargaController extends GxController {
             $user_id=$session['_id'];
             
             if($user_id==NULL)
-                $user_id=Yii::app()->user->getId();
-            
+                $user_id=Yii::app()->user->getId();            
             
             if($session['_local']==NULL){
                 $this->redirect(array('user/elegir'));
@@ -81,14 +95,10 @@ class RecargaController extends GxController {
                         $model->comentario="5290. Bolsa con 60 minutos TODO destino";
                     }
 
-
-
+                    /*VALIDACION DE SI EL USUARIO PUEDE INGRESAR RECARGAS SEGUN COMPANIA*/
+                    if($this->validaCompania($model->compania)){
+                    /*VALIDACION DE SI EL NUMERO ES PREPAGO*/
                     if(!$noprepago){
-
-                            /* Aumenta el cupo al realizar una recarga, migrado a AtencionController Action update
-                             * if($model->compania=='Entel'){
-                                    $this->actionAumentarCupo($model->celular);				
-                            }*/
                             $model->setAttributes($_POST['Recarga']);			
                             $model_cupo=$model->cargarCupo($model->celular);
 
@@ -106,6 +116,8 @@ class RecargaController extends GxController {
 
                     } else
                             Yii::app()->user->setFlash('info', 'El celular <strong>'.$model->celular.' </strong>no puede ser recargado.');
+                } else
+                        Yii::app()->user->setFlash('error', 'Usted no puede ingresar recargas <strong>'.$model->compania.' </strong>.');
             }
 
             $this->render('_crear', array( 'model' => $model, 'cupo'=>$model_cupo));
