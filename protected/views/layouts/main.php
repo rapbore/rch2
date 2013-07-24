@@ -94,6 +94,11 @@
                                                 array('label'=>'Productos', 'url'=>array('/producto/verTodos')),
                                                 array('label'=>'Pedidos', 'url'=>array('/pedido/verTodos')),
                                                 array('label'=>'Publicidades', 'url'=>array('/publicidad/verTodos')),
+                                                array('label' => 'Mensaje', 'url' => '#', 'items' => array(
+                                                    array('label' => 'Bandeja de Entrada', 'url' => array('/mensaje/admin')),
+                                                    array('label' => 'Cliente', 'url' => array('/reporteGeneral/reporteCliente')),
+                                                    array('label' => 'Operador', 'url' => array('/reporteGeneral/reporteOperador')),
+                                                )),
 						array('label'=>'Estado', 'url'=>array('/estado/admin')),
 						array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
 						array('label'=>'Logout ['.$session['_username'].']', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)

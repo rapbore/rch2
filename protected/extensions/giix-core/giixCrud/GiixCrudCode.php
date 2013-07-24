@@ -90,8 +90,10 @@ class GiixCrudCode extends CrudCode {
 			'model' => \$model,
 			'attribute' => '{$column->name}',
 			'value' => \$model->{$column->name},
+                        'language' => Yii::app()->language,    
 			'options' => array(
 				'showButtonPanel' => true,
+                                'changeMonth' => true,
 				'changeYear' => true,
 				'dateFormat' => 'yy-mm-dd',
 				),
@@ -146,6 +148,21 @@ class GiixCrudCode extends CrudCode {
 		}
 	}
 
+ 	public function generateActiveFieldCalendar($name) {
+			return "\$form->widget('zii.widgets.jui.CJuiDatePicker', array(
+			'model' => \$model,
+			'attribute' => '{$name}',
+			'value' => \$model->{$name},
+                        'language' => Yii::app()->language,    
+			'options' => array(
+				'showButtonPanel' => true,
+                                'changeMonth' => true,
+				'changeYear' => true,
+				'dateFormat' => 'yy-mm-dd',
+				),
+			));\n";
+	}            
+        
 	public function generateInputField($modelClass, $column) {
 		return 'echo ' . parent::generateInputField($modelClass, $column);
 	}
