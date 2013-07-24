@@ -35,4 +35,30 @@ class Mensaje extends BaseMensaje
 			'criteria' => $criteria,
                         ));
 	}
-}
+        
+        public function scopes() {
+            return array(
+                    'anteriores'=>array(
+                            'order'=>'id ASC',
+                            'limit'=>10,
+                    ),
+                            
+            );
+    	}
+        
+        public static function misMensajes($id){
+		
+		$criteria=new CDbCriteria(array(
+			'condition'=>'user_emisor =:user_id or user_receptor =:user_id',
+			'order'=>'id DESC',
+			'limit'=>5,
+			'params'=> array(':user_id' => $id),
+			));
+                        
+			$dataProvider=new CActiveDataProvider('Mensaje',array('criteria'=>$criteria,'pagination'=>false));	
+			
+			return ($dataProvider);
+
+	}
+        
+ }

@@ -28,14 +28,10 @@ class MensajeController extends GxController {
 		$this->render('create', array( 'model' => $model));
 	}
         
-        public function actionCrear() {
+        public function actionCrearNuevo() {
 		$model = new Mensaje;
                 
-//                $session=Yii::app()->getSession();
-//                $id_user=$session['_id'];
-//                $model->user_emisor = $id_user;
-                
-                $model->user_emisor=Yii::app()->user->id;
+                $model->user_emisor=1;
                 $model->fecha=date("Y-m-d H:i:s",time());
 		$this->performAjaxValidation($model, 'mensaje-form');
 
@@ -46,11 +42,62 @@ class MensajeController extends GxController {
 				if (Yii::app()->getRequest()->getIsAjaxRequest())
 					Yii::app()->end();
 				else
-					$this->redirect(array('view', 'id' => $model->id));
+					$this->redirect(array('Responder', 'id' => $model->user_receptor));
 			}
 		}
 
-		$this->render('crear', array( 'model' => $model));
+		$this->render('crearNuevo', array( 'model' => $model));
+	}
+        
+        public function actionCrear() {
+		$model = new Mensaje;
+                $model->user_emisor=Yii::app()->user->id;
+                
+                //$model_mensajes = $this->loadModel($model->user_emisor, 'User');
+                //$model_mensajes=$model_mensajes->mensajes(array('scopes'=>array('anteriores')));
+		$dataProvider = $model->misMensajes(Yii::app()->user->id);	           
+                
+                $model->fecha=date("Y-m-d H:i:s",time());
+		$this->performAjaxValidation($model, 'mensaje-form');
+
+		if (isset($_POST['Mensaje'])) {
+			$model->setAttributes($_POST['Mensaje']);
+
+			if ($model->save()) {
+				if (Yii::app()->getRequest()->getIsAjaxRequest())
+					Yii::app()->end();
+				else
+					$this->redirect(array('crear'));
+			}
+		}
+
+		$this->render('crear', array( 'model' => $model, 'dataProvider' => $dataProvider));
+	}
+        
+        public function actionResponder($id) {
+		$model = new Mensaje;
+                $model->user_emisor=Yii::app()->user->id;
+                $model->user_receptor = $id;
+                
+                //$model_mensajes = $this->loadModel($model->user_emisor, 'User');
+                //$model_mensajes=$model_mensajes->mensajes(array('scopes'=>array('anteriores')));
+		$dataProvider = $model->misMensajes($id);	           
+                
+                $model->fecha=date("Y-m-d H:i:s",time());
+		$this->performAjaxValidation($model, 'mensaje-form');
+
+		if (isset($_POST['Mensaje'])) {
+			$model->setAttributes($_POST['Mensaje']);
+
+			if ($model->save()) {
+				if (Yii::app()->getRequest()->getIsAjaxRequest())
+					Yii::app()->end();
+				else
+					$this->redirect(array('responder', 'id' => $id));
+			}
+		}
+
+		$this->render('crear', array( 'model' => $model, 'dataProvider' => $dataProvider));
 	}
 
 	public function actionUpdate($id) {

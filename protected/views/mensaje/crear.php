@@ -10,10 +10,32 @@ $this->menu = array(
 );
 ?>
 
-<h1><?php echo Yii::t('app', 'Create') . ' ' . GxHtml::encode($model->label()); ?></h1>
+<h1><?php echo Yii::t('app', 'Mis Mensajes'); ?></h1>
 
+
+<?php $this->widget('bootstrap.widgets.TbExtendedGridView', array(
+	'id' => 'recarga-grid',
+	'dataProvider' => $dataProvider,
+	'type'=>'striped condensed',
+	//'filter' => $model,
+        'hideHeader'=>true,
+	'template'=>"{extendedSummary}\n{items}{pager}",
+	'columns' => array(
+		'user_emisor',
+                'user_receptor',
+		'mensaje',
+                'fecha',
+		
+            ),
+                
+	
+)); ?>
+
+<h1><?php echo Yii::t('app', 'Nuevo ') . ' ' . GxHtml::encode($model->label()); ?></h1>
 <?php
-$this->renderPartial('_crear', array(
+
+    $this->renderPartial('_crear', array(
 		'model' => $model,
 		'buttons' => 'create'));
+
 ?>

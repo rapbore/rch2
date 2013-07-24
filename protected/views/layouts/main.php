@@ -94,9 +94,9 @@
                                                 array('label'=>'Pedidos', 'url'=>array('/pedido/verTodos')),
                                                 array('label'=>'Publicidades', 'url'=>array('/publicidad/verTodos')),
                                                 array('label' => 'Mensaje', 'url' => '#', 'items' => array(
-                                                    array('label' => 'Bandeja de Entrada', 'url' => array('/mensaje/admin')),
-                                                    array('label' => 'Cliente', 'url' => array('/reporteGeneral/reporteCliente')),
-                                                    array('label' => 'Operador', 'url' => array('/reporteGeneral/reporteOperador')),
+                                                    array('label' => 'Crear Nuevo Mensaje', 'url' => array('/mensaje/crearNuevo')),
+                                                    array('label' => 'Mis Mensajes', 'url' => array('/mensaje/todos')),
+                                                    
                                                 )),
 						array('label'=>'Estado', 'url'=>array('/estado/admin')),
 						array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
