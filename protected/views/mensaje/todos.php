@@ -70,7 +70,7 @@ $this->widget('bootstrap.widgets.TbMenu', array(
 //				),
 		array('name'=>'fecha'),
 		
-		array('name'=>'estado'),
+		//array('name'=>'estado'),
 
 
 				array(
@@ -80,7 +80,7 @@ $this->widget('bootstrap.widgets.TbMenu', array(
 					'buttons'=>array(
 						'view' => array(
 							'label'=>'Ver'. ' ' . $model->label(),
-							'url'=>'Yii::app()->createUrl("mensaje/responder", array("id"=>$data->id))',
+							'url'=>'Yii::app()->createUrl("mensaje/responder", array("id"=>$data->user_emisor))',
                                                         'icon'=>'envelope',
 						),
 						

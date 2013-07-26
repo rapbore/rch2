@@ -24,7 +24,7 @@
 <?php $this->widget('bootstrap.widgets.TbButton', array(
     'buttonType'=>'submit',
     'type'=>'primary',
-    'label'=>Yii::t('app', 'Save'),
+    'label'=>Yii::t('app', 'Enviar'),
     'loadingText'=>Yii::t('app', 'Enviando'),
     'htmlOptions'=>array('id'=>'buttonSend','onclick'=>"this.disabled=true;this.value='".Yii::t('app', 'Enviando')."';this.form.submit();"),
 ));

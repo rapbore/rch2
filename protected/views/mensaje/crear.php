@@ -31,7 +31,7 @@ $this->menu = array(
 	
 )); ?>
 
-<h1><?php echo Yii::t('app', 'Nuevo ') . ' ' . GxHtml::encode($model->label()); ?></h1>
+
 <?php
 
     $this->renderPartial('_crear', array(
