@@ -87,7 +87,26 @@ class UserController extends GxController {
 		$this->render('create', array( 'model' => $model));
 	}
 
-	public function actionUpdate($id) {
+	public function actionEditar($id) {
+		$model = $this->loadModel($id, 'User');
+                $model->password=NULL;
+		$this->performAjaxValidation($model, 'user-form');
+
+		if (isset($_POST['User'])) {
+			$model->setAttributes($_POST['User']);
+			$model->password=$model->hashPassword($model->password,'28b206548469ce62182048fd9cf91760');
+
+			if ($model->save()) {
+				$this->redirect(array('view', 'id' => $model->id));
+			}
+		}
+
+		$this->render('editar', array(
+				'model' => $model,
+				));
+	}
+        
+        public function actionUpdate($id) {
 		$model = $this->loadModel($id, 'User');
 
 		$this->performAjaxValidation($model, 'user-form');

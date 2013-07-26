@@ -80,6 +80,15 @@ class MensajeController extends GxController {
 		} else
 			throw new CHttpException(400, Yii::t('app', 'Your request is invalid.'));
 	}
+        public function actionEliminar($id) {
+		if (Yii::app()->getRequest()->getIsPostRequest()) {
+			$this->loadModel($id, 'Mensaje')->delete();
+
+			if (!Yii::app()->getRequest()->getIsAjaxRequest())
+				$this->redirect(array('admin'));
+		} else
+			throw new CHttpException(400, Yii::t('app', 'Your request is invalid.'));
+	}
 
 	public function actionIndex() {
 		$dataProvider = new CActiveDataProvider('Mensaje');

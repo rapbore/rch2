@@ -26,13 +26,56 @@ class Mensaje extends BaseMensaje
 	}
         
         
-	public function search() {
-		$criteria = parent::search()->getCriteria();
+	public function todos() {
+		
+                $criteria = new CDbCriteria;
 
-                if((isset($this->fecha_inicio) && trim($this->fecha_inicio) != "") && (isset($this->fecha_termino) && trim($this->fecha_termino) != ""))                
-                	$criteria->addBetweenCondition('fecha', $this->fecha_inicio, $this->fecha_termino);
-		return new CActiveDataProvider($this, array(
+		$criteria->compare('id', $this->id);
+		$criteria->compare('user_emisor', $this->user_emisor);
+		$criteria->compare('user_receptor', $this->user_receptor);
+		$criteria->compare('fecha', $this->fecha, true);
+		$criteria->compare('mensaje', $this->mensaje, true);
+		$criteria->compare('estado', $this->estado, true);
+                
+                $criteria->order="user_emisor, fecha DESC";
+                $criteria->group="user_emisor";
+                $criteria->condition="user_emisor!=1";
+                
+                return new CActiveDataProvider($this, array(
 			'criteria' => $criteria,
-                        ));
+		));
+//                $sql = '
+//                SELECT
+//                    mm.id,
+//                    mm.user_emisor,
+//                    mm.user_receptor,
+//                    mm.fecha,
+//                    mm.mensaje,
+//                    mm.estado
+//                FROM
+//                    (
+//                    SELECT
+//                        m.id,
+//                        m.user_emisor,
+//                        m.user_receptor,
+//                        m.fecha,
+//                        m.mensaje,
+//                        m.estado
+//                    FROM
+//                        mensaje m
+//                    WHERE
+//                        m.user_emisor <> 1
+//                    ORDER BY
+//                        m.id DESC
+//                    ) as mm
+//                WHERE
+//                    mm.user_emisor <> 1
+//                GROUP BY
+//                    mm.user_emisor    
+//
+//                ';
+//                $query=Yii::app()->db->createCommand($sql);
+//                return new CSqlDataProvider($query, array());
+
 	}
 }

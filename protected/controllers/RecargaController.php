@@ -117,7 +117,7 @@ class RecargaController extends GxController {
                     } else
                             Yii::app()->user->setFlash('info', 'El celular <strong>'.$model->celular.' </strong>no puede ser recargado.');
                 } else
-                        Yii::app()->user->setFlash('error', 'Usted no puede ingresar recargas <strong>'.$model->compania.' </strong>.');
+                        Yii::app()->user->setFlash('error', 'recargas <strong>'.$model->compania.'</strong> momentaneamente sin servicio.');
             }
 
             $this->render('_crear', array( 'model' => $model, 'cupo'=>$model_cupo));
