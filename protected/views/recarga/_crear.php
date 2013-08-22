@@ -119,16 +119,16 @@ $("#Recarga_compania_1").click(function() {
      
 });
 
-/*
+
 $("#Recarga_compania_2").click(function() {
 
-  $("#Recarga_monto_0").val("2000");
+  $("#Recarga_monto_0").val("1000");
   $(".compactRadioGroup label:eq(0)").text("");
-  $(".compactRadioGroup label:eq(0)").text("2000");  
+  $(".compactRadioGroup label:eq(0)").text("1000");  
   
-  $("#Recarga_monto_1").val("2500");
+  $("#Recarga_monto_1").val("2000");
   $(".compactRadioGroup label:eq(1)").text("");
-  $(".compactRadioGroup label:eq(1)").text("2500");
+  $(".compactRadioGroup label:eq(1)").text("2000");
   
   $("#Recarga_monto_2").val("3000");
   $(".compactRadioGroup label:eq(2)").text("");
@@ -150,11 +150,17 @@ $("#Recarga_compania_2").click(function() {
   $(".compactRadioGroup label:eq(6)").hide();
   $(".compactRadioGroup label:eq(6)").text("3500");
   
+  $("#Recarga_monto_7").hide();
+  $(".compactRadioGroup label:eq(7)").hide();
+  $(".compactRadioGroup label:eq(7)").text("3500");
+  
+  $("#Recarga_monto_8").hide();
+  $(".compactRadioGroup label:eq(8)").hide();
+  $(".compactRadioGroup label:eq(8)").text("3500");
   $("#numero_compania").text("CLARO");
        
 });
 
-*/
 $('#recarga-form').submit(function(){
 if($("#Recarga_celular").val().length!=8){
   alert("EL CELULAR DEBE SER DE 8 DIGITOS");
@@ -202,7 +208,7 @@ if(Yii::app()->user->hasFlash('info')){?>
 
 	<div class="row">
 	<div class="hola">
-		<?php echo $form->radioButtonList($model,'compania',array('Movistar' => 'Movistar', 'Entel' => 'Entel', /*'Claro' => 'Claro' */),array('labelOptions'=>array('style'=>'display:inline'))); ?>
+		<?php echo $form->radioButtonList($model,'compania',array('Movistar' => 'Movistar', 'Entel' => 'Entel', 'Claro' => 'Claro'),array('labelOptions'=>array('style'=>'display:inline'))); ?>
 	</div>
 		<?php echo $form->error($model,'compania'); ?>
 	</div>
