@@ -31,8 +31,12 @@ class RecargaController extends GxController {
                 if($model_usuario->entel=="NO"){
                    return false;
                 }
-            }else{
+            }elseif($compania=="Movistar"){
                if($model_usuario->movistar=="NO"){
+                   return false;
+                } 
+            }else{
+               if($model_usuario->claro=="NO"){
                    return false;
                 } 
             }

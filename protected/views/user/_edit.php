@@ -43,6 +43,11 @@
 		<?php echo $form->radioButtonList($model,'movistar',array('SI' => 'SI', 'NO' => 'NO', ),array('labelOptions'=>array('style'=>'display:inline'))); ?>
 		<?php echo $form->error($model,'movistar'); ?>
 		</div><!-- row -->
+                <div class="row">
+		<?php echo $form->labelEx($model,'claro'); ?>
+		<?php echo $form->radioButtonList($model,'claro',array('SI' => 'SI', 'NO' => 'NO', ),array('labelOptions'=>array('style'=>'display:inline'))); ?>
+		<?php echo $form->error($model,'claro'); ?>
+		</div><!-- row -->
 
 <?php
 echo GxHtml::submitButton(Yii::t('app', 'EDITAR'));

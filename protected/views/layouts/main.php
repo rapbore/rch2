@@ -91,10 +91,10 @@
 						array('label'=>'Cupo', 'url'=>array('/cupo/admin')),
 						array('label'=>'No Prepagos', 'url'=>array('/noprepago/admin')),
 						array('label'=>'Atenciones', 'url'=>array('/atencion/admin')),
-                                                array('label'=>'Productos', 'url'=>array('/producto/verTodos')),
-                                                array('label'=>'Pedidos', 'url'=>array('/pedido/verTodos')),
-                                                array('label'=>'Publicidades', 'url'=>array('/publicidad/verTodos')),
-                                                array('label' => 'Mensaje', 'url' => '#', 'items' => array(
+						array('label'=>'Productos', 'url'=>array('/producto/verTodos')),
+						array('label'=>'Pedidos', 'url'=>array('/pedido/verTodos')),
+						array('label'=>'Publicidades', 'url'=>array('/publicidad/verTodos')),
+						array('label' => 'Mensaje', 'url' => '#', 'items' => array(
                                                     array('label' => 'Crear Nuevo Mensaje', 'url' => array('/mensaje/crearNuevo')),
                                                     array('label' => 'Bandeja de entrada', 'url' => array('/mensaje/todos')),
                                                     
@@ -126,7 +126,7 @@
 						array('label'=>'Recargar', 'url'=>array('/recarga/create')),
 						array('label'=>'En Proceso', 'url'=>array('/recarga/verPendientesEmpleado')),
 						array('label'=>'Recargas Listas', 'url'=>array('/recarga/verListasEmpleado')),
-                                                array('label'=>'Chat','icon'=>'envelope', 'url'=>array('/mensaje/crear')),
+						array('label'=>'Chat','icon'=>'envelope', 'url'=>array('/mensaje/crear')),
                                                 array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
 						array('label'=>'Logout ('.$session['_username'].')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
 		                
@@ -179,7 +179,7 @@
 						//array('label'=>'Contact', 'url'=>array('/site/contact')),
 						array('label'=>'Atender Recargas', 'url'=>array('/recarga/verPendientesOperador')),
 						array('label'=>'Recargas Listas', 'url'=>array('/atencion/verListasOperador')),
-                                                array('label'=>'Chat','icon'=>'envelope', 'url'=>array('/mensaje/crear')),
+						array('label'=>'Chat','icon'=>'envelope', 'url'=>array('/mensaje/crear')),
 						array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
 						array('label'=>'Logout ('.$session['_username'].')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
 					),
@@ -207,7 +207,7 @@
 						//array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
 						//array('label'=>'Contact', 'url'=>array('/site/contact')),
 						array('label'=>'Locales', 'url'=>array('/local/verLocalesCliente')),
-                                                array('label'=>'Chat','icon'=>'envelope', 'url'=>array('/mensaje/crear')),
+						array('label'=>'Chat','icon'=>'envelope', 'url'=>array('/mensaje/crear')),
 						//array('label'=>'Atenciones', 'url'=>array('/atencion/admin')),
                                                 //array('label'=>'Historico Recargas', 'url'=>array('/recarga/verHistorico', 'id'=>$_local)),
 						array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),

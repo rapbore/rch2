@@ -19,6 +19,7 @@ class User extends BaseUser
 			'tipo' => Yii::t('app', 'Tipo'),
 			'entel' => Yii::t('app', 'Entel'),
 			'movistar' => Yii::t('app', 'Movistar'),
+                        'claro' => Yii::t('app', 'Claro'),
 			'atencions' => null,
 			'estados' => null,
 			'locals' => null,
@@ -56,6 +57,7 @@ class User extends BaseUser
 		$criteria->compare('tipo', $this->tipo, true);
 		$criteria->compare('entel', $this->entel, true);
 		$criteria->compare('movistar', $this->movistar, true);
+                $criteria->compare('claro', $this->movistar, true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria' => $criteria,
